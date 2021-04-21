@@ -1,0 +1,19 @@
+datasource DS {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+// Define your own datamodels here and run `yarn redwood prisma migrate dev`
+model Tape {
+  id       Int    @id @default(autoincrement())
+  owner    String
+  name     String
+  capacity String
+  quality  String
+  style    String
+}

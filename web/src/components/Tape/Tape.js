@@ -1,49 +1,41 @@
-import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/toast'
-import { Link, routes, navigate } from '@redwoodjs/router'
-
-import { QUERY } from 'src/components/TapesCell'
-
-const DELETE_TAPE_MUTATION = gql`
-  mutation DeleteTapeMutation($id: Int!) {
-    deleteTape(id: $id) {
-      id
-    }
-  }
-`
-
-const jsonDisplay = (obj) => {
-  return (
-    <pre>
-      <code>{JSON.stringify(obj, null, 2)}</code>
-    </pre>
-  )
-}
-
-const timeTag = (datetime) => {
-  return (
-    <time dateTime={datetime} title={datetime}>
-      {new Date(datetime).toUTCString()}
-    </time>
-  )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
-}
+import {useContext, useState} from 'react'
+import { Link, routes } from '@redwoodjs/router'
+import { ContractContext } from '../../contexts/contractContext';
 
 const Tape = ({ tape }) => {
-  const [deleteTape] = useMutation(DELETE_TAPE_MUTATION, {
-    onCompleted: () => {
-      toast.success('Tape deleted')
-      navigate(routes.tapes())
-    },
-  })
+  const contract = useContext(ContractContext);
+  const [txHash, setTxHash] = useState(undefined);
+  const [txError, setTxError] = useState(undefined);
+  const [txBeingSent, setTxBeingSent] = useState(undefined);
+  const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
-  const onDeleteClick = (id) => {
-    if (confirm('Are you sure you want to delete tape ' + id + '?')) {
-      deleteTape({ variables: { id } })
+  const claimTape = async () => {
+    try {
+      const tx = await contract.claim(0, 10, 10, 10, tape.proof, "testuri")
+      setTxHash(tx.hash);
+
+      const receipt = await tx.wait();
+      if (receipt.status === 0) {
+          throw new Error("Transaction failed");
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) { return }
+      setTxError(error);
+    } finally {
+      setTxBeingSent(undefined);
     }
+  }
+
+  const checkSymbol = async () => {
+    console.log(contract);
+    const symbol = await contract.merkleRoot()
+    console.log(symbol);
+  }
+
+  const checkStatus = async () => {
+    const claimed = await contract.isClaimed(0)
+    console.log(claimed);
   }
 
   return (
@@ -80,6 +72,10 @@ const Tape = ({ tape }) => {
               <th>Style</th>
               <td>{tape.style}</td>
             </tr>
+            <tr>
+              <th>Proof</th>
+              <td>{tape.proof}</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -90,13 +86,25 @@ const Tape = ({ tape }) => {
         >
           Edit
         </Link>
-        <a
-          href="#"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(tape.id)}
+        {/* set is claimed in the db level */}
+        <button
+          className="rounded bg-blue-500 text-white uppercase text-xs font-bold px-2 hover:bg-blue-600 mr-2"
+          onClick={() => claimTape()}
         >
-          Delete
-        </a>
+          claim
+        </button>
+        <button
+          className="rounded bg-blue-500 text-white uppercase text-xs font-bold px-2 hover:bg-blue-600 mr-2"
+          onClick={() => checkSymbol()}
+        >
+          symbol
+        </button>
+        <button
+          className="rounded bg-blue-500 text-white uppercase text-xs font-bold px-2 hover:bg-blue-600"
+          onClick={() => checkStatus()}
+        >
+          is taken
+        </button>
       </nav>
     </>
   )

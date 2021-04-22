@@ -6,6 +6,7 @@ export const schema = gql`
     capacity: String!
     quality: String!
     style: String!
+    proof: [String]!
   }
 
   type Query {
@@ -19,6 +20,7 @@ export const schema = gql`
     capacity: String!
     quality: String!
     style: String!
+    proof: [String]!
   }
 
   input UpdateTapeInput {
@@ -27,6 +29,7 @@ export const schema = gql`
     capacity: String
     quality: String
     style: String
+    proof: [String]!
   }
 
   type Mutation {

@@ -10,10 +10,13 @@ generator client {
 
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`
 model Tape {
-  id       Int    @id @default(autoincrement())
-  owner    String
-  name     String
-  capacity String
-  quality  String
-  style    String
+  id        Int      @id @default(autoincrement())
+  owner     String
+  name      String
+  capacity  Int
+  quality   Int
+  style     Int
+  proof     String[]
+  isClaimed Boolean  @default(false)
+  claimLock Boolean  @default(false)
 }

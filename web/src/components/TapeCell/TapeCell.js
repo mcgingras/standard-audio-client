@@ -9,6 +9,7 @@ export const QUERY = gql`
       capacity
       quality
       style
+      proof
     }
   }
 `

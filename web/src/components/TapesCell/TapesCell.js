@@ -20,9 +20,6 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No tapes yet. '}
-      <Link to={routes.newTape()} className="rw-link">
-        {'Create one?'}
-      </Link>
     </div>
   )
 }
@@ -31,10 +28,9 @@ export const Success = ({ tapes }) => {
   return (
       tapes.map((tape) => {
         return (
-          <div>
-            {tape.id}
+          <Link to={routes.tape({ id: tape.id })} className="cursor-pointer block">
             {tape.name}
-          </div>
+          </Link>
         )
       })
   )

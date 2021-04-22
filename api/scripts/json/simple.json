@@ -1,0 +1,58 @@
+{
+  "0" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "watermelon",
+    "owner": "0x"
+  },
+  "1" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "beer beer",
+    "owner": "0x"
+  },
+  "2" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "dog treats",
+    "owner": "0x"
+  },
+  "3" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "donkey step",
+    "owner": "0x"
+  },
+  "4" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "yellow magic",
+    "owner": "0x"
+  },
+  "5" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "round candle",
+    "owner": "0x"
+  },
+  "6" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "sunlight beam",
+    "owner": "0x"
+  },
+  "7" : {
+    "capacity": 10,
+    "quality": 10,
+    "style": 10,
+    "name": "tornado dust",
+    "owner": "0x"
+  }
+}

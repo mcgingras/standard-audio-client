@@ -11,9 +11,6 @@ const TapesLayout = (props) => {
             Tapes
           </Link>
         </h1>
-        <Link to={routes.newTape()} className="rw-button rw-button-green">
-          <div className="rw-button-icon">+</div> New Tape
-        </Link>
       </header>
       <main className="rw-main">{props.children}</main>
     </div>

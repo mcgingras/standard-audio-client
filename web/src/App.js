@@ -22,8 +22,8 @@ import './index.css'
 
 const App = () => {
   const [injectedProvider, setInjectedProvider] = useState(undefined);
-  const [address, setAddress] = useState(undefined);
-  const [contract, setContract] = useState(undefined);
+  const [address, setAddress] = useState("");
+  const [contract, setContract] = useState("");
 
   const web3Modal = new Web3Modal({
     cacheProvider: true,
@@ -63,7 +63,7 @@ const App = () => {
   }, [injectedProvider])
 
   return (
-  <ContractContext.Provider value={contract}>
+  <ContractContext.Provider value={{contract, address}}>
     <FatalErrorBoundary page={FatalErrorPage}>
       <RedwoodApolloProvider>
         <Routes />

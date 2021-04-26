@@ -8,8 +8,9 @@ dotenv.config()
 const db = new PrismaClient()
 
 async function main() {
-
   const parsed = parseJson(simpleJSON);
+  console.log(parsed);
+
   const data = Object.keys(parsed.claims).map((id) => {
     return {
       ...parsed.claims[id],

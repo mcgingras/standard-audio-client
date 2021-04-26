@@ -19,4 +19,23 @@ model Tape {
   proof     String[]
   isClaimed Boolean  @default(false)
   claimLock Boolean  @default(false)
+  Bid       Bid?
+  Sale      Sale?
+}
+
+model Bid {
+  id     Int     @id @default(autoincrement())
+  tape   Tape    @relation(fields: [tapeId], references: [id])
+  tapeId Int
+  bidder String
+  amount Int
+  active Boolean @default(false)
+}
+
+model Sale {
+  id     Int     @id @default(autoincrement())
+  tape   Tape    @relation(fields: [tapeId], references: [id])
+  tapeId Int
+  amount String
+  active Boolean @default(false)
 }

@@ -1,7 +1,6 @@
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
-import TapeForm from 'src/components/TapeForm'
 
 export const QUERY = gql`
   query FIND_TAPE_BY_ID($id: Int!) {
@@ -47,9 +46,6 @@ export const Success = ({ tape }) => {
       <header className="rw-segment-header">
         <h2 className="rw-heading rw-heading-secondary">Edit Tape {tape.id}</h2>
       </header>
-      <div className="rw-segment-main">
-        <TapeForm tape={tape} onSave={onSave} error={error} loading={loading} />
-      </div>
     </div>
   )
 }

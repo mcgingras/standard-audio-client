@@ -1,12 +1,10 @@
-import TapesLayout from 'src/layouts/TapesLayout'
+import BaseLayout from 'src/layouts/BaseLayout'
 import TapeCell from 'src/components/TapeCell'
 
 
 const TapePage = ({ id }) => {
   return (
-    <TapesLayout>
-      <TapeCell id={id} />
-    </TapesLayout>
+    <TapeCell id={id} />
   )
 }
 

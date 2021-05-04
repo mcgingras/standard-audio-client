@@ -7,6 +7,9 @@ export const tapes = () => {
 export const tape = ({ id }) => {
   return db.tape.findUnique({
     where: { id },
+    include: {
+      Bids: true // like ecto preload
+    }
   })
 }
 

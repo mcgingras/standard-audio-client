@@ -1,10 +1,25 @@
 import {useContext, useEffect, useState} from 'react'
 import { Link, routes } from '@redwoodjs/router'
+import { useMutation } from '@redwoodjs/web'
 import { ContractContext, useWeb3 } from '../../contexts/contractContext';
-import { ethers, BigNumber } from "ethers";
+import { ethers } from "ethers";
 
 // UI Components
 import Slideover from '../Tailwind/Slideover';
+import BidItem from '../BidItem/BidItem';
+
+const UPDATE_BID_MUTATION = gql`
+  mutation UpdateBidMutation($id: Int!, $input: UpdateBidInput!) {
+    updateBid(id: $id, input: $input) {
+      id
+      owner
+      name
+      capacity
+      quality
+      style
+    }
+  }
+`
 
 const demoStats = {
   "Duration": "60 Min",
@@ -18,24 +33,35 @@ const demoStats = {
 }
 const Stat = ({k, v}) => {
   return (
-    <div class="flex justify-between items-center">
+    <div className="flex justify-between items-center">
       <span className="mr-2 text-xs">{k}</span>
       <span className="w-1/2 bg-gray-900 text-xs text-blue-200 p-1 font-semibold">{v}</span>
     </div>
   )
 }
 
+const bidPrice = (bid) => {
+  if (bid.activeBid) {
+    return (
+      <span className="text-3xl text-center font-book">{ethers.utils.formatEther(bid.amount.toString())} ETH</span>
+    )
+  } else {
+    return (
+      <span className="text-4xl text-center font-bold">NO BIDS</span>
+    )
+  }
+}
+
 const Tape = ({ tape }) => {
   const {contract, address} = useContext(ContractContext);
   const [isOwner, setIsOwner] = useState(false);
-  const [bidModalOpen, setBidModalOpen] = useState(false);
   const [bidSlideOpen, setBidSlideOpen] = useState(false);
   const [isClaimed, setIsClaimed] = useState(false);
   const [txHash, setTxHash] = useState(undefined);
   const [txError, setTxError] = useState(undefined);
   const [txBeingSent, setTxBeingSent] = useState(undefined);
   const [bidValue, setBidValue] = useState(undefined);
-  const [bid, setBid] = useState({amount: 0})
+  const [bid, setBid] = useState({amount: 0, activeBid: false})
   const ERROR_CODE_TX_REJECTED_BY_USER = 4001;
 
   useEffect(() => {
@@ -75,11 +101,6 @@ const Tape = ({ tape }) => {
     }
   }
 
-  const checkStatus = async () => {
-    const claimed = await contract.isClaimed(tape.id)
-    console.log(claimed);
-  }
-
   // make sure this is a number
   const submitBid = async () => {
     const eth = ethers.utils.parseEther(bidValue);
@@ -101,18 +122,30 @@ const Tape = ({ tape }) => {
               <p className="text-sm text-center mt-12">This MX tape will always be for sale at this price unless you adjust it below.</p>
             </section>
             <section className="flex flex-col mt-12">
-              <label className="text-sm font-bold mb-1">Edit Sale Price</label>
+              <label className="text-sm font-bold mb-4">Edit Sale Price</label>
               <div class="flex">
-                <input onChange={(e) => {setBidValue(e.target.value)}}type="text" class="rounded-lg text-sm flex-grow mt-2 p-2 outline-none focus:shadow-lg" placeholder="Sale amount (in ETH)" />
+                <input onChange={(e) => {setBidValue(e.target.value)}}type="text" className="rounded-lg text-sm flex-grow mt-2 p-2 outline-none focus:shadow-lg" placeholder="Sale amount (in ETH)" />
                 <button onClick={() => {submitBid()}} className="rounded-full bg-black text-white uppercase text-xs font-bold px-20 hover:bg-gray-800 mt-2 -ml-8 shadow-lg">bid</button>
               </div>
             </section>
             <section className="mt-12">
-              <h6 className="text-sm font-bold mb-1">Current Highest Bid</h6>
+              <h6 className="text-sm font-bold mb-4">Current Highest Bid</h6>
+              { bid.activeBid
+                ? <div className="w-full">
+                    <BidItem bid={bid} />
+                    <button onClick={() => acceptBid()} className="mt-4 block mx-auto rounded-full bg-black text-white uppercase text-xs font-bold py-3 px-4 hover:bg-gray-800 mt-2">Accept Bid</button>
+                  </div>
+                : <div>
+                  No bids yet.
+                </div>
+              }
             </section>
-            <section className="mt-12">
-              <h6 className="text-sm font-bold mb-1">Bid and Ownership History</h6>
-            </section>
+            { bid.activeBid &&
+              <section className="mt-12">
+                <h6 className="text-sm font-bold mb-4">Bid and Ownership History</h6>
+                <BidItem bid={bid} />
+              </section>
+            }
           </>
         : <>
             <section className="flex flex-col">
@@ -120,11 +153,12 @@ const Tape = ({ tape }) => {
               <span className="text-3xl text-center font-book">{ethers.utils.formatEther(bid.amount.toString())} ETH</span>
             </section>
             <section className="flex mt-8">
-              <input onChange={(e) => {setBidValue(e.target.value)}}type="text" class="rounded-lg text-sm flex-grow mt-2 p-2 outline-none focus:shadow-lg" placeholder="Bid amount (in ETH)" />
+              <input onChange={(e) => {setBidValue(e.target.value)}}type="text" className="rounded-lg text-sm flex-grow mt-2 p-2 outline-none focus:shadow-lg" placeholder="Bid amount (in ETH)" />
               <button onClick={() => {submitBid()}} className="rounded-full bg-black text-white uppercase text-xs font-bold px-20 hover:bg-gray-800 mt-2 -ml-8 shadow-lg">bid</button>
             </section>
             <section className="mt-20">
               <h6 className="text-sm font-bold mb-1">Bid and Ownership History</h6>
+              <BidItem bid={bid} />
             </section>
           </>
         }
@@ -173,18 +207,9 @@ const Tape = ({ tape }) => {
           <div className="flex flex-col justify-between pl-8">
             {isClaimed
               ? <>
-                  { isOwner
-                  ? <>
-                      <span className="uppercase text-center text-xs font-bold">Current Bid</span>
-                      <span className="text-3xl text-center font-book">{ethers.utils.formatEther(bid.amount.toString())} ETH</span>
-                      <button onClick={() => {setBidSlideOpen(true)}} className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">View Bids</button>
-                    </>
-                  : <>
-                      <span className="uppercase text-center text-xs font-bold">Current Bid</span>
-                      <span className="text-3xl text-center font-book">{ethers.utils.formatEther(bid.amount.toString())} ETH</span>
-                      <button onClick={() => {setBidSlideOpen(true)}} className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">Bid</button>
-                    </>
-                  }
+                  <span className="uppercase text-center text-xs font-bold">Current Bid</span>
+                  { bidPrice(bid) }
+                  <button onClick={() => {setBidSlideOpen(true)}} className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">{isOwner ? "View Bids" : "Bid"}</button>
                 </>
               : <>
                   <span className="uppercase text-center text-xs">Tape Status:</span>

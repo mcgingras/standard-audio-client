@@ -19,8 +19,8 @@ model Tape {
   proof     String[]
   isClaimed Boolean  @default(false)
   claimLock Boolean  @default(false)
-  Bid       Bid?
-  Sale      Sale?
+  Bids      Bid[]
+  SalePrice Sale[]
 }
 
 model Bid {

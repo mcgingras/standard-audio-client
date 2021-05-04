@@ -10,6 +10,9 @@ export const QUERY = gql`
       quality
       style
       proof
+      bids {
+        ids
+      }
     }
   }
 `

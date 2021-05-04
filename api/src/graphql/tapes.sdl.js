@@ -7,6 +7,7 @@ export const schema = gql`
     quality: String!
     style: String!
     proof: [String]!
+    bids: [Bid]!
   }
 
   type Query {

@@ -7,9 +7,6 @@ export const tapes = () => {
 export const tape = ({ id }) => {
   return db.tape.findUnique({
     where: { id },
-    include: {
-      Bids: true // like ecto preload
-    }
   })
 }
 
@@ -30,4 +27,11 @@ export const deleteTape = ({ id }) => {
   return db.tape.delete({
     where: { id },
   })
+}
+
+export const Tape = {
+  Bids: (_obj, { root }) =>
+    db.tape.findUnique({ where: { id: root.id } }).Bids(),
+  SalePrice: (_obj, { root }) =>
+    db.tape.findUnique({ where: { id: root.id } }).SalePrice(),
 }

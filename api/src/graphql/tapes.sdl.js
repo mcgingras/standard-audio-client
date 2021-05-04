@@ -3,11 +3,14 @@ export const schema = gql`
     id: Int!
     owner: String!
     name: String!
-    capacity: String!
-    quality: String!
-    style: String!
+    capacity: Int!
+    quality: Int!
+    style: Int!
     proof: [String]!
-    bids: [Bid]!
+    isClaimed: Boolean!
+    claimLock: Boolean!
+    Bids: [Bid]
+    SalePrice: [Sale]
   }
 
   type Query {
@@ -18,19 +21,23 @@ export const schema = gql`
   input CreateTapeInput {
     owner: String!
     name: String!
-    capacity: String!
-    quality: String!
-    style: String!
+    capacity: Int!
+    quality: Int!
+    style: Int!
     proof: [String]!
+    isClaimed: Boolean!
+    claimLock: Boolean!
   }
 
   input UpdateTapeInput {
     owner: String
     name: String
-    capacity: String
-    quality: String
-    style: String
+    capacity: Int
+    quality: Int
+    style: Int
     proof: [String]!
+    isClaimed: Boolean
+    claimLock: Boolean
   }
 
   type Mutation {

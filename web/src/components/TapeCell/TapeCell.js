@@ -10,8 +10,11 @@ export const QUERY = gql`
       quality
       style
       proof
-      bids {
-        ids
+      Bids {
+        id
+        amount
+        bidder
+        active
       }
     }
   }

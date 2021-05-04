@@ -18,17 +18,19 @@ describe('tapes', () => {
       input: {
         owner: 'String',
         name: 'String',
-        capacity: 'String',
-        quality: 'String',
-        style: 'String',
+        capacity: 3329681,
+        quality: 1787574,
+        style: 774224,
+        proof: 'String',
       },
     })
 
     expect(result.owner).toEqual('String')
     expect(result.name).toEqual('String')
-    expect(result.capacity).toEqual('String')
-    expect(result.quality).toEqual('String')
-    expect(result.style).toEqual('String')
+    expect(result.capacity).toEqual(3329681)
+    expect(result.quality).toEqual(1787574)
+    expect(result.style).toEqual(774224)
+    expect(result.proof).toEqual('String')
   })
 
   scenario('updates a tape', async (scenario) => {

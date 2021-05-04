@@ -53,6 +53,7 @@ const bidPrice = (bid) => {
 }
 
 const Tape = ({ tape }) => {
+  console.log(tape)
   const {contract, address} = useContext(ContractContext);
   const [isOwner, setIsOwner] = useState(false);
   const [bidSlideOpen, setBidSlideOpen] = useState(false);
@@ -143,7 +144,11 @@ const Tape = ({ tape }) => {
             { bid.activeBid &&
               <section className="mt-12">
                 <h6 className="text-sm font-bold mb-4">Bid and Ownership History</h6>
-                <BidItem bid={bid} />
+                { tape.Bids.map(bid => {
+                  return (
+                    <BidItem bid={bid} />
+                  )
+                })}
               </section>
             }
           </>
@@ -158,7 +163,11 @@ const Tape = ({ tape }) => {
             </section>
             <section className="mt-20">
               <h6 className="text-sm font-bold mb-1">Bid and Ownership History</h6>
-              <BidItem bid={bid} />
+              { tape.Bids.map(bid => {
+                  return (
+                    <BidItem bid={bid} />
+                  )
+              })}
             </section>
           </>
         }

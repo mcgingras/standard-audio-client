@@ -15,6 +15,7 @@
   "dependencies": {
     "@headlessui/react": "^1.0.0",
     "@heroicons/react": "^1.0.1",
+    "@react-three/drei": "^4.3.3",
     "@redwoodjs/forms": "^0.30.1",
     "@redwoodjs/router": "^0.30.1",
     "@redwoodjs/web": "^0.30.1",
@@ -22,6 +23,8 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-three-fiber": "^6.0.13",
+    "three": "^0.128.0",
     "web3modal": "^1.9.3"
   },
   "devDependencies": {

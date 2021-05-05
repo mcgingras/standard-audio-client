@@ -1,59 +1,25 @@
 import {useContext, useEffect, useState} from 'react'
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
-import { ContractContext, useWeb3 } from '../../contexts/contractContext';
+import { ContractContext } from '../../contexts/contractContext';
 import { ethers } from "ethers";
 
 // UI Components
 import Slideover from '../Tailwind/Slideover';
 import BidItem from '../BidItem/BidItem';
+import TapeStats from '../TapeStats/TapeStats';
+import CassetteScene from '../Three/Scenes/CassetteScene';
 
-const UPDATE_BID_MUTATION = gql`
-  mutation UpdateBidMutation($id: Int!, $input: UpdateBidInput!) {
-    updateBid(id: $id, input: $input) {
+
+const CREATE_BID_MUTATION = gql`
+  mutation CreateBidMutation($input: CreateBidInput!) {
+    createBid(input: $input) {
       id
-      owner
-      name
-      capacity
-      quality
-      style
     }
   }
 `
 
-const demoStats = {
-  "Duration": "60 Min",
-  "Shader": "Holo",
-  "Rarity": "96.9",
-  "Edition": "1",
-  "Aisle": "6",
-  "Bay": "12",
-  "Core": "Bright",
-  "Quality": "Bitty"
-}
-const Stat = ({k, v}) => {
-  return (
-    <div className="flex justify-between items-center">
-      <span className="mr-2 text-xs">{k}</span>
-      <span className="w-1/2 bg-gray-900 text-xs text-blue-200 p-1 font-semibold">{v}</span>
-    </div>
-  )
-}
-
-const bidPrice = (bid) => {
-  if (bid.activeBid) {
-    return (
-      <span className="text-3xl text-center font-book">{ethers.utils.formatEther(bid.amount.toString())} ETH</span>
-    )
-  } else {
-    return (
-      <span className="text-4xl text-center font-bold">NO BIDS</span>
-    )
-  }
-}
-
 const Tape = ({ tape }) => {
-  console.log(tape)
   const {contract, address} = useContext(ContractContext);
   const [isOwner, setIsOwner] = useState(false);
   const [bidSlideOpen, setBidSlideOpen] = useState(false);
@@ -105,8 +71,18 @@ const Tape = ({ tape }) => {
   // make sure this is a number
   const submitBid = async () => {
     const eth = ethers.utils.parseEther(bidValue);
-    const tx = await contract.bid(tape.id, {value: eth})
+    const tx = await contract.bid(tape.id, {value: eth});
+    createBid({ variables: { input: {amount: parseInt(bidValue), bidder: address, active: true, tapeId: tape.id} } })
   }
+
+  const [createBid, { loading, error }] = useMutation(CREATE_BID_MUTATION, {
+    onCompleted: () => {
+      // toast.success('Bid created')
+      // navigate(routes.bids())
+      console.log("completed bid")
+    }
+  })
+
 
   const acceptBid = async () => {
     const tx = await contract.acceptBid(tape.id);
@@ -141,7 +117,7 @@ const Tape = ({ tape }) => {
                 </div>
               }
             </section>
-            { bid.activeBid &&
+            {/* { bid.activeBid &&
               <section className="mt-12">
                 <h6 className="text-sm font-bold mb-4">Bid and Ownership History</h6>
                 { tape.Bids.map(bid => {
@@ -150,7 +126,7 @@ const Tape = ({ tape }) => {
                   )
                 })}
               </section>
-            }
+            } */}
           </>
         : <>
             <section className="flex flex-col">
@@ -161,19 +137,20 @@ const Tape = ({ tape }) => {
               <input onChange={(e) => {setBidValue(e.target.value)}}type="text" className="rounded-lg text-sm flex-grow mt-2 p-2 outline-none focus:shadow-lg" placeholder="Bid amount (in ETH)" />
               <button onClick={() => {submitBid()}} className="rounded-full bg-black text-white uppercase text-xs font-bold px-20 hover:bg-gray-800 mt-2 -ml-8 shadow-lg">bid</button>
             </section>
-            <section className="mt-20">
+            {/* <section className="mt-20">
               <h6 className="text-sm font-bold mb-1">Bid and Ownership History</h6>
               { tape.Bids.map(bid => {
                   return (
                     <BidItem bid={bid} />
                   )
               })}
-            </section>
+            </section> */}
           </>
         }
       </Slideover>
 
-      <header className="flex items-center mb-20 m-8">
+      <div className="min-h-screen h-screen relative">
+      <header className="flex items-center p-8 fixed w-full">
         <h1 className="text-4xl font-semibold">{tape.name}</h1>
         <h3 className="rounded-full border border-gray-900 px-3 py-1 ml-4 text-sm">Owner</h3>
         <h3 className="ml-4 text-sm font-semibold">{tape.owner}</h3>
@@ -185,51 +162,15 @@ const Tape = ({ tape }) => {
         </Link>
       </header>
 
-      <div className="p-8 box-border fixed bottom-0 w-full">
-      <div className="p-8 bg-blue-400 w-full">
-        <div className="grid grid-cols-4">
-          <div className="flex flex-col text-sm pr-8 border-r border-black">
-            <p className="font-bold">Tape #{tape.id}</p>
-          </div>
-          <div className="flex flex-col border-r border-black px-8">
-            <p className="font-bold mb-2 text-sm">Tape Stats</p>
-            <div className="grid grid-cols-2 gap-2">
-              {Object.entries(demoStats).map(([key, value]) => {
-                  return (
-                    <Stat k={key} v={value} />
-                  )
-                })}
-            </div>
-          </div>
-          <div className="flex flex-col justify-between px-8 border-r border-black">
-            { isOwner
-            ? <>
-                <p className="text-sm text-center">Edit this cassette.</p>
-                <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"><Link to={`/tapes/${1}/edit`}>Edit Cassette</Link></button>
-              </>
-            : <>
-                <p className="text-sm text-center">You need a Spotify Premium account to interact with this cassette. Please connect your account.</p>
-                <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"><a href={`http://localhost:8888/login?redirect=/tapes/${1}`}>Log into Spotify</a></button>
-              </>
-            }
-          </div>
-          <div className="flex flex-col justify-between pl-8">
-            {isClaimed
-              ? <>
-                  <span className="uppercase text-center text-xs font-bold">Current Bid</span>
-                  { bidPrice(bid) }
-                  <button onClick={() => {setBidSlideOpen(true)}} className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">{isOwner ? "View Bids" : "Bid"}</button>
-                </>
-              : <>
-                  <span className="uppercase text-center text-xs">Tape Status:</span>
-                  <span className="text-4xl text-center font-bold">UNCLAIMED</span>
-                  {/* set is claimed in the db level */}
-                  <button onClick={() => claimTape()} className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">Claim</button>
-                </>
-              }
-          </div>
-        </div>
-      </div>
+      <CassetteScene />
+
+      <TapeStats
+        isOwner={isOwner}
+        tape={tape}
+        isClaimed={isClaimed}
+        claimTape={claimTape}
+        bid={bid}
+        setBidSlideOpen={setBidSlideOpen} />
       </div>
     </>
   )

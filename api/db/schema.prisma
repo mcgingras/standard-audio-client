@@ -28,7 +28,7 @@ model Bid {
   tape   Tape    @relation(fields: [tapeId], references: [id])
   tapeId Int
   bidder String
-  amount Int
+  amount Int // this should be a float
   active Boolean @default(false)
 }
 
@@ -36,6 +36,6 @@ model Sale {
   id     Int     @id @default(autoincrement())
   tape   Tape    @relation(fields: [tapeId], references: [id])
   tapeId Int
-  amount String
+  amount String // this should be a float
   active Boolean @default(false)
 }

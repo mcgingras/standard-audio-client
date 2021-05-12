@@ -8,6 +8,7 @@
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
 import { Router, Route } from '@redwoodjs/router'
+import EditTapePage from './pages/EditTapePage/EditTapePage'
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route path="/bids/{id:Int}" page={BidPage} name="bid" />
       <Route path="/bids" page={BidsPage} name="bids" />
       <Route path="/" page={HomePage} name="home" />
+      <Route path="/tapes/{id:Int}/edit" page={EditTapePage} name="editTape" />
       <Route path="/tapes/{id:Int}" page={TapePage} name="tape" />
       <Route path="/tapes" page={TapesPage} name="tapes" />
       <Route notfound page={NotFoundPage} />

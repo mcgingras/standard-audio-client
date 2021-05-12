@@ -1,5 +1,4 @@
 import { Link, routes } from '@redwoodjs/router'
-import Tapes from 'src/components/Tapes'
 
 export const QUERY = gql`
   query TAPES {

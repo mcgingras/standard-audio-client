@@ -150,7 +150,7 @@ const Tape = ({ tape }) => {
       </Slideover>
 
       <div className="min-h-screen h-screen relative">
-      <header className="flex items-center p-8 fixed w-full">
+      <header className="flex items-end p-8 fixed top-0 w-full z-10">
         <h1 className="text-4xl font-semibold">{tape.name}</h1>
         <h3 className="rounded-full border border-gray-900 px-3 py-1 ml-4 text-sm">Owner</h3>
         <h3 className="ml-4 text-sm font-semibold">{tape.owner}</h3>

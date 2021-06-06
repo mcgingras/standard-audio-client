@@ -48,7 +48,8 @@ exports.handler = async function (event, context) {
       response_type: 'code',
       show_dialog: true,
       client_id: clientId,
-      scope: scopes.join('%20'),
+      scope:
+        'user-read-playback-state, user-modify-playback-state, streaming, user-read-email, user-read-private',
       redirect_uri: redirectUri,
       state: state + `,${event.queryStringParameters.return_url}`,
     })

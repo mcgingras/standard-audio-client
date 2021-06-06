@@ -53,12 +53,13 @@ exports.handler = async function (event, context) {
     return axios(authOptions)
       .then((response) => {
         const { expires_in, access_token, refresh_token } = response.data
+        const expires_at = new Date().getTime() / 1000 + expires_in
 
         // pass the tokens to the browser to make requests from there
         return {
           statusCode: 302, // must be a redirect status code or the client won't be redirected
           headers: {
-            Location: `${siteUrl}/${return_url}?access_token=${access_token}&refresh_token=${refresh_token}&expire_in=${expires_in}`,
+            Location: `${siteUrl}/${return_url}?spotify_access_token=${access_token}&spotify_refresh_token=${refresh_token}&spotify_expiration=${expires_at}`,
             'Cache-Control': 'no-cache', // Disable caching of this response
           },
         }

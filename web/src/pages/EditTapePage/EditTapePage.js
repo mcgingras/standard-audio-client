@@ -15,6 +15,41 @@ const EditTapePage = ({ id }) => {
   const debouncedQuery = useDebounce(query, 500)
   const [isSearching, setIsSearching] = useState(false)
 
+  const searchSpotify = (q) => {
+    return fetch(`https://api.spotify.com/v1/search/?q=${q}&type=track`, {
+      method: 'GET',
+      headers: new Headers({
+        Authorization: `Bearer ${token}`,
+      }),
+    }).then((res) => res.json())
+  }
+
+  useEffect(
+    () => {
+      if (debouncedQuery) {
+        setIsSearching(true)
+        searchSpotify(debouncedQuery).then((results) => {
+          console.log(results)
+          setIsSearching(false)
+          setTracks(results.tracks.items)
+        })
+      } else {
+        setTracks([])
+      }
+    },
+    [debouncedQuery] // Only call effect if debounced search term changes
+  )
+
+  const addSong = (song) => {
+    let songData = {
+      id: song.id,
+      name: song.name,
+      uri: song.uri,
+      artists: song.artists.map((artist) => artist.name).join(', '),
+    }
+    setSongs([...songs, songData])
+  }
+
   return (
     <div className="bg-gray-800 text-white">
       <div className="container mx-auto min-h-screen">

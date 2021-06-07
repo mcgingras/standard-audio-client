@@ -3,11 +3,16 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 
-export default function Example({open, setOpen, title, children}) {
-
+export default function Example({ open, setOpen, title, children }) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" static className="fixed inset-0 overflow-hidden" open={open} onClose={setOpen}>
+      <Dialog
+        as="div"
+        static
+        className="fixed inset-0 overflow-hidden z-10"
+        open={open}
+        onClose={setOpen}
+      >
         <div className="absolute inset-0 overflow-hidden">
           <Dialog.Overlay className="absolute inset-0" />
 
@@ -22,13 +27,18 @@ export default function Example({open, setOpen, title, children}) {
               leaveTo="translate-x-full"
             >
               <div className="w-screen max-w-md">
-                <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll" style={{backgroundColor: '#F6F2E7'}}>
+                <div
+                  className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll"
+                  style={{ backgroundColor: '#F6F2E7' }}
+                >
                   <div className="px-4 sm:px-6">
                     <div className="flex items-start justify-between">
-                      <Dialog.Title className="text-lg font-medium text-gray-900">{title}</Dialog.Title>
+                      <Dialog.Title className="text-lg font-medium text-gray-900">
+                        {title}
+                      </Dialog.Title>
                       <div className="ml-3 h-7 flex items-center">
                         <button
-                          className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          className="bg-white rounded-md text-gray-400 hover:text-gray-500"
                           onClick={() => setOpen(false)}
                         >
                           <span className="sr-only">Close panel</span>

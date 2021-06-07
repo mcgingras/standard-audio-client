@@ -35,7 +35,7 @@ export const schema = gql`
     capacity: Int
     quality: Int
     style: Int
-    proof: [String]!
+    proof: [String]
     isClaimed: Boolean
     claimLock: Boolean
   }

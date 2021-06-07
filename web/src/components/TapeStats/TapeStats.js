@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import { Link, routes } from '@redwoodjs/router'
+import useSpotify from '../../hooks/useSpotify'
 
 const demoStats = {
   Duration: '60 Min',
@@ -35,13 +36,15 @@ const bidPrice = (bid) => {
 }
 
 const TapeStats = ({
+  address,
   isOwner,
   isClaimed,
   tape,
   bid,
   setBidSlideOpen,
-  claimTape,
 }) => {
+  const [spotifyLoggedIn, token] = useSpotify()
+
   return (
     <div className="p-8 box-border fixed bottom-0 w-full">
       <div className="p-8 bg-blue-400 w-full">
@@ -67,15 +70,22 @@ const TapeStats = ({
               </>
             ) : (
               <>
-                <p className="text-sm text-center">
-                  You need a Spotify Premium account to interact with this
-                  cassette. Please connect your account.
-                </p>
-                <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
-                  <a href={`http://localhost:8888/login?redirect=/tapes/${1}`}>
-                    Log into Spotify
-                  </a>
-                </button>
+                {!spotifyLoggedIn && (
+                  <>
+                    <p className="text-sm text-center">
+                      You need a Spotify Premium account to interact with this
+                      cassette. Please connect your account.
+                    </p>
+                    <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
+                      <a
+                        href={`http://localhost:8888/login?redirect=/tapes/${1}`}
+                      >
+                        Log into Spotify
+                      </a>
+                    </button>
+                  </>
+                )}
+                <button onClick={() => testUpdate()}>claim</button>
               </>
             )}
           </div>
@@ -103,13 +113,12 @@ const TapeStats = ({
                 <span className="text-4xl text-center font-bold">
                   UNCLAIMED
                 </span>
-                {/* set is claimed in the db level */}
-                <button
-                  onClick={() => claimTape()}
-                  className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"
+                <Link
+                  to={`/tapes/${1}/claim`}
+                  className="block text-center bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"
                 >
                   Claim
-                </button>
+                </Link>
               </>
             )}
           </div>

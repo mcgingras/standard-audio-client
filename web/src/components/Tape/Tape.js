@@ -22,13 +22,16 @@ const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
   const [bidSlideOpen, setBidSlideOpen] = useState(false)
+  /**
+   * isClaimed --
+   * boolean for if the tape is available or not.
+   * set after reading contract state.
+   * maybe think about duplicating this state in postgres?
+   * probably not going to update right away.
+   */
   const [isClaimed, setIsClaimed] = useState(false)
-  const [txHash, setTxHash] = useState(undefined)
-  const [txError, setTxError] = useState(undefined)
-  const [txBeingSent, setTxBeingSent] = useState(undefined)
   const [bidValue, setBidValue] = useState(undefined)
   const [bid, setBid] = useState({ amount: 0, activeBid: false })
-  const ERROR_CODE_TX_REJECTED_BY_USER = 4001
 
   useEffect(() => {
     const getBid = async () => {
@@ -48,33 +51,6 @@ const Tape = ({ tape }) => {
       setIsOwner(address === tape.owner)
     }
   }, [address])
-
-  const claimTape = async () => {
-    try {
-      const tx = await contract.claim(
-        tape.id,
-        tape.quality,
-        tape.capacity,
-        tape.style,
-        tape.proof,
-        'testuri'
-      )
-      setTxHash(tx.hash)
-
-      const receipt = await tx.wait()
-      if (receipt.status === 0) {
-        throw new Error('Transaction failed')
-      }
-    } catch (error) {
-      console.log(error)
-      if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
-        return
-      }
-      setTxError(error)
-    } finally {
-      setTxBeingSent(undefined)
-    }
-  }
 
   // make sure this is a number
   const submitBid = async () => {
@@ -227,10 +203,10 @@ const Tape = ({ tape }) => {
         <CassetteScene />
 
         <TapeStats
+          address={address}
           isOwner={isOwner}
           tape={tape}
           isClaimed={isClaimed}
-          claimTape={claimTape}
           bid={bid}
           setBidSlideOpen={setBidSlideOpen}
         />

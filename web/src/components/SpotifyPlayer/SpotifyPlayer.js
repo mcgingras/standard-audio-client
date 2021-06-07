@@ -8,13 +8,14 @@ const SpotifyPlayer = ({ uris, setActiveTrack, setCurrentTrackIndex }) => {
    * State
    * ---
    * deviceId:
-   * pass
+   * which spotify device you are logged into
+   * (phone, browser, desktop... each gets id)
    *
    * initializing:
-   * pass
+   * loading state for initializing the SDK
    *
    * error
-   * pass
+   * error text returned from spotify initialization
    *
    * scrubPb
    * pass

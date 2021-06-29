@@ -33,8 +33,6 @@ const generateRandomString = (length) => {
 /* Do initial auth redirect */
 exports.handler = async function (event, context) {
   const state = generateRandomString(16)
-  console.log(event.queryStringParameters.return_url)
-  console.log(state + `,${event.queryStringParameters.return_url}`)
 
   // Note that for local development, Chrome will not set the cookie if the
   // "Secure" flag is set

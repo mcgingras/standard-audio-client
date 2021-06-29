@@ -121,7 +121,11 @@ const TapeStats = ({
                             </p>
                             <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
                               <a
-                                href={`http://localhost:8888/login?redirect=/tapes/${1}`}
+                                href={
+                                  process.env.NETLIFY_DEV === 'development'
+                                    ? `http://localhost:8888/login?redirect=/tapes/${1}`
+                                    : `https://nftapes.netlify.app/.netlify/functions/login?redirect=/tapes/${1}`
+                                }
                               >
                                 Log into Spotify
                               </a>

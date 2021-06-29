@@ -7,13 +7,15 @@ require('dotenv').config()
 
 // Netlify sets process.env.NETLIFY_DEV to true when using Netlify CLI
 // in production it will be false
-const env = process.env.NETLIFY_DEV ? 'development' : 'production'
+const env = process.env.NETLIFY_DEV
 const devMode = env === 'development'
 const spotifyURL = 'https://accounts.spotify.com'
 
 /* process.env.URL from netlify BUILD environment variables */
-const siteUrl = process.env.SITE_URL
-const apiUrl = process.env.API_URL
+const siteUrl =
+  devMode === 'development' ? process.env.SITE_URL : process.env.PROD_SITE_URL
+const apiUrl =
+  devMode === 'development' ? process.env.API_URL : process.env.PROD_API_URL
 
 /* If site is linked, env variables injected from site as set up on Netlify UI
  * Otherwise will read from local .env file

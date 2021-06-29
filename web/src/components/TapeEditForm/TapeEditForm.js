@@ -4,6 +4,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { useQuery, useMutation } from '@redwoodjs/web'
 import useSpotify from '../../hooks/useSpotify'
 import { ContractContext } from '../../contexts/contractContext'
+import { pinJSONToIPFS } from '../../utils/pinata'
 
 const TapeEditForm = ({ id, isClaim }) => {
   const { contract, address } = useContext(ContractContext)
@@ -44,7 +45,6 @@ const TapeEditForm = ({ id, isClaim }) => {
   const { loading, error, data } = useQuery(FIND_TAPE_QUERY, {
     variables: { id: id },
   })
-  console.log(data)
 
   useEffect(() => {
     if (data) {
@@ -85,22 +85,23 @@ const TapeEditForm = ({ id, isClaim }) => {
     }
   `
 
-  const [claimTapeEvent] = useMutation(CLAIM_TAPE_MUTATION, {
-    onCompleted: ({ updateTape }) => {
-      console.log(updateTape)
-      console.log('tape updated')
-    },
-  })
-
-  const updateClaimDb = () => {
+  const [claimTapeEvent] = useMutation(CLAIM_TAPE_MUTATION)
+  const updateClaimDb = (ipfsHash) => {
     let params = {
+      name: title,
       owner: address,
       isClaimed: true,
+      ipfsHash,
     }
     claimTapeEvent({ variables: { id: tape.id, input: params } })
   }
 
   const claimTape = async () => {
+    let ipfs = await pinJSONToIPFS({
+      songs: songs,
+      title: title,
+    })
+
     try {
       const tx = await contract.claim(
         tape.id,
@@ -108,7 +109,7 @@ const TapeEditForm = ({ id, isClaim }) => {
         tape.capacity,
         tape.style,
         tape.proof,
-        'testuri'
+        ipfs.data.IpfsHash
       )
       setTxHash(tx.hash)
 
@@ -116,11 +117,10 @@ const TapeEditForm = ({ id, isClaim }) => {
 
       // succeeds -- update claim in db
       if (receipt.status) {
-        updateClaimDb()
+        updateClaimDb(ipfs.data.IpfsHash)
         window.location.href = routes.tape({ id: id })
       }
       if (receipt.status === 0) {
-        p
         throw new Error('Transaction failed')
       }
     } catch (error) {
@@ -135,6 +135,7 @@ const TapeEditForm = ({ id, isClaim }) => {
   }
 
   const addSong = (song) => {
+    console.log(songs)
     let songData = {
       id: song.id,
       name: song.name,

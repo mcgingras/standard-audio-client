@@ -114,7 +114,7 @@ const TapeStats = ({
                   UNCLAIMED
                 </span>
                 <Link
-                  to={`/tapes/${1}/claim`}
+                  to={`/tapes/${tape.id}/claim`}
                   className="block text-center bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"
                 >
                   Claim

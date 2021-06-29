@@ -11,6 +11,7 @@ export const schema = gql`
     claimLock: Boolean!
     Bids: [Bid]
     SalePrice: [Sale]
+    ipfsHash: String!
   }
 
   type Query {
@@ -27,6 +28,7 @@ export const schema = gql`
     proof: [String]!
     isClaimed: Boolean!
     claimLock: Boolean!
+    ipfsHash: String!
   }
 
   input UpdateTapeInput {
@@ -38,6 +40,7 @@ export const schema = gql`
     proof: [String]
     isClaimed: Boolean
     claimLock: Boolean
+    ipfsHash: String
   }
 
   type Mutation {

@@ -21,6 +21,7 @@ model Tape {
   claimLock Boolean  @default(false)
   Bids      Bid[]
   SalePrice Sale[]
+  ipfsHash  String   @default("")
 }
 
 model Bid {

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import useSpotify from '../../hooks/useSpotify'
 import { Link } from '@redwoodjs/router'
+import { useQuery } from '@redwoodjs/web'
 import SpotifyPlayer from '../../components/SpotifyPlayer/SpotifyPlayer'
+import { getIPFSData } from '../../utils/pinata'
 
 const ListeningRoomPage = ({ id }) => {
   const [isLoggedIn, token] = useSpotify()
@@ -18,19 +20,35 @@ const ListeningRoomPage = ({ id }) => {
   const [activeTrack, setActiveTrack] = useState(null)
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0)
   const [tape, setTape] = useState(undefined)
+  const [songs, setSongs] = useState([])
   const [uris, setUris] = useState([])
 
-  const fetchTapes = (id) => {
-    return fetch(`http://localhost:1234/tape/${id}`, {
-      method: 'GET',
-    }).then((res) => res.json())
-  }
+  const FIND_TAPE_QUERY = gql`
+    query FIND_TAPE_BY_ID($id: Int!) {
+      tape: tape(id: $id) {
+        id
+        owner
+        name
+        capacity
+        quality
+        style
+        proof
+        ipfsHash
+      }
+    }
+  `
+
+  // doesnt this get run a bunch because of renders?
+  // seems wasteful
+  const { loading, error, data } = useQuery(FIND_TAPE_QUERY, {
+    variables: { id: id },
+  })
 
   useEffect(() => {
-    fetchTapes(id).then((results) => {
-      setTape(results)
-    })
-  }, [])
+    if (data) {
+      setTape(data.tape)
+    }
+  }, [data])
 
   /**
    * When the tape changes, we want to pull the uris from list tapes
@@ -38,10 +56,14 @@ const ListeningRoomPage = ({ id }) => {
    */
   useEffect(() => {
     if (tape) {
-      const uris = tape.songs.map((song) => {
-        return song.uri
+      console.log(tape)
+      getIPFSData(tape.ipfsHash).then((response) => {
+        setSongs(response.data.songs)
+        const uris = response.data.songs.map((song) => {
+          return song.uri
+        })
+        setUris(uris)
       })
-      setUris(uris)
     }
   }, [tape])
 
@@ -73,7 +95,7 @@ const ListeningRoomPage = ({ id }) => {
           <div className="col-span-1 bg-gray-900 p-4">
             {tape && activeTrack && (
               <>
-                {tape.songs
+                {songs
                   .slice(currentTrackIndex - 1, currentTrackIndex)
                   .map((tape) => {
                     return (
@@ -98,7 +120,7 @@ const ListeningRoomPage = ({ id }) => {
                   </div>
                 </div>
                 <p className="text-gray-200 font-bold mt-12 mb-4">Up Next</p>
-                {tape.songs.slice(currentTrackIndex + 1).map((tape) => {
+                {songs.slice(currentTrackIndex + 1).map((tape) => {
                   return (
                     <div className="p-4 bg-gray-700 text-white rounded mb-4">
                       <span className="font-bold text-sm">{tape.name}</span>

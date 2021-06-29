@@ -188,6 +188,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                     onChange={(e) => {
                       setTitle(e.target.value)
                     }}
+                    value={tape.name}
                     className="rounded-md px-4 py-2 text-gray-900"
                     placeholder="title"
                   />

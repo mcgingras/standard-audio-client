@@ -15,7 +15,7 @@ export const schema = gql`
   }
 
   type Query {
-    tapes: [Tape!]!
+    tapes(isClaimed: Boolean): [Tape!]!
     tape(id: Int!): Tape
   }
 

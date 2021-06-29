@@ -19,6 +19,7 @@ const CREATE_BID_MUTATION = gql`
 `
 
 const Tape = ({ tape }) => {
+  console.log(tape.id)
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
   const [bidSlideOpen, setBidSlideOpen] = useState(false)
@@ -185,19 +186,31 @@ const Tape = ({ tape }) => {
         )}
       </Slideover>
 
-      <div className="min-h-screen h-screen relative">
-        <header className="flex items-end p-8 fixed top-0 w-full z-10">
-          <h1 className="text-4xl font-semibold">{tape.name}</h1>
-          <h3 className="rounded-full border border-gray-900 px-3 py-1 ml-4 text-sm">
-            Owner
-          </h3>
-          <h3 className="ml-4 text-sm font-semibold">{tape.owner}</h3>
-          <Link
-            to={routes.tapes()}
-            className="rounded-full bg-white text-gray-900 text-sm font-bold flex-end ml-auto px-3 py-1"
-          >
-            Back
-          </Link>
+      <div className="min-h-screen h-screen relative bg-black">
+        <header className="flex justify-between p-8 fixed top-0 w-full z-10">
+          <div className="flex flex-row">
+            <h1 className="text-4xl font-semibold text-white">{tape.name}</h1>
+            <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
+              Owner
+            </h3>
+            <h3 className="ml-4 text-sm font-semibold text-white self-center">
+              {tape.owner}
+            </h3>
+          </div>
+          <div class="flex self-center">
+            <Link
+              to={routes.listeningRoom({ id: tape.id })}
+              className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
+            >
+              Listen in Den
+            </Link>
+            <Link
+              to={routes.tapes()}
+              className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1"
+            >
+              BACK
+            </Link>
+          </div>
         </header>
 
         <CassetteScene />

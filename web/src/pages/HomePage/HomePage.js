@@ -1,10 +1,11 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import TapesCell from 'src/components/TapesCell'
 import { ContractContext } from '../../contexts/contractContext'
 import Logo from '../../assets/saclogobig.svg'
 
 const HomePage = () => {
   const contract = useContext(ContractContext)
+  const [isClaimed, setIsClaimed] = useState(false)
 
   return (
     <>
@@ -39,8 +40,32 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <div class="max-w-7xl mx-auto -mt-4">
+        <div class="bg-gray-100 inline-flex rounded shadow-lg">
+          <button
+            className={`px-3 py-2 hover:bg-purple-400 ${
+              !isClaimed && 'bg-purple-300'
+            }`}
+            onClick={() => {
+              setIsClaimed(false)
+            }}
+          >
+            Available Tapes
+          </button>
+          <button
+            className={`px-3 py-2 hover:bg-purple-400 ${
+              isClaimed && 'bg-purple-300'
+            }`}
+            onClick={() => {
+              setIsClaimed(true)
+            }}
+          >
+            Claimed Tapes
+          </button>
+        </div>
+      </div>
       <div class="max-w-7xl mx-auto my-12">
-        <TapesCell />
+        <TapesCell isClaimed={isClaimed} />
       </div>
     </>
   )

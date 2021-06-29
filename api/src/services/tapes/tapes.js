@@ -1,7 +1,9 @@
 import { db } from 'src/lib/db'
 
-export const tapes = () => {
-  return db.tape.findMany()
+export const tapes = ({ isClaimed }) => {
+  return db.tape.findMany({
+    where: { isClaimed },
+  })
 }
 
 export const tape = ({ id }) => {

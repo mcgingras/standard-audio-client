@@ -1,9 +1,13 @@
 import { routes } from '@redwoodjs/router'
 import TapeCard from '../TapeCard/'
 
+export const beforeQuery = (props) => {
+  return { variables: props }
+}
+
 export const QUERY = gql`
-  query TAPES {
-    tapes {
+  query TAPES($isClaimed: Boolean) {
+    tapes(isClaimed: $isClaimed) {
       id
       owner
       name

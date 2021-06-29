@@ -47,43 +47,42 @@ const TapeStats = ({
 }) => {
   const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
+  const [buttonUp, setButtonUp] = useState(true)
 
   return (
     <>
-      {!isUp && (
-        <button
-          class="bg-blue-400 w-full fixed bottom-0 text-center font-bold p-4"
-          onClick={() => {
-            setUp(true)
-          }}
-        >
-          click for stats
-        </button>
-      )}
-      <Transition.Root show={isUp} as={Fragment}>
-        <Dialog
-          as="div"
-          static
-          className="fixed inset-0 overflow-hidden z-10"
-          open={isUp}
-          onClose={setUp}
-        >
-          <Transition.Child
-            as={Fragment}
+      <div className="absolute insert-0 overflow-hidden">
+        <div className="fixed inset-x-0 bottom-0 max-w-full">
+          <Transition
+            show={buttonUp}
+            enter="transform transition ease-in-out duration-500 sm:duration-700"
+            enterFrom="translate-y-full"
+            enterTo="translate-y-0"
+            leave="transform transition ease-in-out duration-0 sm:duration-0"
+            leaveFrom="translate-y-0"
+            leaveTo="translate-y-full"
+            afterLeave={() => setUp(true)}
+          >
+            <button
+              class="bg-blue-400 text-center font-bold p-4 w-full"
+              onClick={() => {
+                setButtonUp(false)
+              }}
+            >
+              click for stats
+            </button>
+          </Transition>
+          <Transition
+            show={isUp}
             enter="transform transition ease-in-out duration-500 sm:duration-700"
             enterFrom="translate-y-full"
             enterTo="translate-y-0"
             leave="transform transition ease-in-out duration-500 sm:duration-700"
             leaveFrom="translate-y-0"
             leaveTo="translate-y-full"
+            afterLeave={() => setButtonUp(true)}
           >
-            <div
-              className={
-                !isUp
-                  ? 'hidden sm:block'
-                  : 'p-0 sm:p-8 box-border fixed bottom-0 w-full'
-              }
-            >
+            <div className={'p-0 sm:p-8 box-border w-full'}>
               <div className="p-4 sm:p-8 bg-blue-400 w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-4">
                   <div
@@ -169,9 +168,9 @@ const TapeStats = ({
                 </div>
               </div>
             </div>
-          </Transition.Child>
-        </Dialog>
-      </Transition.Root>
+          </Transition>
+        </div>
+      </div>
     </>
   )
 }

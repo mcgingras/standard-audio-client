@@ -163,7 +163,15 @@ const TapeEditForm = ({ id, isClaim }) => {
               </span>
               <button className="bg-green-300 hover:bg-green-400 text-gray-900 self-start px-4 py-2 rounded-full mx-auto mt-8">
                 <a
-                  href={`http://localhost:8911/login?return_url=tapes/${id}/edit`}
+                  href={
+                    process.env.NETLIFY_DEV === 'development'
+                      ? `http://localhost:8911/login?return_url=/tapes/${
+                          tape.id
+                        }/${isClaim ? 'claim' : 'edit'}`
+                      : `https://nftapes.netlify.app/.netlify/functions/login?return_url=/tapes/${
+                          tape.id
+                        }/${isClaim ? 'claim' : 'edit'}`
+                  }
                 >
                   Log into Spotify
                 </a>

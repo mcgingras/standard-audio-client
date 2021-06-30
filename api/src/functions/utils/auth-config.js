@@ -12,10 +12,8 @@ const devMode = env === 'development'
 const spotifyURL = 'https://accounts.spotify.com'
 
 /* process.env.URL from netlify BUILD environment variables */
-const siteUrl =
-  devMode === 'development' ? process.env.SITE_URL : process.env.PROD_SITE_URL
-const apiUrl =
-  devMode === 'development' ? process.env.API_URL : process.env.PROD_API_URL
+const siteUrl = devMode ? process.env.SITE_URL : process.env.PROD_SITE_URL
+const apiUrl = devMode ? process.env.API_URL : process.env.PROD_API_URL
 
 /* If site is linked, env variables injected from site as set up on Netlify UI
  * Otherwise will read from local .env file

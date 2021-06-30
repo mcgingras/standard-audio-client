@@ -10,6 +10,7 @@ export const QUERY = gql`
       quality
       style
       proof
+      isClaimed
       Bids {
         id
         amount

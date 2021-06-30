@@ -37,14 +37,7 @@ const bidPrice = (bid) => {
   }
 }
 
-const TapeStats = ({
-  address,
-  isOwner,
-  isClaimed,
-  tape,
-  bid,
-  setBidSlideOpen,
-}) => {
+const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
   const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
   const [buttonUp, setButtonUp] = useState(true)
@@ -123,8 +116,8 @@ const TapeStats = ({
                               <a
                                 href={
                                   process.env.NETLIFY_DEV === 'development'
-                                    ? `http://localhost:8888/login?redirect=/tapes/${1}`
-                                    : `https://nftapes.netlify.app/.netlify/functions/login?redirect=/tapes/${1}`
+                                    ? `http://localhost:8911/login?return_url=/tapes/${tape.id}`
+                                    : `https://nftapes.netlify.app/.netlify/functions/login?return_url=/tapes/${tape.id}`
                                 }
                               >
                                 Log into Spotify
@@ -132,12 +125,11 @@ const TapeStats = ({
                             </button>
                           </>
                         )}
-                        <button onClick={() => testUpdate()}>claim</button>
                       </>
                     )}
                   </div>
                   <div className="flex flex-col justify-between pl-0 sm:pl-8 py-4 sm:py-0">
-                    {isClaimed ? (
+                    {tape.isClaimed ? (
                       <>
                         <span className="uppercase text-center text-xs font-bold">
                           Current Bid

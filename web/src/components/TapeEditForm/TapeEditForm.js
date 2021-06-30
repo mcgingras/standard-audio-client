@@ -229,10 +229,9 @@ const TapeEditForm = ({ id, isClaim }) => {
               </div>
 
               <div>
-                <div className="flex flex-col">
+                <div className="flex flex-col" ref={spotifySearchRef}>
                   <label className="mb-2">Add Songs</label>
                   <input
-                    ref={spotifySearchRef}
                     type="text"
                     className="rounded-lg px-4 py-2 text-gray-900"
                     placeholder="search"

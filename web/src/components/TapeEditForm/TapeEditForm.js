@@ -1,15 +1,21 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import useDebounce from '../../hooks/useDebounce'
 import { Link, routes } from '@redwoodjs/router'
 import { useQuery, useMutation } from '@redwoodjs/web'
 import useSpotify from '../../hooks/useSpotify'
+import useOnClickOutside from '../../hooks/useClickOutside'
 import { ContractContext } from '../../contexts/contractContext'
 import { pinJSONToIPFS } from '../../utils/pinata'
 
 const TapeEditForm = ({ id, isClaim }) => {
-  console.log(process.env.PINATA_API_KEY)
   const { contract, address } = useContext(ContractContext)
   const [isLoggedIn, token] = useSpotify()
+  const spotifySearchRef = useRef()
+
+  useOnClickOutside(spotifySearchRef, () => {
+    setQuery('')
+    setIsSearching(false)
+  })
 
   // used for state of form
   const [tape, setTape] = useState({})
@@ -67,7 +73,6 @@ const TapeEditForm = ({ id, isClaim }) => {
       if (debouncedQuery) {
         setIsSearching(true)
         searchSpotify(debouncedQuery).then((results) => {
-          console.log(results)
           setIsSearching(false)
           setTracks(results.tracks.items)
         })
@@ -227,6 +232,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                 <div className="flex flex-col">
                   <label className="mb-2">Add Songs</label>
                   <input
+                    ref={spotifySearchRef}
                     type="text"
                     className="rounded-lg px-4 py-2 text-gray-900"
                     placeholder="search"

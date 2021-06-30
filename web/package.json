@@ -19,6 +19,7 @@
     "@redwoodjs/forms": "^0.30.1",
     "@redwoodjs/router": "^0.30.1",
     "@redwoodjs/web": "^0.30.1",
+    "dotenv-webpack": "^7.0.3",
     "ethers": "^5.1.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

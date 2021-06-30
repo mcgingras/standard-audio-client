@@ -1,14 +1,13 @@
 const axios = require('axios')
-require('dotenv').config()
 
 export const pinJSONToIPFS = (JSONBody) => {
-  console.log(process.env.PINATA_API_KEY)
+  console.log(process.env.REDWOOD_ENV_PINATA_API_KEY)
   const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`
   return axios
     .post(url, JSONBody, {
       headers: {
-        pinata_api_key: process.env.PINATA_API_KEY,
-        pinata_secret_api_key: process.env.PINATA_SECRET_KEY,
+        pinata_api_key: process.env.REDWOOD_ENV_PINATA_API_KEY,
+        pinata_secret_api_key: process.env.REDWOOD_ENV_PINATA_SECRET_KEY,
       },
     })
     .then(function (response) {

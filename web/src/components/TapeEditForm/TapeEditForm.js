@@ -7,6 +7,7 @@ import { ContractContext } from '../../contexts/contractContext'
 import { pinJSONToIPFS } from '../../utils/pinata'
 
 const TapeEditForm = ({ id, isClaim }) => {
+  console.log(process.env.PINATA_API_KEY)
   const { contract, address } = useContext(ContractContext)
   const [isLoggedIn, token] = useSpotify()
 

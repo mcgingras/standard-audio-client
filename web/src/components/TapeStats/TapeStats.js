@@ -85,6 +85,7 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                     className="flex flex-col text-sm pr-8 border-b sm:border-b-0 sm:border-r border-black"
                   >
                     <p className="font-bold pb-2 sm:pb-0">Tape #{tape.id}</p>
+                    <p>close</p>
                   </div>
                   <div className="flex flex-col border-b sm:border-b-0 sm:border-r border-black px-0 sm:px-8 py-4 sm:py-0">
                     <p className="font-bold mb-2 text-sm">Tape Stats</p>
@@ -106,7 +107,7 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                       </>
                     ) : (
                       <>
-                        {!spotifyLoggedIn && (
+                        {!spotifyLoggedIn ? (
                           <>
                             <p className="text-sm text-center">
                               You need a Spotify Premium account to interact
@@ -122,6 +123,15 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                               >
                                 Log into Spotify
                               </a>
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <p className="text-sm text-center">
+                              This tape contains songs. Listen to the jams!
+                            </p>
+                            <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
+                              <a href={`/den/${tape.id}`}>Listen in Den</a>
                             </button>
                           </>
                         )}

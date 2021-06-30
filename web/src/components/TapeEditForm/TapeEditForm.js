@@ -165,10 +165,10 @@ const TapeEditForm = ({ id, isClaim }) => {
                 <a
                   href={
                     process.env.NETLIFY_DEV === 'development'
-                      ? `http://localhost:8911/login?return_url=/tapes/${
+                      ? `http://localhost:8911/login?return_url=tapes/${
                           tape.id
                         }/${isClaim ? 'claim' : 'edit'}`
-                      : `https://nftapes.netlify.app/.netlify/functions/login?return_url=/tapes/${
+                      : `https://nftapes.netlify.app/.netlify/functions/login?return_url=tapes/${
                           tape.id
                         }/${isClaim ? 'claim' : 'edit'}`
                   }

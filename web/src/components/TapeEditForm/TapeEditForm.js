@@ -226,7 +226,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                       setTitle(e.target.value)
                     }}
                     value={title}
-                    className="rounded-md px-4 py-2 text-gray-900"
+                    className="rounded-md px-4 py-4 text-gray-900"
                     placeholder="title"
                   />
                 </div>
@@ -295,7 +295,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                   <label className="mb-2">Add Songs</label>
                   <input
                     type="text"
-                    className="rounded-lg px-4 py-2 text-gray-900"
+                    className="rounded-lg px-4 py-4 text-gray-900"
                     placeholder="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -334,7 +334,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                         claimTape()
                       }}
                     >
-                      Create Cassette
+                      {isClaim ? 'Claim Cassette' : 'Edit Cassette'}
                     </button>
                   </div>
                 </div>

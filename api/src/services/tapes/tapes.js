@@ -36,4 +36,6 @@ export const Tape = {
     db.tape.findUnique({ where: { id: root.id } }).Bids(),
   SalePrice: (_obj, { root }) =>
     db.tape.findUnique({ where: { id: root.id } }).SalePrice(),
+  Songs: (_obj, { root }) =>
+    db.tape.findUnique({ where: { id: root.id } }).Songs(),
 }

@@ -205,7 +205,7 @@ const Tape = ({ tape }) => {
               Listen in Den
             </Link>
             <Link
-              to={routes.tapes()}
+              to={routes.home()}
               className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1"
             >
               BACK
@@ -220,6 +220,7 @@ const Tape = ({ tape }) => {
           isOwner={isOwner}
           tape={tape}
           bid={bid}
+          f
           setBidSlideOpen={setBidSlideOpen}
         />
       </div>

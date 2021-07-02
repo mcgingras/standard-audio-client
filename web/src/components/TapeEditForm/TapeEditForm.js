@@ -1,21 +1,25 @@
 import { useEffect, useState, useContext, useRef } from 'react'
-import useDebounce from '../../hooks/useDebounce'
 import { Link, routes } from '@redwoodjs/router'
 import { useQuery, useMutation } from '@redwoodjs/web'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import useSpotify from '../../hooks/useSpotify'
+import useDebounce from '../../hooks/useDebounce'
 import useOnClickOutside from '../../hooks/useClickOutside'
 import { ContractContext } from '../../contexts/contractContext'
 import { pinJSONToIPFS } from '../../utils/pinata'
+
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
 
 const TapeEditForm = ({ id, isClaim }) => {
   const { contract, address } = useContext(ContractContext)
   const [isLoggedIn, token] = useSpotify()
   const spotifySearchRef = useRef()
-
-  useOnClickOutside(spotifySearchRef, () => {
-    setQuery('')
-    setIsSearching(false)
-  })
 
   // used for state of form
   const [tape, setTape] = useState({})
@@ -32,6 +36,23 @@ const TapeEditForm = ({ id, isClaim }) => {
   const [query, setQuery] = useState('')
   const debouncedQuery = useDebounce(query, 500)
   const [isSearching, setIsSearching] = useState(false)
+
+  useOnClickOutside(spotifySearchRef, () => {
+    setQuery('')
+    setIsSearching(false)
+  })
+
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return
+    }
+    const orderedSongs = reorder(
+      songs,
+      result.source.index,
+      result.destination.index
+    )
+    setSongs(orderedSongs)
+  }
 
   const FIND_TAPE_QUERY = gql`
     query FIND_TAPE_BY_ID($id: Int!) {
@@ -55,7 +76,9 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   useEffect(() => {
     if (data) {
+      console.log(data)
       setTape(data.tape)
+      setTitle(data.tape.name)
     }
   }, [data])
 
@@ -152,14 +175,14 @@ const TapeEditForm = ({ id, isClaim }) => {
   }
 
   return (
-    <div className="bg-gray-800 text-white">
+    <div className="bg-gray-900 text-white">
       <div className="container mx-auto min-h-screen">
         {!isLoggedIn ? (
           <>
             <div className="pt-16 mb-8 flex justify-between items-center">
               <h1 className="text-2xl font-bold">Configure Cassette</h1>
-              <a href="" className="uppercase text-sm">
-                Back to Viewer
+              <a href={routes.tape({ id: id })} className="uppercase text-sm">
+                Back to Tape
               </a>
             </div>
             <div className="flex flex-col">
@@ -188,8 +211,8 @@ const TapeEditForm = ({ id, isClaim }) => {
           <>
             <div className="pt-16 mb-8 flex justify-between items-center">
               <h1 className="text-2xl font-bold">Configure Cassette</h1>
-              <a href="" className="uppercase text-sm">
-                Back to Viewer
+              <a href={routes.tape({ id: id })} className="uppercase text-sm">
+                Back to Tape
               </a>
             </div>
 
@@ -202,7 +225,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                     onChange={(e) => {
                       setTitle(e.target.value)
                     }}
-                    value={tape.name}
+                    value={title}
                     className="rounded-md px-4 py-2 text-gray-900"
                     placeholder="title"
                   />
@@ -210,21 +233,60 @@ const TapeEditForm = ({ id, isClaim }) => {
 
                 <div>
                   <label className="mb-2 block">Tracklist</label>
-                  <ul>
-                    {songs.map((result, index) => (
-                      <li
-                        key={result.id}
-                        className="bg-gray-700 p-4 rounded-md block mb-4"
-                      >
-                        {`${index + 1}. ${result.name} - ${result.artists}`}
-                        <input
-                          type="hidden"
-                          name={`song-${index}`}
-                          value={result.id}
-                        />
-                      </li>
-                    ))}
-                  </ul>
+                  <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="droppable">
+                      {(provided, snapshot) => (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          // style={getListStyle(snapshot.isDraggingOver)}
+                        >
+                          {songs.map((item, index) => (
+                            <Draggable
+                              key={item.id}
+                              draggableId={item.id}
+                              index={index}
+                            >
+                              {(provided, snapshot) => (
+                                <div
+                                  class="grid grid-cols-8 gap-4 mb-4"
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                >
+                                  <div
+                                    class={`p-4 rounded col-span-7 ${
+                                      snapshot.isDragging
+                                        ? 'bg-gray-500'
+                                        : 'bg-gray-700'
+                                    }`}
+                                  >
+                                    {item.name}
+                                  </div>
+                                  <div class="rounded-full bg-gray-500 h-14 w-14 flex items-center justify-center">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="h-6 w-6"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                      />
+                                    </svg>
+                                  </div>
+                                </div>
+                              )}
+                            </Draggable>
+                          ))}
+                        </div>
+                      )}
+                    </Droppable>
+                  </DragDropContext>
                 </div>
               </div>
 
@@ -270,7 +332,6 @@ const TapeEditForm = ({ id, isClaim }) => {
                       className="bg-green-300 hover:bg-green-400 text-gray-900 px-4 py-2 rounded-full"
                       onClick={() => {
                         claimTape()
-                        updateClaimDb()
                       }}
                     >
                       Create Cassette

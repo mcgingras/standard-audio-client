@@ -56,8 +56,11 @@ const ListeningRoomPage = ({ id }) => {
    */
   useEffect(() => {
     if (tape) {
+      console.log('tape is:')
       console.log(tape)
       getIPFSData(tape.ipfsHash).then((response) => {
+        console.log('getting ipfs data')
+        console.log(response)
         setSongs(response.data.songs)
         const uris = response.data.songs.map((song) => {
           return song.uri
@@ -76,6 +79,7 @@ const ListeningRoomPage = ({ id }) => {
           <div className="col-span-3 bg-yellow-500 relative">
             <div className="flex justify-between p-4">
               <h1 className="text-white text-3xl">Crystal Watermelon</h1>
+              <div id="controls"></div>
               <Link
                 to="/"
                 className="bg-white rounded-full text-sm p-2 self-center"

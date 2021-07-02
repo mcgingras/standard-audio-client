@@ -117,8 +117,8 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                               <a
                                 href={
                                   process.env.NETLIFY_DEV === 'development'
-                                    ? `http://localhost:8911/login?return_url=/tapes/${tape.id}`
-                                    : `https://nftapes.netlify.app/.netlify/functions/login?return_url=/tapes/${tape.id}`
+                                    ? `http://localhost:8911/login?return_url=tapes/${tape.id}`
+                                    : `https://nftapes.netlify.app/.netlify/functions/login?return_url=tapes/${tape.id}`
                                 }
                               >
                                 Log into Spotify

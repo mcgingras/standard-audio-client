@@ -1,12 +1,13 @@
-datasource DS {
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-  // url      = "postgresql://postgres:lutgW649XdlrLcPciJa7@containers-us-west-4.railway.app:6687/railway"
+  url      = "postgresql://postgres@localhost:5432/nftapes_test?connection_limit=1"
 }
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = "native"
+  provider = "prisma-client-js"
 }
 
 // Define your own datamodels here and run `yarn redwood prisma migrate dev`

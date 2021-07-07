@@ -1,11 +1,10 @@
 export const schema = gql`
   type Song {
     id: Int!
-    tape: Tape!
-    tapeId: Int!
     name: String!
     artist: String!
     uri: String!
+    SongsOnTapes: [SongsOnTapes]!
   }
 
   type Query {
@@ -14,14 +13,20 @@ export const schema = gql`
   }
 
   input CreateSongInput {
-    tapeId: Int!
     name: String!
     artist: String!
     uri: String!
   }
 
+  input UpdateSongInput {
+    name: String
+    artist: String
+    uri: String
+  }
+
   type Mutation {
     createSong(input: CreateSongInput!): Song!
+    updateSong(id: Int!, input: UpdateSongInput!): Song!
     deleteSong(id: Int!): Song!
   }
 `

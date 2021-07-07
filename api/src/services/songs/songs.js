@@ -16,6 +16,13 @@ export const createSong = ({ input }) => {
   })
 }
 
+export const updateSong = ({ id, input }) => {
+  return db.song.update({
+    data: input,
+    where: { id },
+  })
+}
+
 export const deleteSong = ({ id }) => {
   return db.song.delete({
     where: { id },
@@ -23,6 +30,6 @@ export const deleteSong = ({ id }) => {
 }
 
 export const Song = {
-  tape: (_obj, { root }) =>
-    db.song.findUnique({ where: { id: root.id } }).tape(),
+  tapes: (_obj, { root }) =>
+    db.song.findUnique({ where: { id: root.id } }).tapes(),
 }

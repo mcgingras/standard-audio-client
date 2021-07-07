@@ -18,6 +18,28 @@ export const createTape = ({ input }) => {
   })
 }
 
+export const createTapeWithSongs = ({ input: { Songs, ...input } }) => {
+  return db.tape.create({
+    data: { ...input, Songs: { create: [Songs] } },
+  })
+}
+
+export const updateTapeWithSongs = ({ id, input: { songs, ...input } }) => {
+  return db.tape.update({
+    where: { id },
+    data: {
+      ...input,
+      songs: {
+        create: songs.map((song) => {
+          return {
+            song: { create: song },
+          }
+        }),
+      },
+    },
+  })
+}
+
 export const updateTape = ({ id, input }) => {
   return db.tape.update({
     data: input,
@@ -36,6 +58,19 @@ export const Tape = {
     db.tape.findUnique({ where: { id: root.id } }).Bids(),
   SalePrice: (_obj, { root }) =>
     db.tape.findUnique({ where: { id: root.id } }).SalePrice(),
-  Songs: (_obj, { root }) =>
-    db.tape.findUnique({ where: { id: root.id } }).Songs(),
+  SongsOnTapes: (_obj, { root }) =>
+    db.tape
+      .findUnique({
+        where: { id: root.id },
+      })
+      .SongsOnTapes(),
+}
+
+export const SongsOnTapes = {
+  song: (_obj, { root }) =>
+    db.songsOnTapes
+      .findUnique({
+        where: { id: root.id },
+      })
+      .song(),
 }

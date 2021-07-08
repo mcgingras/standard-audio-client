@@ -24,13 +24,39 @@ export const createTapeWithSongs = ({ input: { Songs, ...input } }) => {
   })
 }
 
-export const updateTapeWithSongs = ({ id, input: { songs, ...input } }) => {
+export const updateTapeWithSongs = ({
+  id,
+  input: { SongsOnTapes, ...input },
+}) => {
   return db.tape.update({
     where: { id },
     data: {
       ...input,
-      songs: {
-        create: songs.map((song) => {
+      SongsOnTapes: {
+        create: SongsOnTapes.map((song) => {
+          return {
+            song: { create: song },
+          }
+        }),
+      },
+    },
+  })
+}
+
+export const updateTapeWithExistingSongs = ({
+  id,
+  input: { existingSongs, newSongs, ...input },
+}) => {
+  console.log('are we in here')
+  return db.tape.update({
+    where: { id },
+    data: {
+      ...input,
+      SongsOnTapes: {
+        set: existingSongs.map((song) => {
+          return { id: song.id }
+        }),
+        create: newSongs.map((song) => {
           return {
             song: { create: song },
           }

@@ -64,6 +64,14 @@ const TapeEditForm = ({ id, isClaim }) => {
         quality
         style
         proof
+        SongsOnTapes {
+          song {
+            id
+            name
+            artist
+            uri
+          }
+        }
       }
     }
   `
@@ -76,9 +84,12 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data)
       setTape(data.tape)
       setTitle(data.tape.name)
+      const songs = data.tape.SongsOnTapes.map((song) => {
+        return song.song
+      })
+      setSongs(songs)
     }
   }, [data])
 
@@ -106,15 +117,15 @@ const TapeEditForm = ({ id, isClaim }) => {
     [debouncedQuery] // Only call effect if debounced search term changes
   )
 
-  const CLAIM_TAPE_MUTATION = gql`
-    mutation ClaimTapeMutation($id: Int!, $input: UpdateTapeInput!) {
-      updateTape(id: $id, input: $input) {
+  const UPDATE_TAPE_MUTATION = gql`
+    mutation UpdateTapeMutation($id: Int!, $input: UpdateTapeWithSongsInput!) {
+      updateTapeWithExistingSongs(id: $id, input: $input) {
         id
       }
     }
   `
 
-  const [claimTapeEvent] = useMutation(CLAIM_TAPE_MUTATION)
+  const [claimTapeEvent] = useMutation(UPDATE_TAPE_MUTATION)
   const updateClaimDb = (ipfsHash) => {
     let params = {
       name: title,
@@ -123,6 +134,46 @@ const TapeEditForm = ({ id, isClaim }) => {
       ipfsHash,
     }
     claimTapeEvent({ variables: { id: tape.id, input: params } })
+  }
+
+  const editTape = () => {
+    // tapes coming from spotify have an ID field that we want to get rid of
+    // and tapes coming from gql have __typefield that we want to get rid of
+    // return only the good stuff
+
+    let existingSongs = tape.SongsOnTapes.map((song) => {
+      return song.song
+    })
+
+    let newSongs = songs
+      .filter((song) => !existingSongs.includes(song))
+      .map((song) => {
+        return {
+          name: song.name,
+          artist: song.artist,
+          uri: song.uri,
+        }
+      })
+
+    console.log(existingSongs)
+    console.log(newSongs)
+
+    existingSongs = existingSongs.map((song) => {
+      return {
+        id: song.id,
+        name: song.name,
+        artist: song.artist,
+        uri: song.uri,
+      }
+    })
+
+    let params = {
+      name: title,
+      existingSongs: existingSongs,
+      newSongs: newSongs,
+    }
+
+    let r = claimTapeEvent({ variables: { id: tape.id, input: params } })
   }
 
   const claimTape = async () => {
@@ -164,12 +215,11 @@ const TapeEditForm = ({ id, isClaim }) => {
   }
 
   const addSong = (song) => {
-    console.log(songs)
     let songData = {
       id: song.id,
       name: song.name,
       uri: song.uri,
-      artists: song.artists.map((artist) => artist.name).join(', '),
+      artist: song.artists.map((artist) => artist.name).join(', '),
     }
     setSongs([...songs, songData])
   }
@@ -244,18 +294,18 @@ const TapeEditForm = ({ id, isClaim }) => {
                           {songs.map((item, index) => (
                             <Draggable
                               key={item.id}
-                              draggableId={item.id}
+                              draggableId={String(item.id)}
                               index={index}
                             >
                               {(provided, snapshot) => (
                                 <div
-                                  class="grid grid-cols-8 gap-4 mb-4"
+                                  className="grid grid-cols-8 gap-4 mb-4"
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
                                 >
                                   <div
-                                    class={`p-4 rounded col-span-7 ${
+                                    className={`p-4 rounded col-span-7 ${
                                       snapshot.isDragging
                                         ? 'bg-gray-500'
                                         : 'bg-gray-700'
@@ -263,7 +313,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                                   >
                                     {item.name}
                                   </div>
-                                  <div class="rounded-full bg-gray-500 h-14 w-14 flex items-center justify-center">
+                                  <div className="rounded-full bg-gray-500 h-14 w-14 flex items-center justify-center">
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       className="h-6 w-6"
@@ -331,7 +381,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                     <button
                       className="bg-green-300 hover:bg-green-400 text-gray-900 px-4 py-2 rounded-full"
                       onClick={() => {
-                        claimTape()
+                        isClaim ? claimTape() : editTape()
                       }}
                     >
                       {isClaim ? 'Claim Cassette' : 'Edit Cassette'}

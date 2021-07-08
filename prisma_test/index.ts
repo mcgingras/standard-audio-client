@@ -4,10 +4,32 @@ const prisma = new PrismaClient()
 
 async function main() {
   // stub
-  const tapes = prisma.tape
-  .findUnique({
-    where: { id: 1 },
-  }).SongsOnTapes()
+
+  const existingSongs =   [{"id": 1, "name": "sd", "artist": "sdf", "uri": "sdf"}]
+  const newSongs = [{
+      "name" : "Shoot my Shot",
+      "artist": "Idk, Offset",
+      "uri": "spotify"
+    }]
+
+    const a = await prisma.tape.update({
+      where: { id: 1 },
+      data: {
+        SongsOnTapes: {
+          set: existingSongs.map((song) => {
+            return {id: song.id}
+          }),
+          create: newSongs.map((song) => {
+            return {
+              song: { create: song },
+            }
+          }),
+        },
+      },
+    })
+
+    console.log(a)
+
 
 }
 

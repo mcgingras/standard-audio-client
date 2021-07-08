@@ -24,6 +24,7 @@ export const schema = gql`
   }
 
   input SongInput {
+    id: Int
     name: String!
     artist: String!
     uri: String!
@@ -68,12 +69,18 @@ export const schema = gql`
     isClaimed: Boolean
     claimLock: Boolean
     ipfsHash: String
-    songs: [SongInput]
+    existingSongs: [SongInput]
+    newSongs: [SongInput]
+    SongsOnTapes: [SongInput]
   }
 
   type Mutation {
     createTape(input: CreateTapeInput!): Tape!
     updateTape(id: Int!, input: UpdateTapeInput!): Tape!
+    updateTapeWithExistingSongs(
+      id: Int!
+      input: UpdateTapeWithSongsInput!
+    ): Tape
     updateTapeWithSongs(id: Int!, input: UpdateTapeWithSongsInput!): Tape!
     deleteTape(id: Int!): Tape!
   }

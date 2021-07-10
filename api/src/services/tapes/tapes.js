@@ -47,7 +47,6 @@ export const updateTapeWithExistingSongs = ({
   id,
   input: { existingSongs, newSongs, ...input },
 }) => {
-  console.log('are we in here')
   return db.tape.update({
     where: { id },
     data: {

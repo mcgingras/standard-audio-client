@@ -215,6 +215,7 @@ const TapeEditForm = ({ id, isClaim }) => {
   }
 
   const addSong = (song) => {
+    console.log(song.id)
     let songData = {
       id: song.id,
       name: song.name,

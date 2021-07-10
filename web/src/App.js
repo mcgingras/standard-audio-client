@@ -50,7 +50,7 @@ const App = () => {
         setAddress(addr)
 
         const mixtape = new ethers.Contract(
-          contractAddress.MixtapeLive,
+          contractAddress.Mixtape,
           MixtapeArtifact.abi,
           injectedProvider.getSigner(0)
         )

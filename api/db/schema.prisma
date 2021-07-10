@@ -16,7 +16,7 @@ model Tape {
   name         String
   capacity     Int
   quality      Int
-  style        Int
+  style        Float
   proof        String[]
   isClaimed    Boolean        @default(false)
   claimLock    Boolean        @default(false)

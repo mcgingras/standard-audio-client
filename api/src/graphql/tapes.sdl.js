@@ -5,7 +5,7 @@ export const schema = gql`
     name: String!
     capacity: Int!
     quality: Int!
-    style: Int!
+    style: Float!
     proof: [String]!
     isClaimed: Boolean!
     claimLock: Boolean!
@@ -40,7 +40,7 @@ export const schema = gql`
     name: String!
     capacity: Int!
     quality: Int!
-    style: Int!
+    style: Float!
     proof: [String]!
     isClaimed: Boolean!
     claimLock: Boolean!
@@ -52,7 +52,7 @@ export const schema = gql`
     name: String
     capacity: Int
     quality: Int
-    style: Int
+    style: Float
     proof: [String]
     isClaimed: Boolean
     claimLock: Boolean
@@ -64,7 +64,7 @@ export const schema = gql`
     name: String
     capacity: Int
     quality: Int
-    style: Int
+    style: Float
     proof: [String]
     isClaimed: Boolean
     claimLock: Boolean

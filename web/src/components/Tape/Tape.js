@@ -19,7 +19,6 @@ const CREATE_BID_MUTATION = gql`
 `
 
 const Tape = ({ tape }) => {
-  console.log(tape)
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
   const [bidSlideOpen, setBidSlideOpen] = useState(false)
@@ -40,6 +39,7 @@ const Tape = ({ tape }) => {
         console.log(contract)
         const bid = await contract.cassetteBids(tape.id)
         const claimed = await contract.isClaimed(tape.id)
+        console.log(bid)
         setBid(bid)
         setIsClaimed(claimed)
       }
@@ -213,7 +213,7 @@ const Tape = ({ tape }) => {
           </div>
         </header>
 
-        <CassetteScene />
+        <CassetteScene style={tape.style} />
 
         <TapeStats
           address={address}

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Tape" ALTER COLUMN "capacity" SET DATA TYPE BIGINT;

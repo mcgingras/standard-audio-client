@@ -2,7 +2,6 @@
 const { PrismaClient } = require('@prisma/client')
 const dotenv = require('dotenv')
 const { parseJson } = require('../scripts/json-to-tree')
-const simpleJSON = require('../scripts/json/simple.json')
 const complexJSON = require('../scripts/json/att.json')
 
 dotenv.config()

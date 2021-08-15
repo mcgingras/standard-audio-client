@@ -23,3 +23,11 @@ Your browser should open automatically to `http://localhost:8910` to see the web
 
 ### Concerns
 - I am concerned that random colors as the only attribute is not discernable enough. A user will not be able to immediately identify that a tape is "cool" unless by random chance that it gets a lot of the same colors. Its not really easy to quickly parse and tell a rare tape apart, especially for someone who does not do research into looking at the value. For that reason, it might be a better idea to have the visual characteristics be something more defining -- like a sticker on the label. Similar to how CryptoPunks have pipes, or glasses, etc. Its easy to see right away. Maybe: "shiny screws" or "rainbow tape" or something like that. I think as a V1 I might just stick with colors though
+
+- different levels of colors "rare colors" "common colors" etc
+- different animations of tape, some buttons to show different animations
+
+### Todo
+- definitely figure out the spotify refresh issue
+- take pictures of all the tapes? Set up some task to do that?
+- put image of screenshot as field of tape

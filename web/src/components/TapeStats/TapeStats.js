@@ -57,7 +57,7 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
             afterLeave={() => setUp(true)}
           >
             <button
-              class="bg-blue-400 text-center font-bold p-4 w-full"
+              className="bg-blue-400 text-center font-bold p-4 w-full"
               onClick={() => {
                 setButtonUp(false)
               }}
@@ -102,7 +102,9 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                           Edit this cassette.
                         </p>
                         <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
-                          <Link to={`/tapes/${1}/edit`}>Edit Cassette</Link>
+                          <Link to={`/tapes/${tape.id}/edit`}>
+                            Edit Cassette
+                          </Link>
                         </button>
                       </>
                     ) : (

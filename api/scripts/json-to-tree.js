@@ -1,4 +1,3 @@
-const { BigNumber, utils } = require('ethers')
 const { TapeTree } = require('./tape-tree.js')
 
 function parseJson(tapes) {

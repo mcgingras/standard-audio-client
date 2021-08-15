@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useRef } from 'react'
-import { Link, routes } from '@redwoodjs/router'
+import { routes } from '@redwoodjs/router'
 import { useQuery, useMutation } from '@redwoodjs/web'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import useSpotify from '../../hooks/useSpotify'
@@ -84,6 +84,7 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   useEffect(() => {
     if (data) {
+      console.log(data.tape)
       setTape(data.tape)
       setTitle(data.tape.name)
       const songs = data.tape.SongsOnTapes.map((song) => {
@@ -127,40 +128,8 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   const [claimTapeEvent] = useMutation(UPDATE_TAPE_MUTATION)
   const updateClaimDb = (ipfsHash) => {
-    let params = {
-      name: title,
-      owner: address,
-      isClaimed: true,
-      ipfsHash,
-    }
-    claimTapeEvent({ variables: { id: tape.id, input: params } })
-  }
-
-  const editTape = () => {
-    // tapes coming from spotify have an ID field that we want to get rid of
-    // and tapes coming from gql have __typefield that we want to get rid of
-    // return only the good stuff
-
-    let existingSongs = tape.SongsOnTapes.map((song) => {
-      return song.song
-    })
-
-    let newSongs = songs
-      .filter((song) => !existingSongs.includes(song))
-      .map((song) => {
-        return {
-          name: song.name,
-          artist: song.artist,
-          uri: song.uri,
-        }
-      })
-
-    console.log(existingSongs)
-    console.log(newSongs)
-
-    existingSongs = existingSongs.map((song) => {
+    let newSongs = songs.map((song) => {
       return {
-        id: song.id,
         name: song.name,
         artist: song.artist,
         uri: song.uri,
@@ -169,11 +138,78 @@ const TapeEditForm = ({ id, isClaim }) => {
 
     let params = {
       name: title,
-      existingSongs: existingSongs,
+      owner: address,
+      isClaimed: true,
+      existingSongs: [],
       newSongs: newSongs,
+      ipfsHash,
     }
 
-    let r = claimTapeEvent({ variables: { id: tape.id, input: params } })
+    claimTapeEvent({ variables: { id: tape.id, input: params } })
+  }
+
+  // tapes coming from spotify have an ID field that we want to get rid of
+  // and tapes coming from gql have __typefield that we want to get rid of
+  // return only the good stuff
+
+  const editTape = async () => {
+    let ipfs = await pinJSONToIPFS({
+      songs: songs,
+      title: title,
+    })
+
+    try {
+      const tx = await contract.editMixtape(tape.id, ipfs.data.IpfsHash)
+      setTxHash(tx.hash)
+
+      const receipt = await tx.wait()
+
+      // succeeds -- update claim in db
+      if (receipt.status) {
+        let existingSongs = tape.SongsOnTapes.map((song) => {
+          return song.song
+        })
+
+        let newSongs = songs
+          .filter((song) => !existingSongs.includes(song))
+          .map((song) => {
+            return {
+              name: song.name,
+              artist: song.artist,
+              uri: song.uri,
+            }
+          })
+
+        existingSongs = existingSongs.map((song) => {
+          return {
+            id: song.id,
+            name: song.name,
+            artist: song.artist,
+            uri: song.uri,
+          }
+        })
+
+        let params = {
+          name: title,
+          existingSongs: existingSongs,
+          newSongs: newSongs,
+          ipfsHash: ipfs.data.IpfsHash,
+        }
+        claimTapeEvent({ variables: { id: tape.id, input: params } })
+        window.location.href = routes.tape({ id: id })
+      }
+      if (receipt.status === 0) {
+        throw new Error('Transaction failed')
+      }
+    } catch (error) {
+      console.log(error)
+      if (error.code === ERROR_CODE_TX_REJECTED_BY_USER) {
+        return
+      }
+      setTxError(error)
+    } finally {
+      setTxBeingSent(undefined)
+    }
   }
 
   const claimTape = async () => {
@@ -185,8 +221,8 @@ const TapeEditForm = ({ id, isClaim }) => {
     try {
       const tx = await contract.claim(
         tape.id,
-        tape.quality,
         tape.capacity,
+        tape.quality,
         tape.style,
         tape.proof,
         ipfs.data.IpfsHash
@@ -215,7 +251,6 @@ const TapeEditForm = ({ id, isClaim }) => {
   }
 
   const addSong = (song) => {
-    console.log(song.id)
     let songData = {
       id: song.id,
       name: song.name,
@@ -270,8 +305,11 @@ const TapeEditForm = ({ id, isClaim }) => {
             <section className="grid grid-cols-2 gap-8 mb-12">
               <div>
                 <div className="flex flex-col mb-8">
-                  <label className="mb-2">Cassette Title</label>
+                  <label htmlFor="title" className="mb-2">
+                    Cassette Title
+                  </label>
                   <input
+                    name="title"
                     type="text"
                     onChange={(e) => {
                       setTitle(e.target.value)
@@ -283,7 +321,9 @@ const TapeEditForm = ({ id, isClaim }) => {
                 </div>
 
                 <div>
-                  <label className="mb-2 block">Tracklist</label>
+                  <label htmlFor="tracks" className="mb-2 block">
+                    Tracklist
+                  </label>
                   <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="droppable">
                       {(provided, snapshot) => (
@@ -343,8 +383,11 @@ const TapeEditForm = ({ id, isClaim }) => {
 
               <div>
                 <div className="flex flex-col" ref={spotifySearchRef}>
-                  <label className="mb-2">Add Songs</label>
+                  <label htmlFor="songs" className="mb-2">
+                    Add Songs
+                  </label>
                   <input
+                    name="songs"
                     type="text"
                     className="rounded-lg px-4 py-4 text-gray-900"
                     placeholder="search"

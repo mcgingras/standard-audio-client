@@ -66,7 +66,7 @@ const useSpotify = () => {
 const fetchRefresh = (refresh_token) => {
   const url =
     process.env.NETLIFY_DEV === 'development'
-      ? `http://localhost:8911/refresh_token?refresh_token=${refresh_token}`
+      ? `http://localhost:8910/.netlify/functions/refresh_token?refresh_token=${refresh_token}`
       : `https://nftapes.netlify.app/.netlify/functions/refresh_token?refresh_token=${refresh_token}`
   return fetch(url, {
     method: 'GET',

@@ -28,7 +28,13 @@ export const Success = ({ tapes }) => {
   return (
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8 px-4 sm:px-0">
       {tapes.map((tape) => {
-        return <TapeCard link={routes.tape({ id: tape.id })} name={tape.name} />
+        return (
+          <TapeCard
+            id={tape.id}
+            link={routes.tape({ id: tape.id })}
+            name={tape.name}
+          />
+        )
       })}
     </div>
   )

@@ -100,7 +100,7 @@ const Tape = ({ tape }) => {
             </section>
             <section className="flex flex-col mt-12">
               <label className="text-sm font-bold mb-4">Edit Sale Price</label>
-              <div class="flex">
+              <div className="flex">
                 <input
                   onChange={(e) => {
                     setBidValue(e.target.value)
@@ -197,7 +197,7 @@ const Tape = ({ tape }) => {
               {tape.owner}
             </h3>
           </div>
-          <div class="flex self-center">
+          <div className="flex self-center">
             <Link
               to={routes.listeningRoom({ id: tape.id })}
               className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"

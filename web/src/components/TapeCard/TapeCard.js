@@ -1,14 +1,18 @@
 import { Link } from '@redwoodjs/router'
 import Wave from '../../assets/wave.svg'
-import placeholder from '../../assets/second.png'
+import screenshot from '../../assets/screenshot48.png'
 
-const TapeCard = ({ link, name }) => {
+const TapeCard = ({ id, link, name }) => {
   return (
     <Link to={link} className="cursor-pointer block hover:shadow-lg">
       <div className="w-full h-64 bg-red-500">
-        <img src={placeholder} class="object-cover h-64 w-full" />
+        <img
+          src={screenshot}
+          // src={`https://nftapes.s3.amazonaws.com/screenshot${id}.png`}
+          class="object-cover h-64 w-full"
+        />
       </div>
-      <div className="bg-gray-900 flex flex-row justify-between items-center py-2 px-2">
+      <div className="bg-gray-700 flex flex-row justify-between items-center py-2 px-2">
         <div>
           <Wave className="block" />
         </div>

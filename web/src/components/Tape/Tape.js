@@ -71,7 +71,7 @@ const Tape = ({ tape }) => {
 
   const [createBid, { loading, error }] = useMutation(CREATE_BID_MUTATION, {
     onCompleted: () => {
-      // toast.success('Bid created')
+      toast.success('Bid created')
       // navigate(routes.bids())
       console.log('completed bid')
     },
@@ -216,11 +216,9 @@ const Tape = ({ tape }) => {
         <CassetteScene style={tape.style} />
 
         <TapeStats
-          address={address}
           isOwner={isOwner}
           tape={tape}
           bid={bid}
-          f
           setBidSlideOpen={setBidSlideOpen}
         />
       </div>

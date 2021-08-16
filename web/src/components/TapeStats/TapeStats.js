@@ -1,8 +1,13 @@
-import { useState, Fragment } from 'react'
-import { Transition, Dialog } from '@headlessui/react'
+import { useState } from 'react'
+import { Transition } from '@headlessui/react'
 import { ethers } from 'ethers'
-import { Link, routes } from '@redwoodjs/router'
+import { Link } from '@redwoodjs/router'
 import useSpotify from '../../hooks/useSpotify'
+import {
+  styleDecoder,
+  capacityDecoder,
+  qualityDecoder,
+} from '../../utils/decoder'
 
 const demoStats = {
   Duration: '60 Min',
@@ -25,6 +30,18 @@ const Stat = ({ k, v }) => {
   )
 }
 
+const generateStats = (tape) => {
+  const capacity = capacityDecoder(tape.capacity)
+  const quality = qualityDecoder(tape.quality)
+  const style = styleDecoder(tape.style)
+
+  return {
+    capacity,
+    quality,
+    // ...style,
+  }
+}
+
 const bidPrice = (bid) => {
   if (bid.activeBid) {
     return (
@@ -37,10 +54,11 @@ const bidPrice = (bid) => {
   }
 }
 
-const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
+const TapeStats = ({ isOwner, tape, bid, setBidSlideOpen }) => {
   const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
   const [buttonUp, setButtonUp] = useState(true)
+  const stats = generateStats(tape)
 
   return (
     <>
@@ -90,8 +108,8 @@ const TapeStats = ({ address, isOwner, tape, bid, setBidSlideOpen }) => {
                   <div className="flex flex-col border-b sm:border-b-0 sm:border-r border-black px-0 sm:px-8 py-4 sm:py-0">
                     <p className="font-bold mb-2 text-sm">Tape Stats</p>
                     <div className="grid grid-cols-2 gap-2">
-                      {Object.entries(demoStats).map(([key, value]) => {
-                        return <Stat k={key} v={value} />
+                      {Object.entries(stats).map(([key, value]) => {
+                        return <Stat key={key} k={key} v={value} />
                       })}
                     </div>
                   </div>

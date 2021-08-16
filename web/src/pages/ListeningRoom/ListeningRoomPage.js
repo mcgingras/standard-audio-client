@@ -39,7 +39,7 @@ const ListeningRoomPage = ({ id }) => {
   `
 
   // doesnt this get run a bunch because of renders?
-  // seems wasteful
+  // seems wasteful -- possible useMemo?
   const { loading, error, data } = useQuery(FIND_TAPE_QUERY, {
     variables: { id: id },
   })
@@ -56,11 +56,7 @@ const ListeningRoomPage = ({ id }) => {
    */
   useEffect(() => {
     if (tape) {
-      console.log('tape is:')
-      console.log(tape)
       getIPFSData(tape.ipfsHash).then((response) => {
-        console.log('getting ipfs data')
-        console.log(response)
         setSongs(response.data.songs)
         const uris = response.data.songs.map((song) => {
           return song.uri
@@ -78,7 +74,9 @@ const ListeningRoomPage = ({ id }) => {
         <div className="grid grid-cols-4 h-screen">
           <div className="col-span-3 bg-yellow-500 relative">
             <div className="flex justify-between p-4">
-              <h1 className="text-white text-3xl">Crystal Watermelon</h1>
+              <h1 className="text-white text-3xl">
+                {tape ? tape.name : 'loading tape...'}
+              </h1>
               <div id="controls"></div>
               <Link
                 to="/"

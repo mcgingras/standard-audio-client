@@ -28,6 +28,25 @@ Your browser should open automatically to `http://localhost:8910` to see the web
 - different animations of tape, some buttons to show different animations
 
 ### Todo
-- definitely figure out the spotify refresh issue
+- definitely figure out the spotify refresh issue -- update? fixed? -- how long does it go for
 - take pictures of all the tapes? Set up some task to do that?
 - put image of screenshot as field of tape
+- figure out spline or three.js
+- figure out tape attributes
+- better all tapes browsing (shelves, see figma)
+
+### Serious Todos
+- format bids to update automatically
+- test accepting bid
+- artists are not pulling in listening room
+- better loading state in listening room
+- my tapes
+- about
+- remove "listening room" from nav
+- better defaults in stats
+- padding around stats for bid (mb-2)
+- better stats (color rarity?)
+- x on stats modal to close
+- actually implement capacity (low priority for now)
+- style bidItems
+- fix eth display issue on biditems

@@ -73,17 +73,26 @@ const ListeningRoomPage = ({ id }) => {
       ) : (
         <div className="grid grid-cols-4 h-screen">
           <div className="col-span-3 bg-yellow-500 relative">
-            <div className="flex justify-between p-4">
-              <h1 className="text-white text-3xl">
-                {tape ? tape.name : 'loading tape...'}
-              </h1>
-              <div id="controls"></div>
-              <Link
-                to="/"
-                className="bg-white rounded-full text-sm p-2 self-center"
-              >
-                BACK
-              </Link>
+            <iframe
+              src="https://my.spline.design/casetteplayer-2f76656f134d14ea43d8295e8f61aec9/"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+            ></iframe>
+
+            <div className="absolute top-0 w-full">
+              <div className="flex justify-between p-4">
+                <h1 className="text-white text-3xl">
+                  {tape ? tape.name : 'loading tape...'}
+                </h1>
+                <div id="controls"></div>
+                <Link
+                  to="/"
+                  className="bg-white rounded-full text-sm p-2 self-center"
+                >
+                  BACK
+                </Link>
+              </div>
             </div>
             <div className="absolute bottom-0 w-full px-8 py-4">
               <SpotifyPlayer

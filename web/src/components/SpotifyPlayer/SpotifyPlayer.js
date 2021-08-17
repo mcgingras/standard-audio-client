@@ -361,7 +361,7 @@ const ProgressBar = ({ value, setValue, scrubFunction }) => {
       onMouseLeave={handleLeave}
       onMouseDown={handleMouseDown}
     >
-      <div className="progress-slider bg-yellow-700 rounded-sm flex h-1 w-full overflow-hidden">
+      <div className="progress-slider bg-black opacity-50 rounded-sm flex h-1 w-full overflow-hidden">
         <div
           className="progress-slider bg-white h-1 w-full rounded-sm"
           style={{

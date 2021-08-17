@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
+import { Toaster, toast } from '@redwoodjs/web/toast'
 import { ContractContext } from '../../contexts/contractContext'
 import { ethers } from 'ethers'
 
@@ -14,6 +15,8 @@ const CREATE_BID_MUTATION = gql`
   mutation CreateBidMutation($input: CreateBidInput!) {
     createBid(input: $input) {
       id
+      bidder
+      amount
     }
   }
 `
@@ -36,10 +39,8 @@ const Tape = ({ tape }) => {
   useEffect(() => {
     const getBid = async () => {
       if (contract != '') {
-        console.log(contract)
         const bid = await contract.cassetteBids(tape.id)
         const claimed = await contract.isClaimed(tape.id)
-        console.log(bid)
         setBid(bid)
         setIsClaimed(claimed)
       }
@@ -55,6 +56,7 @@ const Tape = ({ tape }) => {
 
   // make sure this is a number
   const submitBid = async () => {
+    console.log('submitting bid')
     const eth = ethers.utils.parseEther(bidValue)
     const tx = await contract.bid(tape.id, { value: eth })
     createBid({
@@ -69,13 +71,15 @@ const Tape = ({ tape }) => {
     })
   }
 
-  const [createBid, { loading, error }] = useMutation(CREATE_BID_MUTATION, {
-    onCompleted: () => {
-      toast.success('Bid created')
-      // navigate(routes.bids())
-      console.log('completed bid')
-    },
-  })
+  const [createBid, { bidData, loading, error }] = useMutation(
+    CREATE_BID_MUTATION,
+    {
+      onCompleted: (data) => {
+        toast.success('Bid submitted')
+        setBid({ activeBid: true, amount: data.createBid.amount })
+      },
+    }
+  )
 
   const acceptBid = async () => {
     const tx = await contract.acceptBid(tape.id)
@@ -174,19 +178,20 @@ const Tape = ({ tape }) => {
                 bid
               </button>
             </section>
-            {/* <section className="mt-20">
-              <h6 className="text-sm font-bold mb-1">Bid and Ownership History</h6>
-              { tape.Bids.map(bid => {
-                  return (
-                    <BidItem bid={bid} />
-                  )
+            <section className="mt-20">
+              <h6 className="text-sm font-bold mb-1">
+                Bid and Ownership History
+              </h6>
+              {tape.Bids.map((bid) => {
+                return <BidItem bid={bid} />
               })}
-            </section> */}
+            </section>
           </>
         )}
       </Slideover>
 
       <div className="min-h-screen h-screen relative bg-black">
+        <Toaster />
         <header className="flex justify-between p-8 fixed top-0 w-full z-10">
           <div className="flex flex-row">
             <h1 className="text-4xl font-semibold text-white">{tape.name}</h1>

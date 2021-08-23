@@ -55,6 +55,7 @@ export const updateTapeWithExistingSongs = ({
         set: existingSongs.map((song) => {
           return { id: song.id }
         }),
+        // data -> SongsOnTapes -> create -> song -> new song
         create: newSongs.map((song) => {
           return {
             song: { create: song },

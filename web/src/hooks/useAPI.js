@@ -11,15 +11,11 @@ const UPDATE_TAPE_MUTATION = gql`
 const useAPI = () => {
   const [updateTapeEvent] = useMutation(UPDATE_TAPE_MUTATION)
 
-  const update = (tape, params) => {
+  const updateTape = (tape, params) => {
     // strange behavior where it is updating the songs
     let existingSongs = tape.SongsOnTapes.map((s) => {
-      let song = s.song
       return {
-        id: song.id,
-        name: song.name,
-        artist: song.artist,
-        uri: song.uri,
+        id: s.id,
       }
     })
 
@@ -27,7 +23,7 @@ const useAPI = () => {
     updateTapeEvent({ variables: { id: tape.id, input: updateParams } })
   }
 
-  return { update }
+  return { updateTape }
 }
 
 export default useAPI

@@ -18,6 +18,7 @@ export const QUERY = gql`
         active
       }
       SongsOnTapes {
+        id
         song {
           id
           name

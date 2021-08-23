@@ -41,7 +41,7 @@ const Tape = ({ tape }) => {
   const { update } = useAPI()
 
   const testUpdate = () => {
-    update(tape, { owner: '0x123' })
+    update(tape, { owner: '0x456' })
   }
 
   useEffect(() => {

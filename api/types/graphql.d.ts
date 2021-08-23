@@ -237,6 +237,10 @@ export type SongsOnTapes = {
   tape: Tape;
 };
 
+export type SongsOnTapesInput = {
+  id: Scalars['Int'];
+};
+
 export type Tape = {
   __typename?: 'Tape';
   id: Scalars['Int'];
@@ -296,7 +300,7 @@ export type UpdateTapeWithSongsInput = {
   isClaimed?: Maybe<Scalars['Boolean']>;
   claimLock?: Maybe<Scalars['Boolean']>;
   ipfsHash?: Maybe<Scalars['String']>;
-  existingSongs?: Maybe<Array<Maybe<SongInput>>>;
+  existingSongs?: Maybe<Array<Maybe<SongsOnTapesInput>>>;
   newSongs?: Maybe<Array<Maybe<SongInput>>>;
   SongsOnTapes?: Maybe<Array<Maybe<SongInput>>>;
 };
@@ -399,6 +403,7 @@ export type ResolversTypes = {
   Song: ResolverTypeWrapper<Song>;
   SongInput: SongInput;
   SongsOnTapes: ResolverTypeWrapper<SongsOnTapes>;
+  SongsOnTapesInput: SongsOnTapesInput;
   Tape: ResolverTypeWrapper<Tape>;
   Time: ResolverTypeWrapper<Scalars['Time']>;
   UpdateBidInput: UpdateBidInput;
@@ -430,6 +435,7 @@ export type ResolversParentTypes = {
   Song: Song;
   SongInput: SongInput;
   SongsOnTapes: SongsOnTapes;
+  SongsOnTapesInput: SongsOnTapesInput;
   Tape: Tape;
   Time: Scalars['Time'];
   UpdateBidInput: UpdateBidInput;

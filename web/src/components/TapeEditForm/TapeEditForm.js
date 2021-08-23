@@ -5,6 +5,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import useSpotify from '../../hooks/useSpotify'
 import useDebounce from '../../hooks/useDebounce'
 import useOnClickOutside from '../../hooks/useClickOutside'
+import useAPI from '../../hooks/useAPI'
 import { ContractContext } from '../../contexts/contractContext'
 import { pinJSONToIPFS } from '../../utils/pinata'
 
@@ -35,6 +36,7 @@ const TapeEditForm = ({ id, isClaim }) => {
   // used for debounced search
   const [query, setQuery] = useState('')
   const debouncedQuery = useDebounce(query, 500)
+  const { updateTape } = useAPI()
   const [isSearching, setIsSearching] = useState(false)
 
   useOnClickOutside(spotifySearchRef, () => {
@@ -65,6 +67,7 @@ const TapeEditForm = ({ id, isClaim }) => {
         style
         proof
         SongsOnTapes {
+          id
           song {
             id
             name
@@ -179,22 +182,12 @@ const TapeEditForm = ({ id, isClaim }) => {
             }
           })
 
-        existingSongs = existingSongs.map((song) => {
-          return {
-            id: song.id,
-            name: song.name,
-            artist: song.artist,
-            uri: song.uri,
-          }
-        })
-
         let params = {
           name: title,
-          existingSongs: existingSongs,
           newSongs: newSongs,
           ipfsHash: ipfs.data.IpfsHash,
         }
-        claimTapeEvent({ variables: { id: tape.id, input: params } })
+        updateTape(tape, params)
         window.location.href = routes.tape({ id: id })
       }
       if (receipt.status === 0) {

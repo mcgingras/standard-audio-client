@@ -23,6 +23,10 @@ export const schema = gql`
     tape: Tape!
   }
 
+  input SongsOnTapesInput {
+    id: Int!
+  }
+
   input SongInput {
     id: Int
     name: String!
@@ -69,7 +73,7 @@ export const schema = gql`
     isClaimed: Boolean
     claimLock: Boolean
     ipfsHash: String
-    existingSongs: [SongInput]
+    existingSongs: [SongsOnTapesInput]
     newSongs: [SongInput]
     SongsOnTapes: [SongInput]
   }

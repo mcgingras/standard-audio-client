@@ -13,40 +13,44 @@ import { useState, useEffect } from 'react'
  * If not expired, it returns [true, token]
  */
 const useSpotify = () => {
-  let expiration = localStorage.getItem('spotify_expiration')
-  let access_token = localStorage.getItem('spotify_access_token')
-  let refresh_token = localStorage.getItem('spotify_refresh_token')
-
   const [loggedIn, setLoggedIn] = useState(false)
   const [token, setToken] = useState(null)
+
+  let expiration = localStorage.getItem('spotify_expiration')
+  let accessToken = localStorage.getItem('spotify_access_token')
+  let refreshToken = localStorage.getItem('spotify_refresh_token')
 
   useEffect(() => {
     // get another set of tokens by showing the UI that the user is not logged in
     // and that they should trigger a click to start the auth process again.
-    if (anyNull([expiration, access_token, refresh_token])) {
+    if (anyNull([expiration, accessToken, refreshToken])) {
       console.log('local storage is empty... checking URL Params')
       const urlParams = new URLSearchParams(window.location.search)
-      expiration = urlParams.get('spotify_expiration')
-      access_token = urlParams.get('spotify_access_token')
-      refresh_token = urlParams.get('spotify_refresh_token')
+      let tempExpiration = urlParams.get('spotify_expiration')
+      let tempAccessToken = urlParams.get('spotify_access_token')
+      let tempRefreshToken = urlParams.get('spotify_refresh_token')
 
-      if (anyNull([expiration, access_token, refresh_token])) {
+      if (anyNull([tempExpiration, tempAccessToken, tempRefreshToken])) {
         console.log('URL params are empty... prompt login')
         return
       } else {
-        localStorage.setItem('spotify_expiration', expiration)
-        localStorage.setItem('spotify_access_token', access_token)
-        localStorage.setItem('spotify_refresh_token', refresh_token)
+        localStorage.setItem('spotify_expiration', tempExpiration)
+        localStorage.setItem('spotify_access_token', tempAccessToken)
+        localStorage.setItem('spotify_refresh_token', tempRefreshToken)
       }
     }
 
     // token is expired
-    if (expiration < new Date().getTime() / 1000) {
+    if (
+      isExpired(expiration) ||
+      (expiration === 'undefined' && refreshToken != 'undefined')
+    ) {
       console.log('token is expired, fetching a new access token...')
 
-      const response = unwrapRefreshToken(refresh_token)
+      const response = unwrapRefreshToken(refreshToken)
       response.then((res) => {
-        localStorage.setItem('spotify_expiration', res.expiration)
+        console.log(res)
+        localStorage.setItem('spotify_expiration', res.expires_in)
         localStorage.setItem('spotify_access_token', res.access_token)
         localStorage.setItem('spotify_refresh_token', res.refresh_token)
 
@@ -56,11 +60,15 @@ const useSpotify = () => {
     } else {
       console.log('nothing is expired, we should be good to go')
       setLoggedIn(true)
-      setToken(access_token)
+      setToken(accessToken)
     }
   }, [])
 
   return [loggedIn, token]
+}
+
+const isExpired = (expiration) => {
+  return expiration < new Date().getTime() / 1000
 }
 
 const fetchRefresh = (refresh_token) => {

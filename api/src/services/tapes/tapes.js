@@ -45,7 +45,7 @@ export const updateTapeWithSongs = ({
 
 export const updateTapeWithExistingSongs = ({
   id,
-  input: { existingSongs, newSongs, ...input },
+  input: { existingSongs = [], newSongs = [], ...input },
 }) => {
   return db.tape.update({
     where: { id },

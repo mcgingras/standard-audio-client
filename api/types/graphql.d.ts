@@ -24,14 +24,14 @@ export type Bid = {
   tape: Tape;
   tapeId: Scalars['Int'];
   bidder: Scalars['String'];
-  amount: Scalars['Int'];
+  amount: Scalars['Float'];
   active: Scalars['Boolean'];
 };
 
 export type CreateBidInput = {
   tapeId: Scalars['Int'];
   bidder: Scalars['String'];
-  amount: Scalars['Int'];
+  amount: Scalars['Float'];
   active: Scalars['Boolean'];
 };
 
@@ -258,7 +258,7 @@ export type Tape = {
 export type UpdateBidInput = {
   tapeId?: Maybe<Scalars['Int']>;
   bidder?: Maybe<Scalars['String']>;
-  amount?: Maybe<Scalars['Int']>;
+  amount?: Maybe<Scalars['Float']>;
   active?: Maybe<Scalars['Boolean']>;
 };
 
@@ -382,12 +382,12 @@ export type ResolversTypes = {
   Bid: ResolverTypeWrapper<Bid>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   CreateBidInput: CreateBidInput;
   CreateSaleInput: CreateSaleInput;
   CreateSongInput: CreateSongInput;
   CreateTapeInput: CreateTapeInput;
-  Float: ResolverTypeWrapper<Scalars['Float']>;
   Date: ResolverTypeWrapper<Scalars['Date']>;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
   JSON: ResolverTypeWrapper<Scalars['JSON']>;
@@ -413,12 +413,12 @@ export type ResolversParentTypes = {
   Bid: Bid;
   Int: Scalars['Int'];
   String: Scalars['String'];
+  Float: Scalars['Float'];
   Boolean: Scalars['Boolean'];
   CreateBidInput: CreateBidInput;
   CreateSaleInput: CreateSaleInput;
   CreateSongInput: CreateSongInput;
   CreateTapeInput: CreateTapeInput;
-  Float: Scalars['Float'];
   Date: Scalars['Date'];
   DateTime: Scalars['DateTime'];
   JSON: Scalars['JSON'];
@@ -444,7 +444,7 @@ export type BidResolvers<ContextType = any, ParentType extends ResolversParentTy
   tape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType>;
   tapeId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   bidder?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  amount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

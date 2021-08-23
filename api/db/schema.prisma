@@ -31,7 +31,7 @@ model Bid {
   tape   Tape    @relation(fields: [tapeId], references: [id])
   tapeId Int
   bidder String
-  amount Int // this should be a float
+  amount Float
   active Boolean @default(false)
 }
 

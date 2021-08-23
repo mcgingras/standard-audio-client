@@ -4,7 +4,7 @@ export const schema = gql`
     tape: Tape!
     tapeId: Int!
     bidder: String!
-    amount: Int!
+    amount: Float!
     active: Boolean!
   }
 
@@ -16,14 +16,14 @@ export const schema = gql`
   input CreateBidInput {
     tapeId: Int!
     bidder: String!
-    amount: Int!
+    amount: Float!
     active: Boolean!
   }
 
   input UpdateBidInput {
     tapeId: Int
     bidder: String
-    amount: Int
+    amount: Float
     active: Boolean
   }
 

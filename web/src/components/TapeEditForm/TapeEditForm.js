@@ -84,7 +84,6 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data.tape)
       setTape(data.tape)
       setTitle(data.tape.name)
       const songs = data.tape.SongsOnTapes.map((song) => {

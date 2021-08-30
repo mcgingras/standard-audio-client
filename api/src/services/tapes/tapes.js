@@ -45,7 +45,7 @@ export const updateTapeWithSongs = ({
 
 export const updateTapeWithExistingSongs = ({
   id,
-  input: { existingSongs, newSongs, ...input },
+  input: { existingSongs = [], newSongs = [], ...input },
 }) => {
   return db.tape.update({
     where: { id },
@@ -55,6 +55,7 @@ export const updateTapeWithExistingSongs = ({
         set: existingSongs.map((song) => {
           return { id: song.id }
         }),
+        // data -> SongsOnTapes -> create -> song -> new song
         create: newSongs.map((song) => {
           return {
             song: { create: song },

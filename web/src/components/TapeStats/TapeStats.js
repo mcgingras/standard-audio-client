@@ -9,21 +9,11 @@ import {
   qualityDecoder,
 } from '../../utils/decoder'
 
-const demoStats = {
-  Duration: '60 Min',
-  Shader: 'Holo',
-  Rarity: '96.9',
-  Edition: '1',
-  Aisle: '6',
-  Bay: '12',
-  Core: 'Bright',
-  Quality: 'Bitty',
-}
 const Stat = ({ k, v }) => {
   return (
     <div className="flex justify-between items-center">
-      <span className="mr-2 text-xs">{k}</span>
-      <span className="w-1/2 bg-gray-900 text-xs text-blue-200 p-1 font-semibold">
+      <span className="p-1 text-xs border border-black w-1/2">{k}</span>
+      <span className="w-1/2 border border-black bg-gray-900 text-xs text-blue-100 p-1 font-semibold">
         {v}
       </span>
     </div>
@@ -38,7 +28,7 @@ const generateStats = (tape) => {
   return {
     capacity,
     quality,
-    // ...style,
+    ...style,
   }
 }
 
@@ -81,71 +71,29 @@ const TapeStats = ({ isOwner, tape }) => {
             leaveTo="translate-y-full"
             afterLeave={() => setButtonUp(true)}
           >
-            <div className={'p-0 sm:p-8 box-border w-full'}>
-              <div className="p-4 sm:p-8 bg-blue-400 w-full">
-                <div className="grid grid-cols-1 sm:grid-cols-4">
-                  <div
-                    onClick={() => {
-                      setUp(false)
-                    }}
-                    className="flex flex-col text-sm pr-8 border-b sm:border-b-0 sm:border-r border-black"
-                  >
+            <div className="p-0 sm:p-8 box-border w-full">
+              <div className="p-4 sm:p-8 bg-blue-400 w-full relative">
+                <div className="grid grid-cols-1 sm:grid-cols-4 h-full">
+                  <div className="flex flex-col justify-between text-sm pr-8 border-b sm:border-b-0 sm:border-r border-black">
                     <p className="font-bold pb-2 sm:pb-0">Tape #{tape.id}</p>
-                    <p>close</p>
+                    <button
+                      onClick={() => {
+                        setUp(false)
+                      }}
+                      className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"
+                    >
+                      Hide Stats
+                    </button>
                   </div>
-                  <div className="flex flex-col border-b sm:border-b-0 sm:border-r border-black px-0 sm:px-8 py-4 sm:py-0">
+                  <div className="flex flex-col col-span-2 border-b sm:border-b-0 sm:border-r border-black px-0 sm:px-8 py-4 sm:py-0">
                     <p className="font-bold mb-2 text-sm">Tape Stats</p>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-4 gap-4">
                       {Object.entries(stats).map(([key, value]) => {
                         return <Stat key={key} k={key} v={value} />
                       })}
                     </div>
                   </div>
-                  <div className="flex flex-col justify-between px-0 sm:px-8 py-4 sm:py-0 border-b sm:border-b-0 sm:border-r border-black">
-                    {isOwner ? (
-                      <>
-                        <p className="text-sm text-center">
-                          Edit this cassette.
-                        </p>
-                        <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
-                          <Link to={`/tapes/${tape.id}/edit`}>
-                            Edit Cassette
-                          </Link>
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        {!spotifyLoggedIn ? (
-                          <>
-                            <p className="text-sm text-center">
-                              You need a Spotify Premium account to interact
-                              with this cassette. Please connect your account.
-                            </p>
-                            <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
-                              <a
-                                href={
-                                  process.env.NETLIFY_DEV === 'development'
-                                    ? `http://localhost:8911/login?return_url=tapes/${tape.id}`
-                                    : `https://nftapes.netlify.app/.netlify/functions/login?return_url=tapes/${tape.id}`
-                                }
-                              >
-                                Log into Spotify
-                              </a>
-                            </button>
-                          </>
-                        ) : (
-                          <>
-                            <p className="text-sm text-center">
-                              This tape contains songs. Listen to the jams!
-                            </p>
-                            <button className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full">
-                              <a href={`/den/${tape.id}`}>Listen in Den</a>
-                            </button>
-                          </>
-                        )}
-                      </>
-                    )}
-                  </div>
+
                   <div className="flex flex-col justify-between pl-0 sm:pl-8 py-4 sm:py-0">
                     {tape.isClaimed ? (
                       <>
@@ -159,6 +107,7 @@ const TapeStats = ({ isOwner, tape }) => {
                         <span className="text-4xl text-center font-bold">
                           UNCLAIMED
                         </span>
+
                         <Link
                           to={`/tapes/${tape.id}/claim`}
                           className="block text-center bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"

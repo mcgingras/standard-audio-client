@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
+import useAPI from '../../hooks/useAPI'
 import { Toaster, toast } from '@redwoodjs/web/toast'
 import { ContractContext } from '../../contexts/contractContext'
 import { ethers } from 'ethers'
@@ -34,6 +35,13 @@ const Tape = ({ tape }) => {
    */
   const [isClaimed, setIsClaimed] = useState(false)
 
+  // Graphql API methods
+  const { update } = useAPI()
+
+  const testUpdate = () => {
+    update(tape, { owner: '0x456' })
+  }
+
   useEffect(() => {
     const getBid = async () => {
       if (contract != '') {
@@ -42,7 +50,7 @@ const Tape = ({ tape }) => {
       }
     }
     getBid()
-  }, [contract])
+  }, [contract, tape.id])
 
   useEffect(() => {
     if (address != '') {

@@ -17,6 +17,15 @@ export const QUERY = gql`
         bidder
         active
       }
+      SongsOnTapes {
+        id
+        song {
+          id
+          name
+          artist
+          uri
+        }
+      }
     }
   }
 `

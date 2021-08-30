@@ -11,12 +11,6 @@ export const QUERY = gql`
       style
       proof
       isClaimed
-      Bids {
-        id
-        amount
-        bidder
-        active
-      }
       SongsOnTapes {
         id
         song {

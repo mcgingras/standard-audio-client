@@ -20,27 +20,8 @@ model Tape {
   proof        String[]
   isClaimed    Boolean        @default(false)
   claimLock    Boolean        @default(false)
-  Bids         Bid[]
-  SalePrice    Sale[]
   SongsOnTapes SongsOnTapes[]
   ipfsHash     String         @default("")
-}
-
-model Bid {
-  id     Int     @id @default(autoincrement())
-  tape   Tape    @relation(fields: [tapeId], references: [id])
-  tapeId Int
-  bidder String
-  amount Float
-  active Boolean @default(false)
-}
-
-model Sale {
-  id     Int     @id @default(autoincrement())
-  tape   Tape    @relation(fields: [tapeId], references: [id])
-  tapeId Int
-  amount String // this should be a float
-  active Boolean @default(false)
 }
 
 model Song {

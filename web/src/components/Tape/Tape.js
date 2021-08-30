@@ -1,31 +1,16 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, routes } from '@redwoodjs/router'
-import { useMutation } from '@redwoodjs/web'
 import useAPI from '../../hooks/useAPI'
-import { Toaster, toast } from '@redwoodjs/web/toast'
+import { Toaster } from '@redwoodjs/web/toast'
 import { ContractContext } from '../../contexts/contractContext'
-import { ethers } from 'ethers'
 
 // UI Components
-import Slideover from '../Tailwind/Slideover'
-import BidItem from '../BidItem/BidItem'
 import TapeStats from '../TapeStats/TapeStats'
 import CassetteScene from '../Three/Scenes/CassetteScene'
-
-const CREATE_BID_MUTATION = gql`
-  mutation CreateBidMutation($input: CreateBidInput!) {
-    createBid(input: $input) {
-      id
-      bidder
-      amount
-    }
-  }
-`
 
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
-  const [bidSlideOpen, setBidSlideOpen] = useState(false)
   /**
    * isClaimed --
    * boolean for if the tape is available or not.

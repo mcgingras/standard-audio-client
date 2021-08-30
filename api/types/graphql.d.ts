@@ -18,29 +18,6 @@ export type Scalars = {
   Time: string;
 };
 
-export type Bid = {
-  __typename?: 'Bid';
-  id: Scalars['Int'];
-  tape: Tape;
-  tapeId: Scalars['Int'];
-  bidder: Scalars['String'];
-  amount: Scalars['Float'];
-  active: Scalars['Boolean'];
-};
-
-export type CreateBidInput = {
-  tapeId: Scalars['Int'];
-  bidder: Scalars['String'];
-  amount: Scalars['Float'];
-  active: Scalars['Boolean'];
-};
-
-export type CreateSaleInput = {
-  tapeId: Scalars['Int'];
-  amount: Scalars['Int'];
-  active: Scalars['Boolean'];
-};
-
 export type CreateSongInput = {
   name: Scalars['String'];
   artist: Scalars['String'];
@@ -65,30 +42,14 @@ export type CreateTapeInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createBid: Bid;
-  createSale: Sale;
   createSong: Song;
   createTape: Tape;
-  deleteBid: Bid;
-  deleteSale: Sale;
   deleteSong: Song;
   deleteTape: Tape;
-  updateBid: Bid;
-  updateSale: Sale;
   updateSong: Song;
   updateTape: Tape;
   updateTapeWithExistingSongs?: Maybe<Tape>;
   updateTapeWithSongs: Tape;
-};
-
-
-export type MutationCreateBidArgs = {
-  input: CreateBidInput;
-};
-
-
-export type MutationCreateSaleArgs = {
-  input: CreateSaleInput;
 };
 
 
@@ -102,16 +63,6 @@ export type MutationCreateTapeArgs = {
 };
 
 
-export type MutationDeleteBidArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type MutationDeleteSaleArgs = {
-  id: Scalars['Int'];
-};
-
-
 export type MutationDeleteSongArgs = {
   id: Scalars['Int'];
 };
@@ -119,18 +70,6 @@ export type MutationDeleteSongArgs = {
 
 export type MutationDeleteTapeArgs = {
   id: Scalars['Int'];
-};
-
-
-export type MutationUpdateBidArgs = {
-  id: Scalars['Int'];
-  input: UpdateBidInput;
-};
-
-
-export type MutationUpdateSaleArgs = {
-  id: Scalars['Int'];
-  input: UpdateSaleInput;
 };
 
 
@@ -159,25 +98,11 @@ export type MutationUpdateTapeWithSongsArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  bid?: Maybe<Bid>;
-  bids: Array<Bid>;
   redwood?: Maybe<Redwood>;
-  sale?: Maybe<Sale>;
-  sales: Array<Sale>;
   song?: Maybe<Song>;
   songs: Array<Song>;
   tape?: Maybe<Tape>;
   tapes: Array<Tape>;
-};
-
-
-export type QueryBidArgs = {
-  id: Scalars['Int'];
-};
-
-
-export type QuerySaleArgs = {
-  id: Scalars['Int'];
 };
 
 
@@ -201,15 +126,6 @@ export type Redwood = {
   version?: Maybe<Scalars['String']>;
   currentUser?: Maybe<Scalars['JSON']>;
   prismaVersion?: Maybe<Scalars['String']>;
-};
-
-export type Sale = {
-  __typename?: 'Sale';
-  id: Scalars['Int'];
-  tape: Tape;
-  tapeId: Scalars['Int'];
-  amount: Scalars['Int'];
-  active: Scalars['Boolean'];
 };
 
 export type Song = {
@@ -252,25 +168,10 @@ export type Tape = {
   proof: Array<Maybe<Scalars['String']>>;
   isClaimed: Scalars['Boolean'];
   claimLock: Scalars['Boolean'];
-  Bids?: Maybe<Array<Maybe<Bid>>>;
   SongsOnTapes: Array<Maybe<SongsOnTapes>>;
-  SalePrice?: Maybe<Array<Maybe<Sale>>>;
   ipfsHash: Scalars['String'];
 };
 
-
-export type UpdateBidInput = {
-  tapeId?: Maybe<Scalars['Int']>;
-  bidder?: Maybe<Scalars['String']>;
-  amount?: Maybe<Scalars['Float']>;
-  active?: Maybe<Scalars['Boolean']>;
-};
-
-export type UpdateSaleInput = {
-  tapeId?: Maybe<Scalars['Int']>;
-  amount?: Maybe<Scalars['Int']>;
-  active?: Maybe<Scalars['Boolean']>;
-};
 
 export type UpdateSongInput = {
   name?: Maybe<Scalars['String']>;
@@ -383,15 +284,12 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Bid: ResolverTypeWrapper<Bid>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
+  CreateSongInput: CreateSongInput;
   String: ResolverTypeWrapper<Scalars['String']>;
+  CreateTapeInput: CreateTapeInput;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  CreateBidInput: CreateBidInput;
-  CreateSaleInput: CreateSaleInput;
-  CreateSongInput: CreateSongInput;
-  CreateTapeInput: CreateTapeInput;
   Date: ResolverTypeWrapper<Scalars['Date']>;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']>;
   JSON: ResolverTypeWrapper<Scalars['JSON']>;
@@ -399,15 +297,12 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   Redwood: ResolverTypeWrapper<Redwood>;
-  Sale: ResolverTypeWrapper<Sale>;
   Song: ResolverTypeWrapper<Song>;
   SongInput: SongInput;
   SongsOnTapes: ResolverTypeWrapper<SongsOnTapes>;
   SongsOnTapesInput: SongsOnTapesInput;
   Tape: ResolverTypeWrapper<Tape>;
   Time: ResolverTypeWrapper<Scalars['Time']>;
-  UpdateBidInput: UpdateBidInput;
-  UpdateSaleInput: UpdateSaleInput;
   UpdateSongInput: UpdateSongInput;
   UpdateTapeInput: UpdateTapeInput;
   UpdateTapeWithSongsInput: UpdateTapeWithSongsInput;
@@ -415,15 +310,12 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Bid: Bid;
-  Int: Scalars['Int'];
+  CreateSongInput: CreateSongInput;
   String: Scalars['String'];
+  CreateTapeInput: CreateTapeInput;
+  Int: Scalars['Int'];
   Float: Scalars['Float'];
   Boolean: Scalars['Boolean'];
-  CreateBidInput: CreateBidInput;
-  CreateSaleInput: CreateSaleInput;
-  CreateSongInput: CreateSongInput;
-  CreateTapeInput: CreateTapeInput;
   Date: Scalars['Date'];
   DateTime: Scalars['DateTime'];
   JSON: Scalars['JSON'];
@@ -431,28 +323,15 @@ export type ResolversParentTypes = {
   Mutation: {};
   Query: {};
   Redwood: Redwood;
-  Sale: Sale;
   Song: Song;
   SongInput: SongInput;
   SongsOnTapes: SongsOnTapes;
   SongsOnTapesInput: SongsOnTapesInput;
   Tape: Tape;
   Time: Scalars['Time'];
-  UpdateBidInput: UpdateBidInput;
-  UpdateSaleInput: UpdateSaleInput;
   UpdateSongInput: UpdateSongInput;
   UpdateTapeInput: UpdateTapeInput;
   UpdateTapeWithSongsInput: UpdateTapeWithSongsInput;
-};
-
-export type BidResolvers<ContextType = any, ParentType extends ResolversParentTypes['Bid'] = ResolversParentTypes['Bid']> = {
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  tape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType>;
-  tapeId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  bidder?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  amount?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
-  active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {
@@ -472,16 +351,10 @@ export interface JsonObjectScalarConfig extends GraphQLScalarTypeConfig<Resolver
 }
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  createBid?: Resolver<ResolversTypes['Bid'], ParentType, ContextType, RequireFields<MutationCreateBidArgs, 'input'>>;
-  createSale?: Resolver<ResolversTypes['Sale'], ParentType, ContextType, RequireFields<MutationCreateSaleArgs, 'input'>>;
   createSong?: Resolver<ResolversTypes['Song'], ParentType, ContextType, RequireFields<MutationCreateSongArgs, 'input'>>;
   createTape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType, RequireFields<MutationCreateTapeArgs, 'input'>>;
-  deleteBid?: Resolver<ResolversTypes['Bid'], ParentType, ContextType, RequireFields<MutationDeleteBidArgs, 'id'>>;
-  deleteSale?: Resolver<ResolversTypes['Sale'], ParentType, ContextType, RequireFields<MutationDeleteSaleArgs, 'id'>>;
   deleteSong?: Resolver<ResolversTypes['Song'], ParentType, ContextType, RequireFields<MutationDeleteSongArgs, 'id'>>;
   deleteTape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType, RequireFields<MutationDeleteTapeArgs, 'id'>>;
-  updateBid?: Resolver<ResolversTypes['Bid'], ParentType, ContextType, RequireFields<MutationUpdateBidArgs, 'id' | 'input'>>;
-  updateSale?: Resolver<ResolversTypes['Sale'], ParentType, ContextType, RequireFields<MutationUpdateSaleArgs, 'id' | 'input'>>;
   updateSong?: Resolver<ResolversTypes['Song'], ParentType, ContextType, RequireFields<MutationUpdateSongArgs, 'id' | 'input'>>;
   updateTape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType, RequireFields<MutationUpdateTapeArgs, 'id' | 'input'>>;
   updateTapeWithExistingSongs?: Resolver<Maybe<ResolversTypes['Tape']>, ParentType, ContextType, RequireFields<MutationUpdateTapeWithExistingSongsArgs, 'id' | 'input'>>;
@@ -489,11 +362,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  bid?: Resolver<Maybe<ResolversTypes['Bid']>, ParentType, ContextType, RequireFields<QueryBidArgs, 'id'>>;
-  bids?: Resolver<Array<ResolversTypes['Bid']>, ParentType, ContextType>;
   redwood?: Resolver<Maybe<ResolversTypes['Redwood']>, ParentType, ContextType>;
-  sale?: Resolver<Maybe<ResolversTypes['Sale']>, ParentType, ContextType, RequireFields<QuerySaleArgs, 'id'>>;
-  sales?: Resolver<Array<ResolversTypes['Sale']>, ParentType, ContextType>;
   song?: Resolver<Maybe<ResolversTypes['Song']>, ParentType, ContextType, RequireFields<QuerySongArgs, 'id'>>;
   songs?: Resolver<Array<ResolversTypes['Song']>, ParentType, ContextType>;
   tape?: Resolver<Maybe<ResolversTypes['Tape']>, ParentType, ContextType, RequireFields<QueryTapeArgs, 'id'>>;
@@ -504,15 +373,6 @@ export type RedwoodResolvers<ContextType = any, ParentType extends ResolversPare
   version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   currentUser?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>;
   prismaVersion?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type SaleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Sale'] = ResolversParentTypes['Sale']> = {
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  tape?: Resolver<ResolversTypes['Tape'], ParentType, ContextType>;
-  tapeId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  amount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  active?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -544,9 +404,7 @@ export type TapeResolvers<ContextType = any, ParentType extends ResolversParentT
   proof?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   isClaimed?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   claimLock?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-  Bids?: Resolver<Maybe<Array<Maybe<ResolversTypes['Bid']>>>, ParentType, ContextType>;
   SongsOnTapes?: Resolver<Array<Maybe<ResolversTypes['SongsOnTapes']>>, ParentType, ContextType>;
-  SalePrice?: Resolver<Maybe<Array<Maybe<ResolversTypes['Sale']>>>, ParentType, ContextType>;
   ipfsHash?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -556,7 +414,6 @@ export interface TimeScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
 }
 
 export type Resolvers<ContextType = any> = {
-  Bid?: BidResolvers<ContextType>;
   Date?: GraphQLScalarType;
   DateTime?: GraphQLScalarType;
   JSON?: GraphQLScalarType;
@@ -564,7 +421,6 @@ export type Resolvers<ContextType = any> = {
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Redwood?: RedwoodResolvers<ContextType>;
-  Sale?: SaleResolvers<ContextType>;
   Song?: SongResolvers<ContextType>;
   SongsOnTapes?: SongsOnTapesResolvers<ContextType>;
   Tape?: TapeResolvers<ContextType>;

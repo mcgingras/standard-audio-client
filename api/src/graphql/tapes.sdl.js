@@ -9,9 +9,7 @@ export const schema = gql`
     proof: [String]!
     isClaimed: Boolean!
     claimLock: Boolean!
-    Bids: [Bid]
     SongsOnTapes: [SongsOnTapes]!
-    SalePrice: [Sale]
     ipfsHash: String!
   }
 

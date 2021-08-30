@@ -42,19 +42,7 @@ const generateStats = (tape) => {
   }
 }
 
-const bidPrice = (bid) => {
-  if (bid.activeBid) {
-    return (
-      <span className="text-3xl text-center font-book">
-        {ethers.utils.formatEther(bid.amount.toString())} ETH
-      </span>
-    )
-  } else {
-    return <span className="text-4xl text-center font-bold">NO BIDS</span>
-  }
-}
-
-const TapeStats = ({ isOwner, tape, bid, setBidSlideOpen }) => {
+const TapeStats = ({ isOwner, tape }) => {
   const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
   const [buttonUp, setButtonUp] = useState(true)
@@ -161,18 +149,7 @@ const TapeStats = ({ isOwner, tape, bid, setBidSlideOpen }) => {
                   <div className="flex flex-col justify-between pl-0 sm:pl-8 py-4 sm:py-0">
                     {tape.isClaimed ? (
                       <>
-                        <span className="uppercase text-center text-xs font-bold">
-                          Current Bid
-                        </span>
-                        {bidPrice(bid)}
-                        <button
-                          onClick={() => {
-                            setBidSlideOpen(true)
-                          }}
-                          className="bg-gray-900 px-4 py-2 text-blue-200 font-bold text-sm rounded-full"
-                        >
-                          {isOwner ? 'View Bids' : 'Bid'}
-                        </button>
+                        <div>claimed</div>
                       </>
                     ) : (
                       <>

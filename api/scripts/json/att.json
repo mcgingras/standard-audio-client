@@ -1,68 +1,72 @@
 {
   "0": {
     "decoded": {
-      "capacity": "46",
-      "quality": "medium",
+      "capacity": "60",
+      "quality": "high",
       "colors": {
         "screw": "yellow",
-        "label_small": "yellow",
-        "sticker_large": "yellow",
-        "front_canal": "orange",
-        "front_top_plate": "red",
-        "front_middle_layer": "green",
-        "middle_main": "yellow",
-        "film_roll": "purple",
-        "teeth": "white",
-        "teeth_ring": "white",
+        "label_small": "purple",
+        "sticker_large": "white",
+        "front_canal": "red",
+        "front_top_plate": "black",
+        "front_middle_layer": "white",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "yellow",
         "film_middle_connector": "yellow",
-        "inner_post_left": "black",
-        "inner_post_right": "yellow",
-        "film_main_wiggle": "yellow",
-        "back_middle_layer": "orange",
-        "back_canal": "yellow",
-        "back_top_plate": "orange"
+        "inner_post_left": "yellow",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "black",
+        "back_canal": "orange",
+        "back_top_plate": "yellow"
       }
     },
     "raw": {
-      "style": 642693248820305,
-      "quality": 1,
-      "capacity": 0
+      "style": 765800575754186,
+      "quality": 2,
+      "capacity": 1
     },
     "binary": {
-      "style": "010010010001000011010101110110010111010010001010001"
+      "style": "010101110000111110111010111010010010101111111001010",
+      "capacity": "1",
+      "quality": "10"
     }
   },
   "1": {
     "decoded": {
       "capacity": "46",
-      "quality": "medium",
+      "quality": "high",
       "colors": {
-        "screw": "purple",
-        "label_small": "white",
-        "sticker_large": "white",
-        "front_canal": "yellow",
-        "front_top_plate": "yellow",
-        "front_middle_layer": "yellow",
-        "middle_main": "red",
-        "film_roll": "white",
-        "teeth": "orange",
-        "teeth_ring": "red",
-        "film_middle_connector": "purple",
-        "inner_post_left": "white",
-        "inner_post_right": "green",
-        "film_main_wiggle": "red",
-        "back_middle_layer": "orange",
-        "back_canal": "purple",
+        "screw": "white",
+        "label_small": "yellow",
+        "sticker_large": "black",
+        "front_canal": "red",
+        "front_top_plate": "red",
+        "front_middle_layer": "white",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "purple",
+        "film_middle_connector": "white",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "yellow",
+        "back_canal": "red",
         "back_top_plate": "red"
       }
     },
     "raw": {
-      "style": 1646124349206632,
-      "quality": 1,
+      "style": 1790058947977856,
+      "quality": 2,
       "capacity": 0
     },
     "binary": {
-      "style": "101110110010010010000110001000101110011000001101000"
+      "style": "110010111000000110010010011101110001010001010000000",
+      "capacity": "0",
+      "quality": "10"
     }
   },
   "2": {
@@ -70,35 +74,1227 @@
       "capacity": "46",
       "quality": "high",
       "colors": {
-        "screw": "purple",
-        "label_small": "green",
-        "sticker_large": "green",
-        "front_canal": "yellow",
-        "front_top_plate": "blue",
-        "front_middle_layer": "yellow",
-        "middle_main": "white",
-        "film_roll": "black",
-        "teeth": "black",
+        "screw": "white",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "red",
+        "front_middle_layer": "black",
+        "middle_main": "purple",
+        "film_roll": "green",
+        "teeth": "orange",
         "teeth_ring": "yellow",
-        "film_middle_connector": "blue",
+        "film_middle_connector": "orange",
         "inner_post_left": "purple",
-        "inner_post_right": "black",
-        "film_main_wiggle": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
         "back_middle_layer": "yellow",
-        "back_canal": "white",
-        "back_top_plate": "purple"
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
       }
     },
     "raw": {
-      "style": 1527521213608629,
+      "style": 1771379154658452,
       "quality": 2,
       "capacity": 0
     },
     "binary": {
-      "style": "101011011010100010110111111010100101111001010110101"
+      "style": "110010010110000111101011001010001101010010010010100",
+      "capacity": "0",
+      "quality": "10"
     }
   },
   "3": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "blue",
+        "sticker_large": "white",
+        "front_canal": "green",
+        "front_top_plate": "green",
+        "front_middle_layer": "white",
+        "middle_main": "white",
+        "film_roll": "white",
+        "teeth": "white",
+        "teeth_ring": "black",
+        "film_middle_connector": "green",
+        "inner_post_left": "yellow",
+        "inner_post_right": "black",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "yellow",
+        "back_canal": "blue",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 731990050304674,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010100110011011110110110110111011010111001010100010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "4": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "black",
+        "film_middle_connector": "black",
+        "inner_post_left": "yellow",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "orange",
+        "back_canal": "purple",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 643408968112749,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010010010010110101010010111111010101101001101101",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "5": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "low",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "white",
+        "teeth": "black",
+        "teeth_ring": "blue",
+        "film_middle_connector": "green",
+        "inner_post_left": "white",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "yellow",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 1487865650296022,
+      "quality": 0,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010010010011010010110111100011110011010011010110",
+      "capacity": "0",
+      "quality": "0"
+    }
+  },
+  "6": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "orange",
+        "label_small": "blue",
+        "sticker_large": "red",
+        "front_canal": "red",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "purple",
+        "inner_post_left": "green",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "purple",
+        "back_canal": "white",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 422372760203126,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "001100000000010010101010010010101011010111101110110",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "7": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "white",
+        "sticker_large": "black",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "black",
+        "middle_main": "blue",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "blue",
+        "film_middle_connector": "white",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "red",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1934243145524354,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "110110111110010111100010011100110010010010010000010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "8": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "low",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "green",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "white",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "red",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "white",
+        "inner_post_left": "green",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "red",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 1492297398740161,
+      "quality": 0,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010011010011110010010000010110011110010011000001",
+      "capacity": "0",
+      "quality": "0"
+    }
+  },
+  "9": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "white",
+        "sticker_large": "blue",
+        "front_canal": "purple",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "red",
+        "teeth": "red",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "black",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "purple",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 794897517634898,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010110100101111010010000000001010111110010101010010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "10": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "yellow",
+        "sticker_large": "blue",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "black",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "orange",
+        "back_canal": "red",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 933915176772674,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "011010100010110010000010010010111001010010001000010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "11": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "white",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "white",
+        "front_top_plate": "black",
+        "front_middle_layer": "red",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "black",
+        "back_canal": "purple",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 1767404043022317,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110010001110111000111010010001010001010111111101101",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "12": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "red",
+        "front_top_plate": "purple",
+        "front_middle_layer": "yellow",
+        "middle_main": "orange",
+        "film_roll": "red",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "orange",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "black"
+      }
+    },
+    "raw": {
+      "style": 638078631093655,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010001000101010001000010001001010010010110010111",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "13": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "red",
+        "label_small": "yellow",
+        "sticker_large": "green",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "red",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "purple",
+        "film_middle_connector": "white",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "yellow",
+        "back_canal": "white",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 87004540381874,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "000010011110010000101010010101110010010101010110010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "14": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "orange",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "orange",
+        "inner_post_left": "white",
+        "inner_post_right": "white",
+        "film_main_wiggle": "green",
+        "back_middle_layer": "blue",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 608247141066514,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010001010010011001010010010110001110110011100010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "15": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "ultra",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "white",
+        "sticker_large": "yellow",
+        "front_canal": "black",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "orange",
+        "film_roll": "black",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "red",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "purple",
+        "back_canal": "yellow",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 786891608171862,
+      "quality": 3,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010110010111010110001111010110010000010010101010110",
+      "capacity": "1",
+      "quality": "11"
+    }
+  },
+  "16": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "black",
+        "sticker_large": "yellow",
+        "front_canal": "green",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "purple",
+        "inner_post_left": "purple",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "purple",
+        "back_canal": "purple",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 820189819477355,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010111010011111010101010010110101101001110101101011",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "17": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "medium",
+      "colors": {
+        "screw": "orange",
+        "label_small": "yellow",
+        "sticker_large": "purple",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "white",
+        "teeth_ring": "purple",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "black",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 375159331050962,
+      "quality": 1,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "001010101010011010010010110101010010101010111010010",
+      "capacity": "0",
+      "quality": "1"
+    }
+  },
+  "18": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "medium",
+      "colors": {
+        "screw": "orange",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "green",
+        "teeth": "orange",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "green",
+        "inner_post_left": "orange",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "red",
+        "back_canal": "orange",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 361896516314122,
+      "quality": 1,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "001010010010010010010011001010011001110010000001010",
+      "capacity": "1",
+      "quality": "1"
+    }
+  },
+  "19": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "red",
+        "sticker_large": "yellow",
+        "front_canal": "black",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 857295104421010,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "011000010111011010010010010001010101010110010010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "20": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "black",
+        "front_middle_layer": "orange",
+        "middle_main": "black",
+        "film_roll": "black",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "purple",
+        "back_canal": "green",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 643712430990682,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010010010111001111111010110010010110010101011010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "21": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "orange",
+        "label_small": "yellow",
+        "sticker_large": "black",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "black",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "white",
+        "inner_post_left": "orange",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "white",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 384162181199026,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "001010111010110010010111010010110001011010010110010",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "22": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "blue",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "purple",
+        "middle_main": "yellow",
+        "film_roll": "orange",
+        "teeth": "blue",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 1496618076026003,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010100010010101010001100110010010011010010010011",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "23": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "blue",
+        "label_small": "yellow",
+        "sticker_large": "green",
+        "front_canal": "red",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "orange",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "purple",
+        "film_middle_connector": "white",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "red",
+        "back_middle_layer": "black",
+        "back_canal": "purple",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 1209611281146348,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "100010011000010001010010010101110101010000111101100",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "24": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "ultra",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "blue",
+        "sticker_large": "yellow",
+        "front_canal": "orange",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "green",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "red",
+        "inner_post_left": "black",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 713327936509074,
+      "quality": 3,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010100010001100010010011010010000111001010010010010",
+      "capacity": "0",
+      "quality": "11"
+    }
+  },
+  "25": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "green",
+        "label_small": "yellow",
+        "sticker_large": "black",
+        "front_canal": "green",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "red",
+        "film_roll": "orange",
+        "teeth": "purple",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "purple",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 947418468787626,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "011010111011010110000001101010010010010010110101010",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "26": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "purple",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "white",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "orange",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 640661248894090,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010010001101010110110010010001010010110010010001010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "27": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "black",
+        "sticker_large": "red",
+        "front_canal": "red",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "green",
+        "middle_main": "orange",
+        "film_roll": "orange",
+        "teeth": "blue",
+        "teeth_ring": "white",
+        "film_middle_connector": "green",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "purple",
+        "back_canal": "white",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 1090880032023926,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "011111000000010011001001100110011010010010101110110",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "28": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "medium",
+      "colors": {
+        "screw": "purple",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "blue",
+        "film_roll": "purple",
+        "teeth": "orange",
+        "teeth_ring": "purple",
+        "film_middle_connector": "black",
+        "inner_post_left": "yellow",
+        "inner_post_right": "black",
+        "film_main_wiggle": "blue",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "red"
+      }
+    },
+    "raw": {
+      "style": 1454263741806992,
+      "quality": 1,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "101001010101010010100101001101111010111100110010000",
+      "capacity": "10",
+      "quality": "1"
+    }
+  },
+  "29": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "medium",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "black",
+        "sticker_large": "blue",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "orange",
+        "teeth": "yellow",
+        "teeth_ring": "purple",
+        "film_middle_connector": "red",
+        "inner_post_left": "white",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 828087053004438,
+      "quality": 1,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010111100010010010000001010101000110010111010010110",
+      "capacity": "0",
+      "quality": "1"
+    }
+  },
+  "30": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "white",
+        "film_roll": "blue",
+        "teeth": "yellow",
+        "teeth_ring": "blue",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "green",
+        "inner_post_right": "white",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "orange",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 661105567984722,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010110010100010110100010100010011110110001010010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "31": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "yellow",
+        "sticker_large": "blue",
+        "front_canal": "yellow",
+        "front_top_plate": "purple",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "green",
+        "teeth": "orange",
+        "teeth_ring": "green",
+        "film_middle_connector": "white",
+        "inner_post_left": "black",
+        "inner_post_right": "red",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 1778273654377108,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "110010100010101010010011001011110111000101010010100",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "32": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "ultra",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "black",
+        "sticker_large": "orange",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "purple",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "green",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "blue",
+        "back_middle_layer": "red",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 814900564305938,
+      "quality": 3,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010111001010010010111010010101010011010100000010010",
+      "capacity": "1",
+      "quality": "11"
+    }
+  },
+  "33": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "green",
+        "middle_main": "blue",
+        "film_roll": "white",
+        "teeth": "red",
+        "teeth_ring": "green",
+        "film_middle_connector": "white",
+        "inner_post_left": "blue",
+        "inner_post_right": "black",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "orange",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 645581642560596,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010010110010011100110000011110100111010001010100",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "34": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "purple",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "white",
+        "film_roll": "red",
+        "teeth": "yellow",
+        "teeth_ring": "blue",
+        "film_middle_connector": "green",
+        "inner_post_left": "white",
+        "inner_post_right": "white",
+        "film_main_wiggle": "blue",
+        "back_middle_layer": "yellow",
+        "back_canal": "red",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 1485085917276292,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010001101010110110000010100011110110100010000100",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "35": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "white",
+        "sticker_large": "orange",
+        "front_canal": "red",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "blue",
+        "middle_main": "yellow",
+        "film_roll": "green",
+        "teeth": "green",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "purple",
+        "inner_post_right": "green",
+        "film_main_wiggle": "red",
+        "back_middle_layer": "yellow",
+        "back_canal": "red",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 1904528543363205,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110110001000010100010011011010010101011000010000101",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "36": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "orange",
+        "label_small": "purple",
+        "sticker_large": "purple",
+        "front_canal": "blue",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "red",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "white",
+        "back_canal": "purple",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 481725986286506,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "001101101100010000010010010010010101010101110101010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "37": {
     "decoded": {
       "capacity": "60",
       "quality": "high",
@@ -106,29 +1302,2201 @@
         "screw": "yellow",
         "label_small": "black",
         "sticker_large": "yellow",
-        "front_canal": "green",
-        "front_top_plate": "red",
+        "front_canal": "yellow",
+        "front_top_plate": "black",
         "front_middle_layer": "yellow",
         "middle_main": "purple",
-        "film_roll": "black",
-        "teeth": "purple",
-        "teeth_ring": "red",
-        "film_middle_connector": "orange",
-        "inner_post_left": "green",
-        "inner_post_right": "black",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "purple",
+        "inner_post_left": "white",
+        "inner_post_right": "blue",
         "film_main_wiggle": "yellow",
         "back_middle_layer": "green",
+        "back_canal": "yellow",
+        "back_top_plate": "red"
+      }
+    },
+    "raw": {
+      "style": 819640055317712,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010111010010111010101010010010101110100010011010000",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "38": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "black",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "purple",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "white",
+        "teeth_ring": "purple",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "purple",
+        "back_canal": "green",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 2015587730004826,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "111001010010010101010010110101010010001101101011010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "39": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "orange",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "red",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 660958159136146,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010110010010001101010000010010010110010110010010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "40": {
+    "decoded": {
+      "capacity": "120",
+      "quality": "low",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "green",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "green",
+        "film_middle_connector": "orange",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "red",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 645582211589506,
+      "quality": 0,
+      "capacity": 3
+    },
+    "binary": {
+      "style": "010010010110010011101010010011001010010010110000010",
+      "capacity": "11",
+      "quality": "0"
+    }
+  },
+  "41": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "orange",
+        "front_top_plate": "white",
+        "front_middle_layer": "purple",
+        "middle_main": "orange",
+        "film_roll": "yellow",
+        "teeth": "purple",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "blue",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "black",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 1487546182411449,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010010001110101001010101110010100010010010111001",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "42": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "red",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "red",
+        "front_middle_layer": "black",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "green",
+        "inner_post_right": "black",
+        "film_main_wiggle": "green",
+        "back_middle_layer": "blue",
+        "back_canal": "yellow",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 97919127123731,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "000010110010000111010010010110010011111011100010011",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "43": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "medium",
+      "colors": {
+        "screw": "white",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "red",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "black",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "orange",
+        "back_canal": "white",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 1735604124243057,
+      "quality": 1,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110001010101000010111010011010010111101010001110001",
+      "capacity": "1",
+      "quality": "1"
+    }
+  },
+  "44": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "low",
+      "colors": {
+        "screw": "red",
+        "label_small": "yellow",
+        "sticker_large": "red",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "purple",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "black",
+        "back_canal": "red",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 71694048468930,
+      "quality": 0,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "000010000010011010010010010010010101001111111000010",
+      "capacity": "10",
+      "quality": "0"
+    }
+  },
+  "45": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "red",
+        "sticker_large": "yellow",
+        "front_canal": "black",
+        "front_top_plate": "purple",
+        "front_middle_layer": "yellow",
+        "middle_main": "orange",
+        "film_roll": "purple",
+        "teeth": "purple",
+        "teeth_ring": "red",
+        "film_middle_connector": "black",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "purple",
+        "back_canal": "purple",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 857431921730411,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "011000010111101010001101101000111010010001101101011",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "46": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "orange",
+        "label_small": "yellow",
+        "sticker_large": "red",
+        "front_canal": "white",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "white",
+        "teeth": "yellow",
+        "teeth_ring": "blue",
+        "film_middle_connector": "purple",
+        "inner_post_left": "yellow",
+        "inner_post_right": "red",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "blue",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 355442678367506,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "001010000110100010111110010100101010000010100010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "47": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "red",
+        "label_small": "purple",
+        "sticker_large": "green",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "blue",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "white",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "blue",
+        "back_canal": "purple",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 190374731132202,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "000101011010010010100010010001110010010110100101010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "48": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "purple",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "purple",
+        "inner_post_left": "red",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "green",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 920515289310618,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "011010001010011010000101010110101000110010110011010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "49": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "medium",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "purple",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "blue",
+        "teeth": "green",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "red",
+        "inner_post_left": "orange",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "red"
+      }
+    },
+    "raw": {
+      "style": 643577818420624,
+      "quality": 1,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010010010101010010100011010000001001010110010000",
+      "capacity": "10",
+      "quality": "1"
+    }
+  },
+  "50": {
+    "decoded": {
+      "capacity": "120",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "black",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "black",
+        "inner_post_left": "purple",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "purple",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1489993851640658,
+      "quality": 2,
+      "capacity": 3
+    },
+    "binary": {
+      "style": "101010010110010010000111010001111101001101101010010",
+      "capacity": "11",
+      "quality": "10"
+    }
+  },
+  "51": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "green",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "orange",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "white",
+        "teeth_ring": "red",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "red",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 648035772736710,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010010011010110001010010110000010010010010011000110",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "52": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "purple",
+        "sticker_large": "yellow",
+        "front_canal": "green",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "white",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "green",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 749477544141982,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010101010011010010101010110110010010010010010011110",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "53": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "blue",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "orange",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "blue",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "white",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "black",
+        "back_canal": "purple",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1204121236088298,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "100010001110010010001010010100010110010010111101010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "54": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "red",
+        "front_middle_layer": "green",
+        "middle_main": "yellow",
+        "film_roll": "red",
+        "teeth": "white",
+        "teeth_ring": "purple",
+        "film_middle_connector": "blue",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "orange",
+        "back_canal": "red",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 1735607134020677,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "110001010101000011010000110101100010110010001000101",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "55": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "red",
+        "sticker_large": "red",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "green",
+        "middle_main": "yellow",
+        "film_roll": "purple",
+        "teeth": "red",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "orange",
+        "inner_post_left": "green",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "green",
+        "back_middle_layer": "black",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 564490374850514,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010000000010110011010101000010001011010011111010010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "56": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "white",
+        "sticker_large": "blue",
+        "front_canal": "yellow",
+        "front_top_plate": "red",
+        "front_middle_layer": "yellow",
+        "middle_main": "green",
+        "film_roll": "white",
+        "teeth": "orange",
+        "teeth_ring": "white",
+        "film_middle_connector": "white",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "yellow",
+        "back_canal": "white",
+        "back_top_plate": "black"
+      }
+    },
+    "raw": {
+      "style": 1918669027844791,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "110110100010000010011110001110110001010001010110111",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "57": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "black",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 1487801688861652,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101010010010010010111010011001010010010101111010100",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "58": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "red",
+        "sticker_large": "red",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "blue",
+        "middle_main": "purple",
+        "film_roll": "purple",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "red",
+        "back_middle_layer": "orange",
+        "back_canal": "green",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1692326272000090,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110000000110010100101101010010010010110000001011010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "59": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "purple",
+        "sticker_large": "orange",
+        "front_canal": "green",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "orange",
+        "middle_main": "black",
+        "film_roll": "green",
+        "teeth": "purple",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "black",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 745073165542034,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010101001011010001111011101010111010010001010010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "60": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "orange",
+        "label_small": "green",
+        "sticker_large": "black",
+        "front_canal": "black",
+        "front_top_plate": "orange",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "orange",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "purple",
+        "back_middle_layer": "yellow",
+        "back_canal": "purple",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 421748789553837,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "001011111111001010000001010110010010010101010101101",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "61": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "orange",
+        "sticker_large": "yellow",
+        "front_canal": "green",
+        "front_top_plate": "green",
+        "front_middle_layer": "red",
+        "middle_main": "green",
+        "film_roll": "white",
+        "teeth": "blue",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "red",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 608789940741249,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010001010011011000011110100001010010010010010000001",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "62": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "orange",
+        "sticker_large": "black",
+        "front_canal": "yellow",
+        "front_top_plate": "red",
+        "front_middle_layer": "green",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "blue",
+        "back_middle_layer": "yellow",
+        "back_canal": "black",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1755948377532602,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "110001111010000011010010111010010010110100010111010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "63": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "ultra",
+      "colors": {
+        "screw": "green",
+        "label_small": "blue",
+        "sticker_large": "yellow",
+        "front_canal": "green",
+        "front_top_plate": "purple",
+        "front_middle_layer": "blue",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "red",
+        "teeth_ring": "orange",
+        "film_middle_connector": "black",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "red",
+        "back_canal": "yellow",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 995988155966485,
+      "quality": 3,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "011100010011101100010010000001111001010010000010101",
+      "capacity": "0",
+      "quality": "11"
+    }
+  },
+  "64": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "white",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "white",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "red",
+        "film_middle_connector": "orange",
+        "inner_post_left": "yellow",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 784181890475154,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010110010010011010110010011000001010110010010010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "65": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "blue",
+        "label_small": "purple",
+        "sticker_large": "purple",
+        "front_canal": "red",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "white",
+        "film_middle_connector": "white",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "white",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1324312763639026,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "100101101000111010010010111110110010010010011110010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "66": {
+    "decoded": {
+      "capacity": "120",
+      "quality": "medium",
+      "colors": {
+        "screw": "orange",
+        "label_small": "black",
+        "sticker_large": "purple",
+        "front_canal": "orange",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "purple",
+        "film_roll": "green",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "green",
+        "inner_post_left": "green",
+        "inner_post_right": "green",
+        "film_main_wiggle": "green",
+        "back_middle_layer": "red",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 550809595917844,
+      "quality": 1,
+      "capacity": 3
+    },
+    "binary": {
+      "style": "001111101001111010101011010010011011011011000010100",
+      "capacity": "11",
+      "quality": "1"
+    }
+  },
+  "67": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "green",
+        "film_roll": "blue",
+        "teeth": "red",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "orange",
+        "inner_post_left": "blue",
+        "inner_post_right": "black",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "yellow",
+        "back_canal": "white",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 643372683787441,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010010010010010010011100000010001100111110010110001",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "68": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "ultra",
+      "colors": {
+        "screw": "green",
+        "label_small": "yellow",
+        "sticker_large": "black",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "orange",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "black",
+        "back_canal": "orange",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 946835508761545,
+      "quality": 3,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "011010111010010010001010010001010010001001111001001",
+      "capacity": "1",
+      "quality": "11"
+    }
+  },
+  "69": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "red",
+        "label_small": "purple",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "red",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "green",
+        "inner_post_left": "purple",
+        "inner_post_right": "green",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "orange",
+        "back_canal": "blue",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 187623537557091,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "000101010101010010010000010010011101011111001100011",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "70": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "orange",
+        "label_small": "orange",
+        "sticker_large": "purple",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "white",
+        "film_middle_connector": "purple",
+        "inner_post_left": "green",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "white",
+        "back_canal": "black",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 339911543989178,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "001001101010010010111010010110101011010001110111010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "71": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "purple",
+        "sticker_large": "yellow",
+        "front_canal": "red",
+        "front_top_plate": "white",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "white",
+        "back_top_plate": "red"
+      }
+    },
+    "raw": {
+      "style": 748099855885488,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010101010000110010010010010001010101010010010110000",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "72": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "green",
+        "front_canal": "purple",
+        "front_top_plate": "purple",
+        "front_middle_layer": "white",
+        "middle_main": "white",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "green",
+        "film_middle_connector": "purple",
+        "inner_post_left": "orange",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "white",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 649663505282290,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010011101101110110010010011101001011010011110010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "73": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "purple",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "white",
+        "film_middle_connector": "black",
+        "inner_post_left": "blue",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "red",
+        "back_canal": "green",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 660992646079517,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010010110010010101101010111110111100110010000011101",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "74": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "black",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "white",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "white",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "red",
+        "back_middle_layer": "green",
+        "back_canal": "green",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 2048685211472094,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "111010001110100010010110010010010010101000011011110",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "75": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "purple",
+        "label_small": "purple",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "blue",
+        "middle_main": "purple",
+        "film_roll": "black",
+        "teeth": "orange",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "black",
+        "back_canal": "orange",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 1595569500394957,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "101101010110010100101111001010010010001010111001101",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "76": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "yellow",
+        "sticker_large": "red",
+        "front_canal": "yellow",
+        "front_top_plate": "orange",
+        "front_middle_layer": "purple",
+        "middle_main": "yellow",
+        "film_roll": "purple",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "purple",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "green",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1760432640054482,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110010000010001101010101010001010010101010011010010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "77": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "white",
+        "sticker_large": "black",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "orange",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "green",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 808298102776977,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010110111110010010010010001010010011110010010010001",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "78": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "purple",
+        "front_canal": "yellow",
+        "front_top_plate": "black",
+        "front_middle_layer": "white",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "green",
+        "teeth_ring": "black",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "purple",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 656943499257257,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010101010111110010010011111010010010010110101001",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "79": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "white",
+        "teeth": "blue",
+        "teeth_ring": "white",
+        "film_middle_connector": "orange",
+        "inner_post_left": "purple",
+        "inner_post_right": "orange",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "green",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 643715551367890,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010010010010111010010110100110001101001001011010010",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "80": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "blue",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "green",
+        "film_middle_connector": "purple",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "green",
+        "back_middle_layer": "green",
+        "back_canal": "yellow",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 1558204780979925,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "101100010010010110111010010011101010010011011010101",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "81": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "low",
+      "colors": {
+        "screw": "white",
+        "label_small": "purple",
+        "sticker_large": "yellow",
+        "front_canal": "black",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "white",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "orange",
+        "film_middle_connector": "red",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "black",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1877646189437906,
+      "quality": 0,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "110101010111011010110010010001000101010001111010010",
+      "capacity": "10",
+      "quality": "0"
+    }
+  },
+  "82": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "orange",
+        "middle_main": "yellow",
+        "film_roll": "black",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "orange",
+        "inner_post_left": "red",
+        "inner_post_right": "blue",
+        "film_main_wiggle": "black",
+        "back_middle_layer": "green",
+        "back_canal": "blue",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 645562479431395,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010010110010001010111010010001000100111011100011",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "83": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "low",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "green",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "orange",
+        "front_middle_layer": "black",
+        "middle_main": "purple",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "purple",
+        "inner_post_left": "orange",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "black",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 680182467048634,
+      "quality": 0,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "010011010101001111101010010010101001011010010111010",
+      "capacity": "1",
+      "quality": "0"
+    }
+  },
+  "84": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "low",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "orange",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "purple",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "orange",
+        "inner_post_right": "white",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 660556703392916,
+      "quality": 0,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010110001100010111010111101010001110010010010100",
+      "capacity": "0",
+      "quality": "0"
+    }
+  },
+  "85": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "green",
+        "sticker_large": "purple",
+        "front_canal": "yellow",
+        "front_top_plate": "orange",
+        "front_middle_layer": "black",
+        "middle_main": "yellow",
+        "film_roll": "purple",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "orange",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 691724519814226,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010011101010001111010101010010010010011010001010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "86": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "purple",
+        "sticker_large": "orange",
+        "front_canal": "green",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "white",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "purple",
+        "inner_post_left": "purple",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 1871319773127830,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "110101001011111010010010110010101101010010010010110",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "87": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "white",
+        "label_small": "white",
+        "sticker_large": "black",
+        "front_canal": "yellow",
+        "front_top_plate": "red",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "orange",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "black",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "white",
+        "back_canal": "white",
+        "back_top_plate": "black"
+      }
+    },
+    "raw": {
+      "style": 1931866798793655,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110110111010000010111001010010010111010001110110111",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "88": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "medium",
+      "colors": {
+        "screw": "white",
+        "label_small": "orange",
+        "sticker_large": "purple",
+        "front_canal": "red",
+        "front_top_plate": "red",
+        "front_middle_layer": "yellow",
+        "middle_main": "red",
+        "film_roll": "yellow",
+        "teeth": "orange",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "red",
+        "back_middle_layer": "green",
+        "back_canal": "red",
+        "back_top_plate": "orange"
+      }
+    },
+    "raw": {
+      "style": 1746041932685505,
+      "quality": 1,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "110001101000000010000010001001010010010000011000001",
+      "capacity": "0",
+      "quality": "1"
+    }
+  },
+  "89": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "yellow",
+        "front_canal": "purple",
+        "front_top_plate": "orange",
+        "front_middle_layer": "yellow",
+        "middle_main": "green",
+        "film_roll": "orange",
+        "teeth": "yellow",
+        "teeth_ring": "black",
+        "film_middle_connector": "green",
+        "inner_post_left": "yellow",
+        "inner_post_right": "blue",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "blue",
         "back_canal": "yellow",
         "back_top_plate": "black"
       }
     },
     "raw": {
-      "style": 819709490885847,
+      "style": 644952873583895,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010010101001010011001010111011010100010100010111",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "90": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "red",
+        "front_middle_layer": "orange",
+        "middle_main": "red",
+        "film_roll": "yellow",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "black",
+        "inner_post_left": "green",
+        "inner_post_right": "black",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "white",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 660815386375602,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "010010110010000001000010010010111011111010110110010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "91": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "white",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "green",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "orange",
+        "teeth_ring": "white",
+        "film_middle_connector": "purple",
+        "inner_post_left": "purple",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 784397692744850,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010110010010110011111010001110101101011010010010010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "92": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "blue",
+        "sticker_large": "green",
+        "front_canal": "black",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "black",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "purple",
+        "teeth_ring": "black",
+        "film_middle_connector": "green",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "red",
+        "back_canal": "yellow",
+        "back_top_plate": "white"
+      }
+    },
+    "raw": {
+      "style": 1565354885983254,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "101100011111010111010010101111011010010110000010110",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "93": {
+    "decoded": {
+      "capacity": "46",
+      "quality": "high",
+      "colors": {
+        "screw": "green",
+        "label_small": "green",
+        "sticker_large": "purple",
+        "front_canal": "orange",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "yellow",
+        "teeth": "orange",
+        "teeth_ring": "orange",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "blue",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 972680457700754,
+      "quality": 2,
+      "capacity": 0
+    },
+    "binary": {
+      "style": "011011101001010010111010001001010010100010110010010",
+      "capacity": "0",
+      "quality": "10"
+    }
+  },
+  "94": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "green",
+        "sticker_large": "yellow",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "green",
+        "middle_main": "yellow",
+        "film_roll": "white",
+        "teeth": "yellow",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "orange",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "orange",
+        "back_middle_layer": "green",
+        "back_canal": "blue",
+        "back_top_plate": "purple"
+      }
+    },
+    "raw": {
+      "style": 680763897225957,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010011010110010011010110010010001010010001011100101",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "95": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "medium",
+      "colors": {
+        "screw": "white",
+        "label_small": "black",
+        "sticker_large": "purple",
+        "front_canal": "white",
+        "front_top_plate": "yellow",
+        "front_middle_layer": "white",
+        "middle_main": "yellow",
+        "film_roll": "white",
+        "teeth": "green",
+        "teeth_ring": "white",
+        "film_middle_connector": "red",
+        "inner_post_left": "black",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "blue",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 1960621226828962,
+      "quality": 1,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "110111101110010110010110011110000111010010010100010",
+      "capacity": "1",
+      "quality": "1"
+    }
+  },
+  "96": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "yellow",
+        "sticker_large": "orange",
+        "front_canal": "yellow",
+        "front_top_plate": "green",
+        "front_middle_layer": "yellow",
+        "middle_main": "black",
+        "film_roll": "blue",
+        "teeth": "orange",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "blue",
+        "back_middle_layer": "yellow",
+        "back_canal": "green",
+        "back_top_plate": "yellow"
+      }
+    },
+    "raw": {
+      "style": 639047677061274,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010010001010011010111100001110010010010100010011010",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "97": {
+    "decoded": {
+      "capacity": "90",
+      "quality": "high",
+      "colors": {
+        "screw": "yellow",
+        "label_small": "black",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "black",
+        "front_middle_layer": "yellow",
+        "middle_main": "yellow",
+        "film_roll": "black",
+        "teeth": "red",
+        "teeth_ring": "white",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "yellow",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "white",
+        "back_middle_layer": "white",
+        "back_canal": "yellow",
+        "back_top_plate": "red"
+      }
+    },
+    "raw": {
+      "style": 819637479091600,
+      "quality": 2,
+      "capacity": 2
+    },
+    "binary": {
+      "style": "010111010010111010010111000110010010010110110010000",
+      "capacity": "10",
+      "quality": "10"
+    }
+  },
+  "98": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "red",
+        "label_small": "red",
+        "sticker_large": "yellow",
+        "front_canal": "yellow",
+        "front_top_plate": "white",
+        "front_middle_layer": "orange",
+        "middle_main": "yellow",
+        "film_roll": "yellow",
+        "teeth": "black",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "yellow",
+        "inner_post_left": "orange",
+        "inner_post_right": "yellow",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "black",
+        "back_canal": "yellow",
+        "back_top_plate": "blue"
+      }
+    },
+    "raw": {
+      "style": 10319049565652,
       "quality": 2,
       "capacity": 1
     },
     "binary": {
-      "style": "010111010011000010101111101000001011111010011010111"
+      "style": "000000010010110001010010111010010001010010111010100",
+      "capacity": "1",
+      "quality": "10"
+    }
+  },
+  "99": {
+    "decoded": {
+      "capacity": "60",
+      "quality": "high",
+      "colors": {
+        "screw": "purple",
+        "label_small": "yellow",
+        "sticker_large": "white",
+        "front_canal": "yellow",
+        "front_top_plate": "blue",
+        "front_middle_layer": "yellow",
+        "middle_main": "green",
+        "film_roll": "black",
+        "teeth": "black",
+        "teeth_ring": "yellow",
+        "film_middle_connector": "white",
+        "inner_post_left": "green",
+        "inner_post_right": "green",
+        "film_main_wiggle": "yellow",
+        "back_middle_layer": "yellow",
+        "back_canal": "purple",
+        "back_top_plate": "green"
+      }
+    },
+    "raw": {
+      "style": 1505527760270507,
+      "quality": 2,
+      "capacity": 1
+    },
+    "binary": {
+      "style": "101010110010100010011111111010110011011010010101011",
+      "capacity": "1",
+      "quality": "10"
     }
   }
 }

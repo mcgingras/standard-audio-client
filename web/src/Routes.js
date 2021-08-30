@@ -17,10 +17,6 @@ import AboutPage from './pages/AboutPage/AboutPage'
 const Routes = () => {
   return (
     <Router>
-      <Route path="/bids/new" page={NewBidPage} name="newBid" />
-      <Route path="/bids/{id:Int}/edit" page={EditBidPage} name="editBid" />
-      <Route path="/bids/{id:Int}" page={BidPage} name="bid" />
-      <Route path="/bids" page={BidsPage} name="bids" />
       <Route path="/tapes/{id:Int}/edit" page={EditTapePage} name="editTape" />
       <Route path="/tapes/{id:Int}" page={TapePage} name="tape" />
       <Route path="/tapes" page={TapesPage} name="tapes" />

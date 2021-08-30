@@ -58,8 +58,8 @@ const CassetteScene = ({ style }) => {
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 10, 7]} />
       <Suspense fallback={null}>
-        {/* <CassetteModel colors={colorMap} /> */}
-        <PlayerModel />
+        <CassetteModel colors={colorMap} />
+        {/* <PlayerModel /> */}
       </Suspense>
       <OrbitControls />
     </Canvas>

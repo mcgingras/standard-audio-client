@@ -1,8 +1,9 @@
 import { useState, useEffect, Suspense } from 'react'
-import { OrbitControls, Plane, softShadows } from '@react-three/drei'
+import { OrbitControls, OrthographicCamera, Plane } from '@react-three/drei'
 import CassetteModel from '../Models/CassetteModal'
 import PlayerModel from '../Models/PlayerModel'
 import { Canvas } from '@react-three/fiber'
+import { useControls } from 'leva'
 
 const Ground = () => {
   return (
@@ -67,11 +68,23 @@ const CassetteScene = ({ style }) => {
     setColorMap(colorMap)
   }, [])
 
+  const { fov, zoom, cameraX } = useControls({
+    fov: 0,
+    zoom: 125,
+    cameraX: 0,
+  })
+
   return (
-    <Canvas colorManagement shadows camera={{ position: [0, 5, 30], fov: 30 }}>
+    <Canvas shadows>
+      <OrthographicCamera
+        makeDefault
+        position={[0, 2, 10]}
+        // rotation={[0, 0, cameraX]}
+        zoom={zoom}
+      />
       <ambientLight intensity={0.1} />
       <directionalLight
-        intensity={0.3}
+        intensity={fov}
         position={[5, 3, 20]}
         castShadow
         shadow-mapSize-height={256}
@@ -88,7 +101,7 @@ const CassetteScene = ({ style }) => {
       <Suspense fallback={null}>
         <CassetteModel colors={colorMap} />
       </Suspense>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </Canvas>
   )
 }

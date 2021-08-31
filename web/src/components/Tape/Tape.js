@@ -45,7 +45,7 @@ const Tape = ({ tape }) => {
 
   return (
     <>
-      <div className="min-h-screen h-screen relative bg-black">
+      <div className="min-h-screen h-screen relative bg-blue-900">
         <Toaster />
         <header className="flex justify-between p-8 fixed top-0 w-full z-10">
           <div className="flex flex-row">

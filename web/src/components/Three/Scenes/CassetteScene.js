@@ -1,10 +1,24 @@
 import { useState, useEffect, Suspense } from 'react'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Plane, softShadows } from '@react-three/drei'
 import CassetteModel from '../Models/CassetteModal'
 import PlayerModel from '../Models/PlayerModel'
 import { Canvas } from '@react-three/fiber'
 
+const Ground = () => {
+  return (
+    <Plane
+      receiveShadow
+      rotation={[-Math.PI / 2, 0, 0]}
+      position={[0, -1, 0]}
+      args={[1000, 1000]}
+    >
+      <meshStandardMaterial attach="material" color="white" />
+    </Plane>
+  )
+}
+
 const CassetteScene = ({ style }) => {
+  // softShadows()
   const [colorMap, setColorMap] = useState({})
 
   let colors = [
@@ -54,12 +68,25 @@ const CassetteScene = ({ style }) => {
   }, [])
 
   return (
-    <Canvas>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 10, 7]} />
+    <Canvas colorManagement shadows camera={{ position: [0, 5, 30], fov: 30 }}>
+      <ambientLight intensity={0.1} />
+      <directionalLight
+        intensity={0.3}
+        position={[5, 3, 20]}
+        castShadow
+        shadow-mapSize-height={256}
+        shadow-mapSize-width={256}
+      />
+      <directionalLight
+        intensity={0.3}
+        position={[-5, 3, 20]}
+        castShadow
+        shadow-mapSize-height={256}
+        shadow-mapSize-width={256}
+      />
+      <Ground />
       <Suspense fallback={null}>
         <CassetteModel colors={colorMap} />
-        {/* <PlayerModel /> */}
       </Suspense>
       <OrbitControls />
     </Canvas>

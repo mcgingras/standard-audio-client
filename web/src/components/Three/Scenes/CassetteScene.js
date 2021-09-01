@@ -1,5 +1,10 @@
 import { useState, useEffect, Suspense } from 'react'
-import { OrbitControls, OrthographicCamera, Plane } from '@react-three/drei'
+import {
+  OrbitControls,
+  OrthographicCamera,
+  PerspectiveCamera,
+  Plane,
+} from '@react-three/drei'
 import CassetteModel from '../Models/CassetteModal'
 import PlayerModel from '../Models/PlayerModel'
 import { Canvas } from '@react-three/fiber'
@@ -68,9 +73,10 @@ const CassetteScene = ({ style }) => {
     setColorMap(colorMap)
   }, [])
 
-  const { fov, zoom, cameraX } = useControls({
+  const { fov, zoom, cameraY, cameraX } = useControls({
     fov: 0,
-    zoom: 125,
+    zoom: 100,
+    cameraY: -0.3,
     cameraX: 0,
   })
 
@@ -78,8 +84,8 @@ const CassetteScene = ({ style }) => {
     <Canvas shadows>
       <OrthographicCamera
         makeDefault
-        position={[0, 2, 10]}
-        // rotation={[0, 0, cameraX]}
+        position={[-3, 2, 10]}
+        rotation={[-0.05, cameraY, cameraX]}
         zoom={zoom}
       />
       <ambientLight intensity={0.1} />

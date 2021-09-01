@@ -11,15 +11,16 @@ export default function CassetteModal(props) {
    */
   useFrame(() => {
     const timer = Date.now() * 0.0005
-    group.current.rotation.y = Math.sin(timer) * 0.5
+    group.current.rotation.y = Math.sin(timer) * 0.2
     // group.current.position.y = Math.sin(timer) * 0.25 + 0.5
   })
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group
-        position={[0, 2.2, 0]}
-        rotation-x={Math.PI / 2 - 0.25}
+        position={[0, 2, 0]}
+        rotation-x={Math.PI / 2 - 0.3}
+        rotation-y={0.0}
         scale={[0.05, 0.05, 0.05]}
       >
         <mesh

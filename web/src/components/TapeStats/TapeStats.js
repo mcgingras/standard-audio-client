@@ -32,7 +32,7 @@ const generateStats = (tape) => {
   }
 }
 
-const TapeStats = ({ isOwner, tape }) => {
+const TapeStats = ({ isOwner, tape, color }) => {
   const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
   const [buttonUp, setButtonUp] = useState(true)
@@ -53,7 +53,7 @@ const TapeStats = ({ isOwner, tape }) => {
             afterLeave={() => setUp(true)}
           >
             <button
-              className="bg-blue-400 text-center font-bold p-4 w-full"
+              className={`bg-blue-400 text-center font-bold p-4 w-full`}
               onClick={() => {
                 setButtonUp(false)
               }}

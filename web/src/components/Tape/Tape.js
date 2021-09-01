@@ -7,6 +7,7 @@ import { ContractContext } from '../../contexts/contractContext'
 // UI Components
 import TapeStats from '../TapeStats/TapeStats'
 import CassetteScene from '../Three/Scenes/CassetteScene'
+import { styleDecoder } from '../../utils/decoder'
 
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
@@ -19,6 +20,7 @@ const Tape = ({ tape }) => {
    * probably not going to update right away.
    */
   const [isClaimed, setIsClaimed] = useState(false)
+  const style = styleDecoder(tape.style)
 
   // Graphql API methods
   const { update } = useAPI()
@@ -75,7 +77,11 @@ const Tape = ({ tape }) => {
 
         <CassetteScene style={tape.style} />
 
-        <TapeStats isOwner={isOwner} tape={tape} />
+        <TapeStats
+          isOwner={isOwner}
+          tape={tape}
+          color={style.front_top_plate}
+        />
       </div>
     </>
   )

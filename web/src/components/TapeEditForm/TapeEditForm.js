@@ -22,6 +22,8 @@ const TapeEditForm = ({ id, isClaim }) => {
   const [isLoggedIn, token] = useSpotify()
   const spotifySearchRef = useRef()
 
+  console.log(isLoggedIn)
+
   // used for state of form
   const [tape, setTape] = useState({})
   const [title, setTitle] = useState('')

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
  * useSpotify
@@ -13,9 +13,8 @@ import { useState, useEffect } from 'react'
  * If not expired, it returns [true, token]
  */
 const useSpotify = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [token, setToken] = useState(null)
-
+  let [loggedIn, setLoggedIn] = useState(false)
+  let [token, setToken] = useState(null)
   let expiration = localStorage.getItem('spotify_expiration')
   let accessToken = localStorage.getItem('spotify_access_token')
   let refreshToken = localStorage.getItem('spotify_refresh_token')
@@ -32,11 +31,18 @@ const useSpotify = () => {
 
       if (anyNull([tempExpiration, tempAccessToken, tempRefreshToken])) {
         console.log('URL params are empty... prompt login')
+        setLoggedIn(false)
+        setToken(null)
         return
       } else {
+        console.log('using url params, good to go')
         localStorage.setItem('spotify_expiration', tempExpiration)
         localStorage.setItem('spotify_access_token', tempAccessToken)
         localStorage.setItem('spotify_refresh_token', tempRefreshToken)
+
+        setLoggedIn(true)
+        setToken(tempAccessToken)
+        return
       }
     }
 
@@ -56,13 +62,17 @@ const useSpotify = () => {
 
         setLoggedIn(true)
         setToken(res.access_token)
+        return
       })
     } else {
       console.log('nothing is expired, we should be good to go')
       setLoggedIn(true)
       setToken(accessToken)
+      return
     }
-  }, [])
+
+    return [false, 'null']
+  }, [accessToken, expiration, refreshToken])
 
   return [loggedIn, token]
 }
@@ -71,18 +81,18 @@ const isExpired = (expiration) => {
   return expiration < new Date().getTime() / 1000
 }
 
-const fetchRefresh = (refresh_token) => {
+const fetchRefresh = (refreshToken) => {
   const url =
     process.env.NETLIFY_DEV === 'development'
-      ? `http://localhost:8910/.netlify/functions/refresh_token?refresh_token=${refresh_token}`
-      : `https://nftapes.netlify.app/.netlify/functions/refresh_token?refresh_token=${refresh_token}`
+      ? `http://localhost:8910/.netlify/functions/refresh_token?refresh_token=${refreshToken}`
+      : `https://nftapes.netlify.app/.netlify/functions/refresh_token?refresh_token=${refreshToken}`
   return fetch(url, {
     method: 'GET',
   }).then((res) => res.json())
 }
 
-const unwrapRefreshToken = async (refresh_token) => {
-  return await fetchRefresh(refresh_token)
+const unwrapRefreshToken = async (refreshToken) => {
+  return await fetchRefresh(refreshToken)
 }
 
 /**

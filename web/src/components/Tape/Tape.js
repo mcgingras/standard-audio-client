@@ -47,7 +47,7 @@ const Tape = ({ tape }) => {
 
   return (
     <>
-      <div className="min-h-screen h-screen relative bg-black">
+      <div className="min-h-screen h-screen relative bg-gray-400">
         <Toaster />
         <header className="flex justify-between p-8 fixed top-0 w-full z-10">
           <div className="flex flex-row">
@@ -60,6 +60,12 @@ const Tape = ({ tape }) => {
             </h3>
           </div>
           <div className="flex self-center">
+            <Link
+              to={routes.listeningRoom({ id: tape.id })}
+              className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
+            >
+              Claim Tape
+            </Link>
             <Link
               to={routes.listeningRoom({ id: tape.id })}
               className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
@@ -77,11 +83,11 @@ const Tape = ({ tape }) => {
 
         <CassetteScene style={tape.style} />
 
-        <TapeStats
+        {/* <TapeStats
           isOwner={isOwner}
           tape={tape}
           color={style.front_top_plate}
-        />
+        /> */}
       </div>
     </>
   )

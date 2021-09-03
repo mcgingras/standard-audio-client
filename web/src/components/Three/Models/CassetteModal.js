@@ -18,7 +18,7 @@ export default function CassetteModal(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group
-        position={[0, 2, 0]}
+        position={[0, 1, 0]}
         rotation-x={Math.PI / 2 - 0.3}
         rotation-y={0.0}
         scale={[0.05, 0.05, 0.05]}

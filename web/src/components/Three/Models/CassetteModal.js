@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei/core/useGLTF'
 import { useFrame } from 'react-three-fiber'
+import * as THREE from 'three'
 
 export default function CassetteModal(props) {
   const group = useRef()
@@ -11,17 +12,17 @@ export default function CassetteModal(props) {
    */
   useFrame(() => {
     const timer = Date.now() * 0.0005
-    group.current.rotation.y = Math.sin(timer) * 0.2
+    // group.current.rotation.y = Math.sin(timer) * 0.2
     // group.current.position.y = Math.sin(timer) * 0.25 + 0.5
   })
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group
-        position={[0, 1, 0]}
-        rotation-x={Math.PI / 2 - 0.3}
-        rotation-y={0.0}
-        scale={[0.05, 0.05, 0.05]}
+        position={[0, 1.2, 0]}
+        rotation-x={Math.PI / 2 - 0.2}
+        // rotation-y={0.0}
+        scale={[0.025, 0.025, 0.025]}
       >
         <mesh
           castShadow
@@ -122,6 +123,8 @@ export default function CassetteModal(props) {
           geometry={nodes.sticker_large.geometry}
           position={[0, -0.05, 0]}
           material-color={props.colors['sticker_large']}
+          material-metalness={1}
+          material-roughness={0.5}
         />
         <mesh
           castShadow
@@ -132,6 +135,8 @@ export default function CassetteModal(props) {
           }
           geometry={nodes.front_canal.geometry}
           material-color={props.colors['front_canal']}
+          material-metalness={1}
+          material-roughness={0.5}
         />
         <mesh
           castShadow
@@ -142,6 +147,8 @@ export default function CassetteModal(props) {
           }
           geometry={nodes.front_top_plate.geometry}
           material-color={props.colors['front_top_plate']}
+          material-metalness={1}
+          material-roughness={0.5}
         />
         <mesh
           castShadow
@@ -253,7 +260,7 @@ export default function CassetteModal(props) {
             ]
           }
           geometry={nodes['film_roll_left_&_film_roll_left_hole_1'].geometry}
-          material-color={props.colors['film_roll']}
+          material-color={'black'}
         />
         <mesh
           castShadow
@@ -337,7 +344,7 @@ export default function CassetteModal(props) {
             ]
           }
           geometry={nodes.film_middle_connector.geometry}
-          material-color={props.colors['film_middle_connector']}
+          material-color={'black'}
         />
         <mesh
           castShadow
@@ -367,7 +374,7 @@ export default function CassetteModal(props) {
             ]
           }
           geometry={nodes.film_main_wiggle.geometry}
-          material-color={props.colors['film_main_wiggle']}
+          material-color={'black'}
         />
         <mesh
           castShadow
@@ -378,6 +385,8 @@ export default function CassetteModal(props) {
           }
           geometry={nodes.back_middle_layer.geometry}
           material-color={props.colors['back_middle_layer']}
+          material-opacity={0.3}
+          material-transparent={true}
         />
         <mesh
           castShadow
@@ -388,6 +397,8 @@ export default function CassetteModal(props) {
           }
           geometry={nodes.back_canal.geometry}
           material-color={props.colors['back_canal']}
+          material-opacity={0.3}
+          material-transparent={true}
         />
         <mesh
           castShadow
@@ -398,6 +409,8 @@ export default function CassetteModal(props) {
           }
           geometry={nodes.back_top_plate.geometry}
           material-color={props.colors['back_top_plate']}
+          material-opacity={0.3}
+          material-transparent={true}
         />
       </group>
     </group>

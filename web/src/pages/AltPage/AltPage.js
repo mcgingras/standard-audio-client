@@ -16,7 +16,7 @@ const AltPage = () => {
             The Standard <br /> Audio Company
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-2 text-blue-900 mt-4 leading-5 pb-24">
+        <div className="grid grid-cols-3 gap-2 text-blue-900 mt-4 leading-5 pb-12">
           <p>
             Hello, and welcome to your first taste of the Standard Audio
             Company. You will be seeing quite a bit of us around here. We are a
@@ -32,6 +32,14 @@ const AltPage = () => {
           <p>
             You can read a bit more about our plans for the future here. Join
             our discord.
+          </p>
+        </div>
+        <div className="flex items-center justify-center pb-24 flex-col">
+          <button className="text-lg bg-blue-900 text-white py-4 rounded-full w-64 mx-auto">
+            Waitlist
+          </button>
+          <p className="text-sm underline mt-2 text-blue-900 cursor-pointer">
+            Join our Discord
           </p>
         </div>
       </div>

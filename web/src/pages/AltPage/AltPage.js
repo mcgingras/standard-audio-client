@@ -2,21 +2,21 @@ import Logo from '../../assets/logo_bland.svg'
 
 const AltPage = () => {
   return (
-    <div className="bg-black">
-      <div className="max-w-screen-xl mx-auto">
+    <div className="bg-red-500">
+      <div className="max-w-screen-lg mx-auto">
         <div className="py-12 flex justify-end -mb-24">
-          <Logo className="self-start h-20 w-20 sm:h-80 sm:w-80 fill-current text-gray-300" />
+          <Logo className="self-start h-20 w-20 sm:h-80 sm:w-80 fill-current text-red-700" />
         </div>
 
-        <div className="py-12 border-b-2 border-white">
-          <h3 className="text-2xl font-semibold text-white mb-2">
+        <div className="py-12 border-b-2 border-red-700">
+          <h3 className="text-2xl font-semibold text-red-700 mb-2">
             From the Office of
           </h3>
-          <h1 className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">
+          <h1 className="text-8xl font-bold text-gray-800">
             The Standard <br /> Audio Company
           </h1>
         </div>
-        <div className="grid grid-cols-3 gap-2 text-white opacity-50 mt-4 leading-5 pb-12">
+        <div className="grid grid-cols-3 gap-2 text-gray-800 opacity-50 mt-4 leading-5 pb-12">
           <p>
             Hello, and welcome to your first taste of the Standard Audio
             Company. You will be seeing quite a bit of us around here. We are a

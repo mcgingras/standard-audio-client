@@ -1,27 +1,34 @@
-import { useState, useEffect, Suspense } from 'react'
-import {
-  OrbitControls,
-  OrthographicCamera,
-  PerspectiveCamera,
-  Plane,
-  ContactShadows,
-} from '@react-three/drei'
+import { useState, useEffect, Suspense, useLayoutEffect } from 'react'
+import { OrbitControls, Stage, useGLTF } from '@react-three/drei'
 import CassetteModel from '../Models/CassetteModal'
 import PlayerModel from '../Models/PlayerModel'
 import { Canvas } from '@react-three/fiber'
-import { useControls } from 'leva'
 
-const Ground = () => {
-  return (
-    <Plane
-      receiveShadow
-      rotation={[-Math.PI / 2, 0, 0]}
-      position={[0, -1, 0]}
-      args={[1000, 1000]}
-    >
-      <meshStandardMaterial attach="material" color="#fff" />
-    </Plane>
-  )
+function Model(props) {
+  const { scene, nodes, materials } = useGLTF('/scene.gltf')
+
+  useLayoutEffect(() => {
+    scene.traverse(
+      (obj) =>
+        obj.type === 'Mesh' && (obj.receiveShadow = obj.castShadow = true)
+    )
+    // Object.assign(nodes.wheel003_020_2_Chrome_0.material, {
+    //   metalness: 1,
+    //   roughness: 0.4,
+    //   color: new THREE.Color('black'),
+    // })
+    // Using the emissive colors is a nice trick to give textures a warm sheen
+    // Object.assign(materials.WhiteCar, {
+    //   roughness: 0,
+    //   metalness: 0.25,
+    //   emissive: new THREE.Color('#500000'),
+    //   envMapIntensity: 0.5,
+    // })
+  }, [scene, nodes, materials])
+  // <primitive> just puts an existing thing into the scene graph
+  // For more control over the asset refer to https://github.com/pmndrs/gltfjsx
+
+  return <primitive object={scene} {...props} />
 }
 
 const CassetteScene = ({ style }) => {
@@ -71,35 +78,32 @@ const CassetteScene = ({ style }) => {
     setColorMap(colorMap)
   }, [style])
 
-  const { fov, zoom, shadowX, shadowY, shadowZ } = useControls({
-    fov: 0.4,
-    zoom: 100,
-    shadowX: 0,
-    shadowY: 4,
-    shadowZ: 10,
-  })
-
   return (
-    <Canvas shadows>
-      <OrthographicCamera
-        makeDefault
-        position={[-3, 2.5, 10]}
-        rotation={[-0.1, -0.3, -0.01]}
-        zoom={zoom}
-      />
-      <ambientLight intensity={0.1} />
-      <directionalLight
-        intensity={fov}
-        position={[shadowX, shadowY, shadowZ]}
-        castShadow
-        shadow-mapSize-height={256}
-        shadow-mapSize-width={256}
-      />
-      <Ground />
+    <Canvas dpr={[1, 2]} shadows>
+      <color attach="background" args={['#101010']} />
+      <fog attach="fog" args={['#101010', 10, 50]} />
       <Suspense fallback={null}>
-        <CassetteModel colors={colorMap} />
+        <Stage
+          contactShadow={true}
+          intensity={1}
+          contactShadowOpacity={0.9}
+          shadowBias={-0.0015}
+        >
+          <Model rotation-x={Math.PI / 2 - 0.2} />
+          {/* <CassetteModel colors={colorMap} /> */}
+        </Stage>
       </Suspense>
-      {/* <OrbitControls /> */}
+      <mesh rotation-x={-Math.PI / 2} scale={1000}>
+        <planeGeometry />
+        <meshStandardMaterial color="#333" transparent depthWrite={false} />
+      </mesh>
+      <OrbitControls
+        // autoRotate
+        enableZoom={false}
+        enablePan={false}
+        minPolarAngle={Math.PI / 2.8}
+        maxPolarAngle={Math.PI / 2.8}
+      />
     </Canvas>
   )
 }

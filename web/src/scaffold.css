@@ -313,3 +313,33 @@
     padding-bottom: 0;
   }
 }
+
+
+.h:hover {
+  /* background-color:rgb(194, 255, 182) */
+  background-image: linear-gradient(
+        to right,
+        rgb(194, 255, 182),
+        rgb(255, 163, 182),
+        rgb(221, 169, 255),
+        rgb(162, 209, 255)
+    );
+}
+
+.holo {
+  color: transparent;
+  background-image: linear-gradient(
+        to right,
+        rgb(194, 255, 182),
+        rgb(255, 163, 182),
+        rgb(221, 169, 255),
+        rgb(162, 209, 255)
+    );
+    background-clip: text;
+    background-size: 200%;
+
+}
+
+.flex-p7 {
+  flex: .7
+}

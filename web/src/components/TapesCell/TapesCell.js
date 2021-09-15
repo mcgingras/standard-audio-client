@@ -45,12 +45,12 @@ export const Empty = () => {
 export const Success = ({ tapes }) => {
   const tapeRows = _.chunk(tapes, 10)
   return (
-    <div>
+    <div className="flex flex-wrap">
       {tapeRows.map((row, idx) => {
         return (
-          <div key={idx}>
-            <h2>Aisle {idx}</h2>
-            <div className="w-full flex overflow-x-scroll">
+          <div key={idx} className="mx-4 my-4">
+            {/* <h2 className="text-lg">Aisle {idx}</h2> */}
+            <div className="w-full flex flex-col">
               {row.map((tape) => {
                 return (
                   <TapeFloat

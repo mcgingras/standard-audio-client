@@ -343,3 +343,7 @@
 .flex-p7 {
   flex: .7
 }
+
+* {
+  box-sizing: border-box;
+}

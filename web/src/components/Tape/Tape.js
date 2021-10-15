@@ -12,11 +12,9 @@ import { styleDecoder } from '../../utils/decoder'
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
-<<<<<<< Updated upstream
-=======
   const [activeIdx, setActiveIdx] = useState(tape.id)
   const [isHovered, setIsHovered] = useState(false)
->>>>>>> Stashed changes
+
   /**
    * isClaimed --
    * boolean for if the tape is available or not.
@@ -25,7 +23,27 @@ const Tape = ({ tape }) => {
    * probably not going to update right away.
    */
   const [isClaimed, setIsClaimed] = useState(false)
-  const style = styleDecoder(tape.style)
+  const [color, setColor] = useState(tape.style)
+
+  const tempStyle = {
+    screw: 'white',
+    label_small: 'white',
+    sticker_large: 'white',
+    front_canal: 'white',
+    front_top_plate: 'white',
+    front_middle_layer: 'white',
+    middle_main: 'white',
+    film_roll: 'white',
+    teeth: 'white',
+    teeth_ring: 'white',
+    film_middle_connector: 'white',
+    inner_post_left: 'white',
+    inner_post_right: 'white',
+    film_main_wiggle: 'white',
+    back_middle_layer: 'white',
+    back_canal: 'white',
+    back_top_plate: 'white',
+  }
 
   // Graphql API methods
   const { update } = useAPI()
@@ -102,11 +120,13 @@ const Tape = ({ tape }) => {
             >
               BACK
             </Link>
+            <button onClick={() => setColor(1496618076026003)}>
+              change color
+            </button>
           </div>
         </header>
 
         <CassetteScene style={color} />
-
         <div className="fixed flex flex-col left-0 top-0 pt-32">
           {Array.from(Array(50)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events

@@ -12,6 +12,11 @@ import { styleDecoder } from '../../utils/decoder'
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
+<<<<<<< Updated upstream
+=======
+  const [activeIdx, setActiveIdx] = useState(tape.id)
+  const [isHovered, setIsHovered] = useState(false)
+>>>>>>> Stashed changes
   /**
    * isClaimed --
    * boolean for if the tape is available or not.
@@ -44,6 +49,25 @@ const Tape = ({ tape }) => {
       setIsOwner(address === tape.owner)
     }
   }, [address])
+
+  const map = (value, x1, y1, x2, y2) =>
+    ((value - x1) * (y2 - x2)) / (y1 - x1) + x2
+
+  function sigmoid(t) {
+    return 1 / (1 + Math.pow(Math.E, -t))
+  }
+
+  const clamp = (val, target) => {
+    return sigmoid(map(50 - Math.abs(target - val), 0, 50, -10, 5)) * 100 + 20
+  }
+
+  // const clamp = (val, target) => {
+  //   if (Math.abs(target - val) > 5) {
+  //     return 40
+  //   }
+
+  //   return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 20
+  // }
 
   return (
     <>
@@ -81,7 +105,51 @@ const Tape = ({ tape }) => {
           </div>
         </header>
 
-        <CassetteScene style={tape.style} />
+        <CassetteScene style={color} />
+
+        <div className="fixed flex flex-col left-0 top-0 pt-32">
+          {Array.from(Array(50)).map((a, i) => (
+            // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+            <div
+              key={i}
+              onMouseOver={() => {
+                setIsHovered(true)
+                setActiveIdx(i)
+              }}
+              onMouseLeave={() => {
+                setIsHovered(false)
+                setActiveIdx(tape.id)
+              }}
+              // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
+              style={{
+                width: `${clamp(i, activeIdx)}px`,
+              }}
+              className="group py-1 self-start bg-clip-content transition-all relative ml-2"
+            >
+              <span
+                style={{
+                  width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
+                  transitionDuration: '200ms',
+                }}
+                className={`${
+                  activeIdx === i ? 'bg-gray-100' : 'bg-gray-400'
+                } w-1 h-0.5 group-hover:bg-gray-100 block transition-all`}
+              ></span>
+              <span
+                style={{
+                  top: '-5px',
+                  right: '-40px',
+                  transitionDuration: '100ms',
+                }}
+                className={`${
+                  activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
+                } absolute font-bold text-sm text-white transition-all`}
+              >
+                {activeIdx}
+              </span>
+            </div>
+          ))}
+        </div>
 
         {/* <TapeStats
           isOwner={isOwner}

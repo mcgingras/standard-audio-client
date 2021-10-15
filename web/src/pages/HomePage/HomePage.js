@@ -7,7 +7,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-gray-200">
+      <div className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-0 pb-12">
           <div className="flex flex-row justify-between">
             <Logo className="self-start h-20 w-20 sm:h-36 sm:w-36" />
@@ -49,7 +49,7 @@ const HomePage = () => {
           </button>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto my-12">
+      <div className="max-w-7xl mx-auto mt-12">
         <TapesCell isClaimed={isClaimed} />
       </div>
     </>

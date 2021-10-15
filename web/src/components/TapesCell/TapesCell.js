@@ -45,10 +45,10 @@ export const Empty = () => {
 export const Success = ({ tapes }) => {
   const tapeRows = _.chunk(tapes, 10)
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-between">
       {tapeRows.map((row, idx) => {
         return (
-          <div key={idx} className="mx-4 my-4">
+          <div key={idx} className="my-4">
             {/* <h2 className="text-lg">Aisle {idx}</h2> */}
             <div className="w-full flex flex-col">
               {row.map((tape) => {

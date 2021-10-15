@@ -5,6 +5,7 @@ import TapesClaimPage from './pages/TapeClaimPage/TapesClaimPage'
 import DemoPage from './pages/DemoPage/DemoPage'
 import AboutPage from './pages/AboutPage/AboutPage'
 import AltPage from './pages/AltPage/AltPage'
+import FlexTest from './pages/FlexTest/FlexTest'
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route path="/tapes/{id:Int}/claim" page={TapesClaimPage} name="claims" />
       <Route path="/den/{id:Int}" page={ListeningRoomPage} name="listeningRoom" />
       <Route path="/alt" page={AltPage} name="alt" />
+      <Route path="/flex" page={FlexTest} name="flex" />
       <Route path="/" page={HomePage} name="home" />
       <Route path="/about" page={AboutPage} name="about" />
       <Route path="/demo/{id:Int}" page={DemoPage} name="demo" />

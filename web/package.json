@@ -15,7 +15,9 @@
   "dependencies": {
     "@headlessui/react": "^1.0.0",
     "@heroicons/react": "^1.0.4",
+    "@react-spring/three": "^9.2.6",
     "@react-three/drei": "^7.6.1",
+    "@react-three/flex": "^0.7.0",
     "@redwoodjs/forms": "^0.34.1",
     "@redwoodjs/router": "^0.34.1",
     "@redwoodjs/web": "^0.34.1",

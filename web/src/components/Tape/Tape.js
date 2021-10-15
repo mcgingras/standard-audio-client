@@ -12,6 +12,7 @@ import { styleDecoder } from '../../utils/decoder'
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
+  const [activeIdx, setActiveIdx] = useState(tape.id)
   /**
    * isClaimed --
    * boolean for if the tape is available or not.
@@ -20,7 +21,27 @@ const Tape = ({ tape }) => {
    * probably not going to update right away.
    */
   const [isClaimed, setIsClaimed] = useState(false)
-  const style = styleDecoder(tape.style)
+  const [color, setColor] = useState(tape.style)
+
+  const tempStyle = {
+    screw: 'white',
+    label_small: 'white',
+    sticker_large: 'white',
+    front_canal: 'white',
+    front_top_plate: 'white',
+    front_middle_layer: 'white',
+    middle_main: 'white',
+    film_roll: 'white',
+    teeth: 'white',
+    teeth_ring: 'white',
+    film_middle_connector: 'white',
+    inner_post_left: 'white',
+    inner_post_right: 'white',
+    film_main_wiggle: 'white',
+    back_middle_layer: 'white',
+    back_canal: 'white',
+    back_top_plate: 'white',
+  }
 
   // Graphql API methods
   const { update } = useAPI()
@@ -44,6 +65,14 @@ const Tape = ({ tape }) => {
       setIsOwner(address === tape.owner)
     }
   }, [address])
+
+  const clamp = (val, target) => {
+    if (Math.abs(target - val) > 5) {
+      return 40
+    }
+
+    return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 3
+  }
 
   return (
     <>
@@ -78,10 +107,39 @@ const Tape = ({ tape }) => {
             >
               BACK
             </Link>
+            <button onClick={() => setColor(1496618076026003)}>
+              change color
+            </button>
           </div>
         </header>
 
-        <CassetteScene style={tape.style} />
+        <CassetteScene style={color} />
+
+        <div className="fixed flex flex-col left-0 top-0">
+          {Array.from(Array(100)).map((a, i) => (
+            // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+            <div
+              key={i}
+              onMouseOver={() => {
+                setActiveIdx(i)
+              }}
+              onMouseLeave={() => {
+                setActiveIdx(tape.id)
+              }}
+              // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
+              style={{ width: `${clamp(i, activeIdx)}px` }}
+              className="group py-1 self-start bg-clip-content transition-all relative"
+            >
+              <span
+                style={{ width: `${clamp(i, activeIdx)}px` }}
+                className="w-1 h-0.5 bg-gray-400 group-hover:bg-gray-100 block transition-all"
+              ></span>
+              {activeIdx === i && (
+                <span className="absolute right-0">{activeIdx}</span>
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* <TapeStats
           isOwner={isOwner}

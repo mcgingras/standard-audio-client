@@ -37,12 +37,12 @@ const CassetteScene = ({ style }) => {
 
   useEffect(() => {
     let colors = [
-      'red',
+      '#E06353',
       'orange',
-      'yellow',
-      'green',
-      'blue',
-      'purple',
+      '#8160A0',
+      '#4B9F66',
+      '#3B67D7',
+      '#8160A0',
       'white',
       'black',
     ]
@@ -89,8 +89,8 @@ const CassetteScene = ({ style }) => {
           contactShadowOpacity={0.9}
           shadowBias={-0.0015}
         >
-          <Model rotation-x={Math.PI / 2 - 0.2} />
-          {/* <CassetteModel colors={colorMap} /> */}
+          {/* <Model colors={colorMap} rotation-x={Math.PI / 2 - 0.2} /> */}
+          <CassetteModel colors={colorMap} />
         </Stage>
       </Suspense>
       <mesh rotation-x={-Math.PI / 2} scale={1000}>

@@ -12,7 +12,7 @@ import { styleDecoder } from '../../utils/decoder'
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
   const [isOwner, setIsOwner] = useState(false)
-  const [activeIdx, setActiveIdx] = useState(1)
+  const [activeIdx, setActiveIdx] = useState(tape.id)
   /**
    * isClaimed --
    * boolean for if the tape is available or not.
@@ -68,7 +68,7 @@ const Tape = ({ tape }) => {
 
   const clamp = (val, target) => {
     if (Math.abs(target - val) > 5) {
-      return 10
+      return 40
     }
 
     return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 3
@@ -115,18 +115,28 @@ const Tape = ({ tape }) => {
 
         <CassetteScene style={color} />
 
-        <div className="fixed flex bottom-0">
+        <div className="fixed flex flex-col left-0 top-0">
           {Array.from(Array(100)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
             <div
               key={i}
-              onMouseOver={() => setActiveIdx(i)}
-              className="px-2 self-end bg-clip-content"
+              onMouseOver={() => {
+                setActiveIdx(i)
+              }}
+              onMouseLeave={() => {
+                setActiveIdx(tape.id)
+              }}
+              // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
+              style={{ width: `${clamp(i, activeIdx)}px` }}
+              className="group py-1 self-start bg-clip-content transition-all relative"
             >
               <span
-                style={{ transform: `scaleY(${clamp(i, activeIdx)})` }}
-                className="w-1 h-1 bg-gray-400 hover:bg-gray-100 block transition-transform"
+                style={{ width: `${clamp(i, activeIdx)}px` }}
+                className="w-1 h-0.5 bg-gray-400 group-hover:bg-gray-100 block transition-all"
               ></span>
+              {activeIdx === i && (
+                <span className="absolute right-0">{activeIdx}</span>
+              )}
             </div>
           ))}
         </div>

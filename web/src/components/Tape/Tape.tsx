@@ -9,10 +9,10 @@ import { ContractContext } from '../../contexts/contractContext'
 import CassetteScene from '../Three/Scenes/CassetteScene'
 import { styleDecoder } from '../../utils/decoder'
 
-const Tape = ({ data, loading }) => {
+const Tape: TapeC = ({ data, loading }) => {
   const { _contract, _address } = useContext(ContractContext)
   const [_isOwner, _setIsOwner] = useState<boolean>(false)
-  const [activeIdx, setActiveIdx] = useState(-1)
+  const [activeIdx, setActiveIdx] = useState<number>(-1)
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   /**
@@ -74,13 +74,13 @@ const Tape = ({ data, loading }) => {
           {!loading && (
             <div className="flex self-center">
               <Link
-                to={routes.claims({ id: data.tape.id })}
+                to={routes.claims({ id: parseInt(data.tape.id) })}
                 className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
               >
                 Claim Tape
               </Link>
               <Link
-                to={routes.listeningRoom({ id: data.tape.id })}
+                to={routes.listeningRoom({ id: parseInt(data.tape.id) })}
                 className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
               >
                 Listen in Den
@@ -109,7 +109,7 @@ const Tape = ({ data, loading }) => {
               }}
               onMouseLeave={() => {
                 setIsHovered(false)
-                setActiveIdx(data.tape.id)
+                setActiveIdx(parseInt(data.tape.id))
               }}
               // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
               className="group py-1 self-start bg-clip-content relative ml-2"

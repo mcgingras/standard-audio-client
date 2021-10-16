@@ -109,7 +109,7 @@ const Tape: TapeC = ({ data, loading }) => {
               }}
               onMouseLeave={() => {
                 setIsHovered(false)
-                setActiveIdx(parseInt(data.tape.id))
+                setActiveIdx(parseInt(data?.tape.id || '-1'))
               }}
               // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
               className="group py-1 self-start bg-clip-content relative ml-2"

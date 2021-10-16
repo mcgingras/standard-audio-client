@@ -1,0 +1,3 @@
+interface Tape {
+  id: string
+}

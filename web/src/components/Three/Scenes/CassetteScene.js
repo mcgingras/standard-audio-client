@@ -1,7 +1,7 @@
-import { useState, useEffect, Suspense, useLayoutEffect } from 'react'
+import { Suspense, useLayoutEffect } from 'react'
 import { OrbitControls, Stage, useGLTF } from '@react-three/drei'
 import CassetteModel from '../Models/CassetteModal'
-import PlayerModel from '../Models/PlayerModel'
+// import PlayerModel from '../Models/PlayerModel'
 import { Canvas } from '@react-three/fiber'
 
 function Model(props) {
@@ -33,51 +33,6 @@ function Model(props) {
 
 const CassetteScene = ({ style }) => {
   // softShadows()
-  const [colorMap, setColorMap] = useState({})
-
-  useEffect(() => {
-    let colors = [
-      '#E06353',
-      'orange',
-      '#8160A0',
-      '#4B9F66',
-      '#3B67D7',
-      '#8160A0',
-      'white',
-      'black',
-    ]
-    let tapeComponents = [
-      'screw',
-      'label_small',
-      'sticker_large',
-      'front_canal',
-      'front_top_plate',
-      'front_middle_layer',
-      'middle_main',
-      'film_roll',
-      'teeth',
-      'teeth_ring',
-      'film_middle_connector',
-      'inner_post_left',
-      'inner_post_right',
-      'film_main_wiggle',
-      'back_middle_layer',
-      'back_canal',
-      'back_top_plate',
-    ]
-    let bin = style.toString(2).padStart(51, '0')
-    let colorMap = {}
-    for (let i = 0; i < 17; i++) {
-      let binI = bin.substring(i * 3, i * 3 + 3)
-      let index = parseInt(binI, 2)
-      let color = colors[index]
-      let component = tapeComponents[i]
-      colorMap[component] = color
-    }
-
-    setColorMap(colorMap)
-  }, [style])
-
   return (
     <Canvas dpr={[1, 2]} shadows>
       <color attach="background" args={['#101010']} />
@@ -90,7 +45,7 @@ const CassetteScene = ({ style }) => {
           shadowBias={-0.0015}
         >
           {/* <Model colors={colorMap} rotation-x={Math.PI / 2 - 0.2} /> */}
-          <CassetteModel colors={colorMap} />
+          <CassetteModel colors={style} />
         </Stage>
       </Suspense>
       <mesh rotation-x={-Math.PI / 2} scale={1000}>

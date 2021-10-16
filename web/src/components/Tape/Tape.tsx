@@ -11,9 +11,9 @@ import { styleDecoder } from '../../utils/decoder'
 
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
-  const [isOwner, setIsOwner] = useState(false)
+  const [isOwner, setIsOwner] = useState<boolean>(false)
   const [activeIdx, setActiveIdx] = useState(tape.id)
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState<boolean>(false)
 
   /**
    * isClaimed --
@@ -23,34 +23,12 @@ const Tape = ({ tape }) => {
    * probably not going to update right away.
    */
   const [isClaimed, setIsClaimed] = useState(false)
-  const [color, setColor] = useState(tape.style)
-
-  const tempStyle = {
-    screw: 'white',
-    label_small: 'white',
-    sticker_large: 'white',
-    front_canal: 'white',
-    front_top_plate: 'white',
-    front_middle_layer: 'white',
-    middle_main: 'white',
-    film_roll: 'white',
-    teeth: 'white',
-    teeth_ring: 'white',
-    film_middle_connector: 'white',
-    inner_post_left: 'white',
-    inner_post_right: 'white',
-    film_main_wiggle: 'white',
-    back_middle_layer: 'white',
-    back_canal: 'white',
-    back_top_plate: 'white',
-  }
 
   // Graphql API methods
-  const { update } = useAPI()
-
-  const testUpdate = () => {
-    update(tape, { owner: '0x456' })
-  }
+  // const { update } = useAPI()
+  // const testUpdate = () => {
+  //   update(tape, { owner: '0x456' })
+  // }
 
   useEffect(() => {
     const getBid = async () => {
@@ -87,6 +65,8 @@ const Tape = ({ tape }) => {
   //   return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 20
   // }
 
+  console.log(styleDecoder(tape.style))
+
   return (
     <>
       <div className="min-h-screen h-screen relative bg-gray-400">
@@ -120,20 +100,19 @@ const Tape = ({ tape }) => {
             >
               BACK
             </Link>
-            <button onClick={() => setColor(1496618076026003)}>
-              change color
-            </button>
           </div>
         </header>
 
-        <CassetteScene style={color} />
+        <CassetteScene style={styleDecoder(tape.style)} />
         <div className="fixed flex flex-col left-0 top-0 pt-32">
           {Array.from(Array(50)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-            <div
+            <a
+              href={`${i}`}
               key={i}
               onMouseOver={() => {
                 setIsHovered(true)
+                console.log(i)
                 setActiveIdx(i)
               }}
               onMouseLeave={() => {
@@ -141,25 +120,25 @@ const Tape = ({ tape }) => {
                 setActiveIdx(tape.id)
               }}
               // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
-              style={{
-                width: `${clamp(i, activeIdx)}px`,
-              }}
-              className="group py-1 self-start bg-clip-content transition-all relative ml-2"
+              className="group py-1 self-start bg-clip-content relative ml-2"
             >
               <span
                 style={{
                   width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
-                  transitionDuration: '200ms',
+                  transition: 'width .2s',
+                  transitionProperty: 'width',
+                  transitionTimingFunction: 'ease-in-out',
+                  transitionDuration: '0ms',
                 }}
                 className={`${
                   activeIdx === i ? 'bg-gray-100' : 'bg-gray-400'
-                } w-1 h-0.5 group-hover:bg-gray-100 block transition-all`}
+                } w-1 h-0.5 group-hover:bg-gray-100 block`}
               ></span>
               <span
                 style={{
                   top: '-5px',
                   right: '-40px',
-                  transitionDuration: '100ms',
+                  transitionDuration: '0ms',
                 }}
                 className={`${
                   activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
@@ -167,7 +146,7 @@ const Tape = ({ tape }) => {
               >
                 {activeIdx}
               </span>
-            </div>
+            </a>
           ))}
         </div>
 

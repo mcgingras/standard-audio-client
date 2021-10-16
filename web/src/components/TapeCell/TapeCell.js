@@ -1,4 +1,4 @@
-import Tape from 'src/components/Tape'
+import Tape from 'src/components/Tape/Tape.tsx'
 
 export const QUERY = gql`
   query FIND_TAPE_BY_ID($id: Int!) {

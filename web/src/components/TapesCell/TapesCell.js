@@ -25,23 +25,6 @@ export const Empty = () => {
   return <div className="rw-text-center">{'No tapes yet. '}</div>
 }
 
-// export const Success = ({ tapes }) => {
-//   return (
-//     <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8 px-4 sm:px-0">
-//       {tapes.map((tape) => {
-//         return (
-//           <TapeCard
-//             key={tape.id}
-//             id={tape.id}
-//             link={routes.tape({ id: tape.id })}
-//             name={tape.name}
-//           />
-//         )
-//       })}
-//     </div>
-//   )
-// }
-
 export const Success = ({ tapes }) => {
   const tapeRows = _.chunk(tapes, 10)
   return (

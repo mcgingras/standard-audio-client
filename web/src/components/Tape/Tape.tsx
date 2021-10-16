@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from 'react'
 import { Link, routes } from '@redwoodjs/router'
-import useAPI from '../../hooks/useAPI'
+// import useAPI from '../../hooks/useAPI'
 import { Toaster } from '@redwoodjs/web/toast'
 import { ContractContext } from '../../contexts/contractContext'
 
 // UI Components
-import TapeStats from '../TapeStats/TapeStats'
+// import TapeStats from '../TapeStats/TapeStats'
 import CassetteScene from '../Three/Scenes/CassetteScene'
 import { styleDecoder } from '../../utils/decoder'
 
 const Tape = ({ tape }) => {
   const { contract, address } = useContext(ContractContext)
-  const [isOwner, setIsOwner] = useState<boolean>(false)
+  const [_isOwner, setIsOwner] = useState<boolean>(false)
   const [activeIdx, setActiveIdx] = useState(tape.id)
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
@@ -22,7 +22,7 @@ const Tape = ({ tape }) => {
    * maybe think about duplicating this state in postgres?
    * probably not going to update right away.
    */
-  const [isClaimed, setIsClaimed] = useState(false)
+  const [_isClaimed, setIsClaimed] = useState(false)
 
   // Graphql API methods
   // const { update } = useAPI()

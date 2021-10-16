@@ -40,6 +40,8 @@ const Tape = ({ tape }) => {
     getBid()
   }, [contract, tape.id])
 
+  console.log(routes)
+
   useEffect(() => {
     if (address != '') {
       setIsOwner(address === tape.owner)
@@ -65,8 +67,6 @@ const Tape = ({ tape }) => {
   //   return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 20
   // }
 
-  console.log(styleDecoder(tape.style))
-
   return (
     <>
       <div className="min-h-screen h-screen relative bg-gray-400">
@@ -83,7 +83,7 @@ const Tape = ({ tape }) => {
           </div>
           <div className="flex self-center">
             <Link
-              to={routes.listeningRoom({ id: tape.id })}
+              to={routes.claims({ id: tape.id })}
               className="rounded-full bg-white text-gray-900 text-sm font-bold ml-auto px-3 py-1 mr-2"
             >
               Claim Tape
@@ -107,12 +107,12 @@ const Tape = ({ tape }) => {
         <div className="fixed flex flex-col left-0 top-0 pt-32">
           {Array.from(Array(50)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-            <a
+            <Link
+              to={routes.tape({ id: i })}
               href={`${i}`}
               key={i}
               onMouseOver={() => {
                 setIsHovered(true)
-                console.log(i)
                 setActiveIdx(i)
               }}
               onMouseLeave={() => {
@@ -146,7 +146,7 @@ const Tape = ({ tape }) => {
               >
                 {activeIdx}
               </span>
-            </a>
+            </Link>
           ))}
         </div>
 

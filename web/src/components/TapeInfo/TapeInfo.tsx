@@ -23,7 +23,7 @@ const TapeInfo = ({ tape }) => {
   const _stats = generateStats(tape)
 
   return (
-    <div className="w-96 bg-white rounded-sm overflow-scroll">
+    <div className="bg-white rounded-sm overflow-scroll">
       <div className="text-sm pt-8 px-8">
         <p className="">You currently own this tape.</p>
         <p className="pb-8 border-b">Tape #023 / 500</p>

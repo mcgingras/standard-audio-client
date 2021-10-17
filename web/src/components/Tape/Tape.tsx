@@ -56,22 +56,23 @@ const Tape: TapeC = ({ data, loading }) => {
   }
 
   return (
-    <>
-      <div className="min-h-screen h-screen max-h-screen relative bg-gray-400 overflow-scroll">
-        <Toaster />
-        <header className="flex justify-between p-8 fixed top-0 w-full z-10">
-          <div className="flex flex-row">
-            <h1 className="text-4xl font-semibold text-white">
-              {loading ? 'Loading' : data?.tape.name}
-            </h1>
-            <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
-              Owner
-            </h3>
-            <h3 className="ml-4 text-sm font-semibold text-white self-center">
-              {loading ? 'loading' : data?.tape.owner}
-            </h3>
-          </div>
-          {/* {!loading && (
+    <div className="min-h-screen h-screen max-h-screen bg-gray-400 p-8 overflow-hidden border-box">
+      <Toaster />
+      <div className="grid grid-cols-4">
+        <div className="col-span-3">
+          <header className="flex justify-between w-full z-10">
+            <div className="flex flex-row">
+              <h1 className="text-4xl font-semibold text-white">
+                {loading ? 'Loading' : data?.tape.name}
+              </h1>
+              <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
+                Owner
+              </h3>
+              <h3 className="ml-4 text-sm font-semibold text-white self-center">
+                {loading ? 'loading' : data?.tape.owner}
+              </h3>
+            </div>
+            {/* {!loading && (
             <div className="flex self-center">
               <Link
                 to={routes.claims({ id: parseInt(data.tape.id) })}
@@ -93,65 +94,71 @@ const Tape: TapeC = ({ data, loading }) => {
               </Link>
             </div>
           )} */}
-        </header>
+          </header>
 
-        {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
-        <div className="fixed flex flex-col left-0 top-0 pt-32 ml-8">
-          {Array.from(Array(50)).map((a, i) => (
-            // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-            <Link
-              to={routes.tape({ id: i })}
-              href={`${i}`}
-              key={i}
-              onMouseOver={() => {
-                setIsHovered(true)
-                setActiveIdx(i)
-              }}
-              onMouseLeave={() => {
-                setIsHovered(false)
-                setActiveIdx(parseInt(data?.tape.id || '-1'))
-              }}
-              className="group py-1 self-start bg-clip-content relative"
-            >
-              <span
-                style={{
-                  width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
-                  transition: 'width .2s',
-                  transitionProperty: 'width',
-                  transitionTimingFunction: 'ease-in-out',
-                  transitionDuration: `${isHovered ? '0' : '150'}ms`,
+          {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
+          <div className="fixed flex flex-col left-0 top-0 pt-32 ml-8">
+            {Array.from(Array(50)).map((a, i) => (
+              // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+              <Link
+                to={routes.tape({ id: i })}
+                href={`${i}`}
+                key={i}
+                onMouseOver={() => {
+                  setIsHovered(true)
+                  setActiveIdx(i)
                 }}
-                className={`${
-                  activeIdx === i ? 'bg-white' : 'bg-gray-600'
-                } w-1 h-0.5 group-hover:bg-gray-100 block`}
-              ></span>
-              <span
-                style={{
-                  top: '-5px',
-                  right: '-40px',
-                  transitionDuration: '0ms',
+                onMouseLeave={() => {
+                  setIsHovered(false)
+                  setActiveIdx(parseInt(data?.tape.id || '-1'))
                 }}
-                className={`${
-                  activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
-                } absolute font-bold text-sm text-white transition-all`}
+                className="group py-1 self-start bg-clip-content relative"
               >
-                {activeIdx}
-              </span>
-            </Link>
-          ))}
-        </div>
+                <span
+                  style={{
+                    width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
+                    transition: 'width .2s',
+                    transitionProperty: 'width',
+                    transitionTimingFunction: 'ease-in-out',
+                    transitionDuration: `${isHovered ? '0' : '150'}ms`,
+                  }}
+                  className={`${
+                    activeIdx === i ? 'bg-white' : 'bg-gray-600'
+                  } w-1 h-0.5 group-hover:bg-gray-100 block`}
+                ></span>
+                <span
+                  style={{
+                    top: '-5px',
+                    right: '-40px',
+                    transitionDuration: '0ms',
+                  }}
+                  className={`${
+                    activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
+                  } absolute font-bold text-sm text-white transition-all`}
+                >
+                  {activeIdx}
+                </span>
+              </Link>
+            ))}
+          </div>
 
-        {/* <TapeStats
+          {/* <TapeStats
           isOwner={isOwner}
           tape={tape}
           color={style.front_top_plate}
         /> */}
+        </div>
 
-        <div className="absolute inset-y-0 right-0 pt-24 pr-8">
-          {!loading && <TapeInfo tape={data.tape} />}
+        <div className="col-span-1">
+          <div
+            style={{ maxHeight: 'calc(100vh - 4em)' }}
+            className="w-full overflow-scroll"
+          >
+            {!loading && <TapeInfo tape={data.tape} />}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

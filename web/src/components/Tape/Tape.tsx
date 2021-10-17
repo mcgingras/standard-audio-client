@@ -6,6 +6,7 @@ import { ContractContext } from '../../contexts/contractContext'
 
 // UI Components
 // import TapeStats from '../TapeStats/TapeStats'
+import TapeInfo from '../TapeInfo/TapeInfo.tsx'
 import CassetteScene from '../Three/Scenes/CassetteScene'
 import { styleDecoder } from '../../utils/decoder'
 
@@ -62,13 +63,13 @@ const Tape: TapeC = ({ data, loading }) => {
         <header className="flex justify-between p-8 fixed top-0 w-full z-10">
           <div className="flex flex-row">
             <h1 className="text-4xl font-semibold text-white">
-              {loading ? 'Loading' : data.tape.name}
+              {loading ? 'Loading' : data?.tape.name}
             </h1>
             <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
               Owner
             </h3>
             <h3 className="ml-4 text-sm font-semibold text-white self-center">
-              {loading ? 'loading' : data.tape.owner}
+              {loading ? 'loading' : data?.tape.owner}
             </h3>
           </div>
           {!loading && (
@@ -95,7 +96,7 @@ const Tape: TapeC = ({ data, loading }) => {
           )}
         </header>
 
-        <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} />
+        {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
         <div className="fixed flex flex-col left-0 top-0 pt-32">
           {Array.from(Array(50)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
@@ -123,7 +124,7 @@ const Tape: TapeC = ({ data, loading }) => {
                   transitionDuration: '0ms',
                 }}
                 className={`${
-                  activeIdx === i ? 'bg-gray-100' : 'bg-gray-400'
+                  activeIdx === i ? 'bg-white' : 'bg-gray-600'
                 } w-1 h-0.5 group-hover:bg-gray-100 block`}
               ></span>
               <span
@@ -147,6 +148,10 @@ const Tape: TapeC = ({ data, loading }) => {
           tape={tape}
           color={style.front_top_plate}
         /> */}
+
+        <div className="absolute inset-y-0 right-0 pt-24 pr-8">
+          {!loading && <TapeInfo tape={data.tape} />}
+        </div>
       </div>
     </>
   )

@@ -57,7 +57,7 @@ const Tape: TapeC = ({ data, loading }) => {
 
   return (
     <>
-      <div className="min-h-screen h-screen relative bg-gray-400">
+      <div className="min-h-screen h-screen max-h-screen relative bg-gray-400 overflow-scroll">
         <Toaster />
         <header className="flex justify-between p-8 fixed top-0 w-full z-10">
           <div className="flex flex-row">
@@ -71,7 +71,7 @@ const Tape: TapeC = ({ data, loading }) => {
               {loading ? 'loading' : data?.tape.owner}
             </h3>
           </div>
-          {!loading && (
+          {/* {!loading && (
             <div className="flex self-center">
               <Link
                 to={routes.claims({ id: parseInt(data.tape.id) })}
@@ -92,11 +92,11 @@ const Tape: TapeC = ({ data, loading }) => {
                 BACK
               </Link>
             </div>
-          )}
+          )} */}
         </header>
 
         {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
-        <div className="fixed flex flex-col left-0 top-0 pt-32">
+        <div className="fixed flex flex-col left-0 top-0 pt-32 ml-8">
           {Array.from(Array(50)).map((a, i) => (
             // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
             <Link
@@ -111,7 +111,7 @@ const Tape: TapeC = ({ data, loading }) => {
                 setIsHovered(false)
                 setActiveIdx(parseInt(data?.tape.id || '-1'))
               }}
-              className="group py-1 self-start bg-clip-content relative ml-2"
+              className="group py-1 self-start bg-clip-content relative"
             >
               <span
                 style={{

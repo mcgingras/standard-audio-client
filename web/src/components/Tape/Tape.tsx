@@ -12,8 +12,15 @@ import { styleDecoder } from '../../utils/decoder'
 
 const Tape: TapeC = ({ data, loading }) => {
   const { _contract, _address } = useContext(ContractContext)
+
+  // If the currently logged in user owns the tape.
   const [_isOwner, _setIsOwner] = useState<boolean>(false)
+
+  // active index -- currently hovered nav bar, useful for
+  // setting the animation as a user hovers over the bars
   const [activeIdx, setActiveIdx] = useState<number>(-1)
+
+  // Boolean representing if any of the "nav" bars are hovered
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   /**
@@ -23,7 +30,7 @@ const Tape: TapeC = ({ data, loading }) => {
    * maybe think about duplicating this state in postgres?
    * probably not going to update right away.
    */
-  const [_isClaimed, _setIsClaimed] = useState(false)
+  const [_isClaimed, _setIsClaimed] = useState<boolean>(false)
 
   // Graphql API methods
   // const { update } = useAPI()
@@ -37,24 +44,16 @@ const Tape: TapeC = ({ data, loading }) => {
   //   }
   // }, [address])
 
-  const map = (value, x1, y1, x2, y2) =>
+  const map = (value: number, x1: number, y1: number, x2: number, y2: number) =>
     ((value - x1) * (y2 - x2)) / (y1 - x1) + x2
 
-  function sigmoid(t) {
+  function sigmoid(t: number): number {
     return 1 / (1 + Math.pow(Math.E, -t))
   }
 
-  const clamp = (val, target) => {
+  const clamp = (val: number, target: number): number => {
     return sigmoid(map(50 - Math.abs(target - val), 0, 50, -10, 5)) * 100 + 20
   }
-
-  // const clamp = (val, target) => {
-  //   if (Math.abs(target - val) > 5) {
-  //     return 40
-  //   }
-
-  //   return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 20
-  // }
 
   return (
     <>
@@ -112,7 +111,6 @@ const Tape: TapeC = ({ data, loading }) => {
                 setIsHovered(false)
                 setActiveIdx(parseInt(data?.tape.id || '-1'))
               }}
-              // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
               className="group py-1 self-start bg-clip-content relative ml-2"
             >
               <span
@@ -121,7 +119,7 @@ const Tape: TapeC = ({ data, loading }) => {
                   transition: 'width .2s',
                   transitionProperty: 'width',
                   transitionTimingFunction: 'ease-in-out',
-                  transitionDuration: '0ms',
+                  transitionDuration: `${isHovered ? '0' : '150'}ms`,
                 }}
                 className={`${
                   activeIdx === i ? 'bg-white' : 'bg-gray-600'

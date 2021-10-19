@@ -41,7 +41,7 @@ export function Underlay() {
             letterSpacing: -2,
           }}
         >
-          POIMANDRES
+          MXTAPES
         </p>
         <div style={{ width: 10 }} />
         <p
@@ -147,9 +147,9 @@ export function Underlay() {
             color: 'black',
           }}
         >
-          <b>Stones, Metals and Gems</b>
+          <b>Dark Night Demo Tapes</b>
           <br />
-          A Universal Deity
+          0x40e2a3cd2a924015fC13088dA1bD64999C2F5DD5
           <br />
           <b>—</b>
         </p>
@@ -193,7 +193,7 @@ export function Underlay() {
             letterSpacing: -10,
           }}
         >
-          X
+          III
         </p>
         <div style={{ width: 10 }} />
         <p
@@ -207,7 +207,7 @@ export function Underlay() {
             letterSpacing: -10,
           }}
         >
-          01-
+          014
         </p>
       </div>
       <div style={{ height: 60 }} />
@@ -233,9 +233,9 @@ export function Underlay() {
             color: 'black',
           }}
         >
-          <b>Wonders of Antiquity</b>
+          <b>Series III</b>
           <br />
-          Pythagorean Mathematics
+          Color Mapped
         </p>
         <div style={{ width: 10 }} />
         <p
@@ -252,7 +252,7 @@ export function Underlay() {
             whiteSpace: 'nowrap',
           }}
         >
-          THE SUMMIT OF THE MANY
+          HOVER FOR STATS
         </p>
         <div style={{ width: 10 }} />
         <p

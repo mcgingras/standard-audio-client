@@ -30,9 +30,9 @@ const TapeEditForm = ({ id, isClaim }) => {
   const [tracks, setTracks] = useState([])
   const [songs, setSongs] = useState([])
 
-  const [txHash, setTxHash] = useState(undefined)
-  const [txError, setTxError] = useState(undefined)
-  const [txBeingSent, setTxBeingSent] = useState(undefined)
+  const [_txHash, setTxHash] = useState(undefined)
+  const [_txError, setTxError] = useState(undefined)
+  const [_txBeingSent, setTxBeingSent] = useState(undefined)
   const ERROR_CODE_TX_REJECTED_BY_USER = 4001
 
   // used for debounced search
@@ -83,7 +83,7 @@ const TapeEditForm = ({ id, isClaim }) => {
 
   // doesnt this get run a bunch because of renders?
   // seems wasteful
-  const { loading, error, data } = useQuery(FIND_TAPE_QUERY, {
+  const { _loading, _error, data } = useQuery(FIND_TAPE_QUERY, {
     variables: { id: id },
   })
 
@@ -320,7 +320,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                   </label>
                   <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="droppable">
-                      {(provided, snapshot) => (
+                      {(provided, _snapshot) => (
                         <div
                           {...provided.droppableProps}
                           ref={provided.innerRef}
@@ -392,14 +392,14 @@ const TapeEditForm = ({ id, isClaim }) => {
                   {query && (
                     <div className="bg-white border rounded-b-lg shadow-md max-h-96 overflow-scroll rounded-b-lg">
                       {tracks.map((result) => (
-                        <div
+                        <button
                           key={result.id}
                           onClick={() => addSong(result)}
                           className="hover:bg-gray-200 w-full px-2 py-2 flex"
                         >
                           <img
                             src={result.album.images[2].url}
-                            alt="album cover photo"
+                            alt="album cover for the current song"
                           />
                           <div className="ml-2">
                             <h4 className="font-lg text-gray-500">
@@ -411,7 +411,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                                 .join(', ')}
                             </h4>
                           </div>
-                        </div>
+                        </button>
                       ))}
                     </div>
                   )}

@@ -8,6 +8,7 @@ import { ContractContext } from '../../contexts/contractContext'
 // import TapeStats from '../TapeStats/TapeStats'
 import TapeInfo from '../TapeInfo/TapeInfo.tsx'
 import CassetteScene from '../Three/Scenes/CassetteScene'
+import BareScene from '../Three/Scenes/BareScene'
 import { styleDecoder } from '../../utils/decoder'
 
 const Tape: TapeC = ({ data, loading }) => {
@@ -97,6 +98,7 @@ const Tape: TapeC = ({ data, loading }) => {
           </header>
 
           {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
+          <BareScene style={loading ? {} : styleDecoder(data.tape.style)} />
           <div className="fixed flex flex-col left-0 top-0 pt-32 ml-8">
             {Array.from(Array(50)).map((a, i) => (
               // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events

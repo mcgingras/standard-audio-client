@@ -66,7 +66,7 @@ const App = () => {
     <ContractContext.Provider value={{ contract, address }}>
       <FatalErrorBoundary page={FatalErrorPage}>
         <RedwoodApolloProvider>
-          <div className="bg-gray-100">
+          <div className="bg-gray-100 root">
             <Routes />
           </div>
         </RedwoodApolloProvider>

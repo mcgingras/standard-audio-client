@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei/core/useGLTF'
 import { useFrame } from 'react-three-fiber'
-import * as THREE from 'three'
 
 export default function CassetteModal(props) {
   const group = useRef()
@@ -11,7 +10,7 @@ export default function CassetteModal(props) {
    * Animation
    */
   useFrame(() => {
-    const timer = Date.now() * 0.0005
+    const _timer = Date.now() * 0.0005
     // group.current.rotation.y = Math.sin(timer) * 0.2
     // group.current.position.y = Math.sin(timer) * 0.25 + 0.5
   })
@@ -19,7 +18,7 @@ export default function CassetteModal(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group
-        position={[0, 1.2, 0]}
+        position={[0, 0, 0]}
         rotation-x={Math.PI / 2 - 0.2}
         // rotation-y={0.0}
         scale={[0.025, 0.025, 0.025]}

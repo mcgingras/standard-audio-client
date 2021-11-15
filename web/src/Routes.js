@@ -2,7 +2,7 @@ import { Router, Route } from '@redwoodjs/router'
 import EditTapePage from './pages/EditTapePage/EditTapePage'
 import ListeningRoomPage from './pages/ListeningRoom/ListeningRoomPage'
 import TapesClaimPage from './pages/TapeClaimPage/TapesClaimPage'
-import DemoPage from './pages/DemoPage/DemoPage'
+import DemoPage from './pages/DemoPage/DemoPage.tsx'
 
 const Routes = () => {
   return (

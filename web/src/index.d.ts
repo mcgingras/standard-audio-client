@@ -3,6 +3,8 @@ interface Tape {
   name: string
   owner: string
   style: string
+  capacity: string
+  quality: string
 }
 
 interface TapeData {
@@ -13,3 +15,8 @@ type TapeC = React.FC<{
   data: TapeData
   loading: boolean
 }>
+               
+type TapeInfoC = React.FC<{
+  tape: Tape
+}>
+

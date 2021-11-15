@@ -6,13 +6,22 @@ import { ContractContext } from '../../contexts/contractContext'
 
 // UI Components
 // import TapeStats from '../TapeStats/TapeStats'
+import TapeInfo from '../TapeInfo/TapeInfo.tsx'
 import CassetteScene from '../Three/Scenes/CassetteScene'
+import BareScene from '../Three/Scenes/BareScene'
 import { styleDecoder } from '../../utils/decoder'
 
 const Tape: TapeC = ({ data, loading }) => {
   const { _contract, _address } = useContext(ContractContext)
+
+  // If the currently logged in user owns the tape.
   const [_isOwner, _setIsOwner] = useState<boolean>(false)
+
+  // active index -- currently hovered nav bar, useful for
+  // setting the animation as a user hovers over the bars
   const [activeIdx, setActiveIdx] = useState<number>(-1)
+
+  // Boolean representing if any of the "nav" bars are hovered
   const [isHovered, setIsHovered] = useState<boolean>(false)
 
   /**
@@ -22,7 +31,7 @@ const Tape: TapeC = ({ data, loading }) => {
    * maybe think about duplicating this state in postgres?
    * probably not going to update right away.
    */
-  const [_isClaimed, _setIsClaimed] = useState(false)
+  const [_isClaimed, _setIsClaimed] = useState<boolean>(false)
 
   // Graphql API methods
   // const { update } = useAPI()
@@ -36,42 +45,35 @@ const Tape: TapeC = ({ data, loading }) => {
   //   }
   // }, [address])
 
-  const map = (value, x1, y1, x2, y2) =>
+  const map = (value: number, x1: number, y1: number, x2: number, y2: number) =>
     ((value - x1) * (y2 - x2)) / (y1 - x1) + x2
 
-  function sigmoid(t) {
+  function sigmoid(t: number): number {
     return 1 / (1 + Math.pow(Math.E, -t))
   }
 
-  const clamp = (val, target) => {
+  const clamp = (val: number, target: number): number => {
     return sigmoid(map(50 - Math.abs(target - val), 0, 50, -10, 5)) * 100 + 20
   }
 
-  // const clamp = (val, target) => {
-  //   if (Math.abs(target - val) > 5) {
-  //     return 40
-  //   }
-
-  //   return (10 - Math.abs(target - val)) * (10 - Math.abs(target - val)) + 20
-  // }
-
   return (
-    <>
-      <div className="min-h-screen h-screen relative bg-gray-400">
-        <Toaster />
-        <header className="flex justify-between p-8 fixed top-0 w-full z-10">
-          <div className="flex flex-row">
-            <h1 className="text-4xl font-semibold text-white">
-              {loading ? 'Loading' : data.tape.name}
-            </h1>
-            <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
-              Owner
-            </h3>
-            <h3 className="ml-4 text-sm font-semibold text-white self-center">
-              {loading ? 'loading' : data.tape.owner}
-            </h3>
-          </div>
-          {!loading && (
+    <div className="min-h-screen h-screen max-h-screen bg-gray-400 p-8 overflow-hidden border-box">
+      <Toaster />
+      <div className="grid grid-cols-4">
+        <div className="col-span-3">
+          <header className="flex justify-between w-full z-10">
+            <div className="flex flex-row">
+              <h1 className="text-4xl font-semibold text-white">
+                {loading ? 'Loading' : data?.tape.name}
+              </h1>
+              <h3 className="self-center rounded-full border border-white text-white px-3 py-1 ml-4 text-sm">
+                Owner
+              </h3>
+              <h3 className="ml-4 text-sm font-semibold text-white self-center">
+                {loading ? 'loading' : data?.tape.owner}
+              </h3>
+            </div>
+            {/* {!loading && (
             <div className="flex self-center">
               <Link
                 to={routes.claims({ id: parseInt(data.tape.id) })}
@@ -92,63 +94,73 @@ const Tape: TapeC = ({ data, loading }) => {
                 BACK
               </Link>
             </div>
-          )}
-        </header>
+          )} */}
+          </header>
 
-        <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} />
-        <div className="fixed flex flex-col left-0 top-0 pt-32">
-          {Array.from(Array(50)).map((a, i) => (
-            // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-            <Link
-              to={routes.tape({ id: i })}
-              href={`${i}`}
-              key={i}
-              onMouseOver={() => {
-                setIsHovered(true)
-                setActiveIdx(i)
-              }}
-              onMouseLeave={() => {
-                setIsHovered(false)
-                setActiveIdx(parseInt(data?.tape.id || '-1'))
-              }}
-              // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
-              className="group py-1 self-start bg-clip-content relative ml-2"
-            >
-              <span
-                style={{
-                  width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
-                  transition: 'width .2s',
-                  transitionProperty: 'width',
-                  transitionTimingFunction: 'ease-in-out',
-                  transitionDuration: '0ms',
+          {/* <CassetteScene style={loading ? {} : styleDecoder(data.tape.style)} /> */}
+          <BareScene style={loading ? {} : styleDecoder(data.tape.style)} />
+          <div className="fixed flex flex-col left-0 top-0 pt-32 ml-8">
+            {Array.from(Array(50)).map((a, i) => (
+              // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
+              <Link
+                to={routes.tape({ id: i })}
+                href={`${i}`}
+                key={i}
+                onMouseOver={() => {
+                  setIsHovered(true)
+                  setActiveIdx(i)
                 }}
-                className={`${
-                  activeIdx === i ? 'bg-gray-100' : 'bg-gray-400'
-                } w-1 h-0.5 group-hover:bg-gray-100 block`}
-              ></span>
-              <span
-                style={{
-                  top: '-5px',
-                  right: '-40px',
-                  transitionDuration: '0ms',
+                onMouseLeave={() => {
+                  setIsHovered(false)
+                  setActiveIdx(parseInt(data?.tape.id || '-1'))
                 }}
-                className={`${
-                  activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
-                } absolute font-bold text-sm text-white transition-all`}
+                className="group py-1 self-start bg-clip-content relative"
               >
-                {activeIdx}
-              </span>
-            </Link>
-          ))}
-        </div>
+                <span
+                  style={{
+                    width: `${isHovered ? clamp(i, activeIdx) : 20}px`,
+                    transition: 'width .2s',
+                    transitionProperty: 'width',
+                    transitionTimingFunction: 'ease-in-out',
+                    transitionDuration: `${isHovered ? '0' : '150'}ms`,
+                  }}
+                  className={`${
+                    activeIdx === i ? 'bg-white' : 'bg-gray-600'
+                  } w-1 h-0.5 group-hover:bg-gray-100 block`}
+                ></span>
+                <span
+                  style={{
+                    top: '-5px',
+                    right: '-40px',
+                    transitionDuration: '0ms',
+                  }}
+                  className={`${
+                    activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
+                  } absolute font-bold text-sm text-white transition-all`}
+                >
+                  {activeIdx}
+                </span>
+              </Link>
+            ))}
+          </div>
 
-        {/* <TapeStats
+          {/* <TapeStats
           isOwner={isOwner}
           tape={tape}
           color={style.front_top_plate}
         /> */}
+        </div>
+
+        <div className="col-span-1">
+          <div
+            style={{ maxHeight: 'calc(100vh - 4em)' }}
+            className="w-full overflow-scroll"
+          >
+            {!loading && <TapeInfo tape={data.tape} />}
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

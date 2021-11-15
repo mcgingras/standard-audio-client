@@ -27,21 +27,25 @@ Your browser should open automatically to `http://localhost:8910` to see the web
 - different levels of colors "rare colors" "common colors" etc
 - different animations of tape, some buttons to show different animations
 
+
+- Concerns with the contract. Nothing is stored on chain -- do people care about that? See DOM tweet about how NFTs are really just owning a collection of data, which this is.
+- Concerns about capacity not "truly" being a capcity. You could add a million songs to the metadata field for all I care... the capacity isn't actually imposing a constraint on the capacity of what is "stored" but it does impose a capcity on what is pulled through to the dapp. Makes you ask a somewhat philisophical question about NFTs -- what actually is the NFT? What sort of role does the dapp play in what you own? Sort of useless outside of the dapp (just a bundle of stats... completely arbitrary outside of the dapp)
+
+
+### Current
+- better all tapes browser (one screen... true SPA)
+
 ### Todo
-- definitely figure out the spotify refresh issue -- update? fixed? -- how long does it go for
-- take pictures of all the tapes? Set up some task to do that?
-- put image of screenshot as field of tape
-- figure out spline or three.js
 - figure out tape attributes
-- better all tapes browsing (shelves, see figma)
 
 ### Serious Todos
-- format bids to update automatically
-- test accepting bid
+- opensea integration
 - my tapes
 - about
 - better defaults in stats
 - better stats (color rarity?)
 - actually implement capacity (low priority for now)
-- style bidItems
-- fix eth display issue on biditems
+
+
+# Notes
+Need to run `yarn rw prisma generate` when changes are made to prisma config (changing db path etc)

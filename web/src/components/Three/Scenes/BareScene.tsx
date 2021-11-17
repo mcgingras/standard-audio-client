@@ -24,10 +24,16 @@ const BareScene = ({ style }) => {
       <directionalLight position={[0, 5, -4]} intensity={4} />
       <directionalLight position={[0, -15, -0]} intensity={4} color="white" />
       <Suspense fallback={null}>
+
         <CassetteModel colors={style} />
       </Suspense>
       <OrbitControls
-        // autoRotate
+        // start annoying TS required props
+        addEventListener={() => {}}
+        hasEventListener={() => {}}
+        removeEventListener={() => {}}
+        dispatchEvent={() => {}}
+        // end annoying TS required props
         enableZoom={false}
         enablePan={false}
         minPolarAngle={Math.PI / 2.8}

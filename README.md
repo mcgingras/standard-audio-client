@@ -2,8 +2,7 @@
 Secret NFT repo.
 
 ### Setup
-
-I am using a framework called Redwood.js to get the benefits of graphql out of the box. To get the dependencies installed, just do this in the root directory:
+This project uses a framework called Redwood.js to get the benefits of graphql and typescript out of the box. To install the dependencies, run this in the root directory:
 
 ```terminal
 yarn install

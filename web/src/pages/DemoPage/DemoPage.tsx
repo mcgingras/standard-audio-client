@@ -5,29 +5,17 @@ import BareScene from '../../components/Three/Scenes/BareScene'
 export function Underlay() {
   return (
     <div
+      className="absolute h-full w-full inline-flex flex-col p-10"
       style={{
-        position: 'absolute',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
-        padding: 40,
-        display: 'inline-flex',
-        flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         pointerEvents: 'none',
       }}
     >
       <div
-        style={{
-          width: '100%',
-          padding: 0,
-          display: 'inline-flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
+        className="w-full p-0 inline-flex flex-row items-center justify-center"
       >
         <p
           style={{
@@ -43,77 +31,56 @@ export function Underlay() {
         >
           MXTAPES
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
-          className="full"
+          className="full text-black text-center text-xs h-3"
           style={{
             flex: '1 1 0%',
-            height: 12,
-            fontSize: 12,
             lineHeight: '12px',
-            textAlign: 'center',
-            color: 'black',
           }}
         >
           DIVINE NAMES
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
-          className="full"
+          className="full text-black text-center text-xs h-3"
           style={{
             flex: '1 1 0%',
-            height: 12,
-            fontSize: 12,
-            lineHeight: '12px',
-            textAlign: 'center',
-            color: 'black',
           }}
         >
           CREATIONS
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
-          className="full"
+          className="full text-black text-center text-xs h-3"
           style={{
             flex: '1 1 0%',
-            height: 12,
-            fontSize: 12,
             lineHeight: '12px',
-            textAlign: 'center',
-            color: 'black',
           }}
         >
           FORMATIONS
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
-          className="full"
+          className="full text-black text-center text-xs h-3"
           style={{
             flex: '1 1 0%',
-            height: 12,
-            fontSize: 12,
             lineHeight: '12px',
-            textAlign: 'center',
-            color: 'black',
           }}
         >
           SUBSTANCES
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
-          className="full"
+          className="full text-black text-center text-xs h-3"
           style={{
             flex: '1 1 0%',
-            height: 12,
-            fontSize: 12,
             lineHeight: '12px',
-            textAlign: 'center',
-            color: 'black',
           }}
         >
           MATTER
         </p>
-        <div style={{ width: 10 }} />
+        <div className="w-2.5" />
         <p
           style={{
             flex: '1 1 0%',
@@ -171,16 +138,10 @@ export function Underlay() {
       </div>
       <div style={{ height: 10 }} />
       <div
-        className="full"
+        className="w-full p-0 inline-flex flex-row items-end justify-center"
         style={{
           fontFamily: "'Antonio', sans-serif",
-          width: '100%',
           flex: '1 1 0%',
-          padding: 0,
-          display: 'inline-flex',
-          flexDirection: 'row',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
         }}
       >
         <p
@@ -214,7 +175,6 @@ export function Underlay() {
       <div
         style={{
           pointerEvents: 'all',
-          pointer: 'auto',
           width: '100%',
           padding: 0,
           display: 'inline-flex',
@@ -282,7 +242,7 @@ const DemoPage = ({ id }) => {
     }
   `
 
-  const { loading, _error, data } = useQuery(FIND_TAPE_QUERY, {
+  const { loading, data } = useQuery(FIND_TAPE_QUERY, {
     variables: { id: id },
   })
 

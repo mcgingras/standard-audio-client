@@ -13,6 +13,7 @@ const Routes = () => {
       <Route path="/tapes/{id:Int}/claim" page={TapesClaimPage} name="claims" />
       <Route path="/den/{id:Int}" page={ListeningRoomPage} name="listeningRoom" />
       <Route path="/demo/{id:Int}" page={DemoPage} name="demo" />
+      <Route path="/alt/{id:Int}" page={AltPage} name="alt" />
       <Route path="/" page={HomePage} name="home" />
       <Route notfound page={NotFoundPage} />
     </Router>

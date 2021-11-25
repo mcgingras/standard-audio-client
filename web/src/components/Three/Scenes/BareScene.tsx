@@ -10,7 +10,7 @@ const BareScene = ({ style }) => {
       dpr={[1, 2]}
       shadows
       gl={{ alpha: true, stencil: false, depth: true, antialias: true }}
-      camera={{ position: [0, 0, 20], fov: 15, near: 10, far: 30 }}
+      camera={{ position: [0, 0, 15], fov: 15, near: 10, far: 30 }}
     >
       <ambientLight intensity={0.75} />
       <spotLight
@@ -24,7 +24,6 @@ const BareScene = ({ style }) => {
       <directionalLight position={[0, 5, -4]} intensity={4} />
       <directionalLight position={[0, -15, -0]} intensity={4} color="white" />
       <Suspense fallback={null}>
-
         <CassetteModel colors={style} />
       </Suspense>
       <OrbitControls
@@ -34,6 +33,9 @@ const BareScene = ({ style }) => {
         removeEventListener={() => {}}
         dispatchEvent={() => {}}
         // end annoying TS required props
+        // autoRotate={true}
+        target={[0,0,0]}
+        autoRotateSpeed={1.0}
         enableZoom={false}
         enablePan={false}
         minPolarAngle={Math.PI / 2.8}

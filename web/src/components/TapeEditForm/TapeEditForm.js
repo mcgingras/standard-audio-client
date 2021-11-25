@@ -22,8 +22,6 @@ const TapeEditForm = ({ id, isClaim }) => {
   const [isLoggedIn, token] = useSpotify()
   const spotifySearchRef = useRef()
 
-  console.log(isLoggedIn)
-
   // used for state of form
   const [tape, setTape] = useState({})
   const [title, setTitle] = useState('')
@@ -282,7 +280,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                         }/${isClaim ? 'claim' : 'edit'}`
                   }
                 >
-                  Log into Spotify
+                Log into Spotify
                 </a>
               </button>
             </div>
@@ -390,7 +388,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                   />
                   {isSearching && <div className="bg-white">Searching ...</div>}
                   {query && (
-                    <div className="bg-white border rounded-b-lg shadow-md max-h-96 overflow-scroll rounded-b-lg">
+                    <div className="bg-white border rounded-b-lg shadow-md max-h-96 overflow-scroll">
                       {tracks.map((result) => (
                         <button
                           key={result.id}

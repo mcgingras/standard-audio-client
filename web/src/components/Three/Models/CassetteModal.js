@@ -20,7 +20,7 @@ export default function CassetteModal(props) {
       <group
         position={[0, 0, 0]}
         rotation-x={Math.PI / 2 - 0.2}
-        // rotation-y={0.0}
+
         scale={[0.025, 0.025, 0.025]}
       >
         <mesh

@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { Transition } from '@headlessui/react'
-import { ethers } from 'ethers'
 import { Link } from '@redwoodjs/router'
-import useSpotify from '../../hooks/useSpotify'
 import {
   styleDecoder,
   capacityDecoder,
@@ -33,7 +31,6 @@ const generateStats = (tape) => {
 }
 
 const TapeStats = ({ isOwner, tape, color }) => {
-  const [spotifyLoggedIn, token] = useSpotify()
   const [isUp, setUp] = useState(false)
   const [buttonUp, setButtonUp] = useState(true)
   const stats = generateStats(tape)

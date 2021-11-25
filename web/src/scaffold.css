@@ -355,3 +355,13 @@ a {
   color: black;
   text-decoration: none; /* no underline */
 }
+
+.blurred {
+  position: absolute;
+  top: -250px;
+  right: -250px;
+  width: 800px;
+  height: 800px;
+  background: red;
+  filter: blur(500px);
+}

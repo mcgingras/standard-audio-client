@@ -35,8 +35,7 @@ const tapeComponents = [
 ]
 
 export const styleDecoder = (bin) => {
-  const padded = bin.toString().padStart(51, '0')
-
+  const padded = bin.toString(2).padStart(51, '0')
   const colorMap = {}
   for (let i = 0; i < 17; i++) {
     const binOfI = padded.substring(i * 3, i * 3 + 3)
@@ -50,7 +49,6 @@ export const styleDecoder = (bin) => {
 }
 
 const capacities = ['46', '60', '90', '120']
-
 export const capacityDecoder = (index) => {
   const capacity = capacities[index]
 
@@ -58,7 +56,6 @@ export const capacityDecoder = (index) => {
 }
 
 const qualities = ['low', 'medium', 'high', 'ultra']
-
 export const qualityDecoder = (index) => {
   const quality = qualities[index]
 

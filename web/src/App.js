@@ -4,6 +4,7 @@ import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
 // solidty
 import MixtapeArtifact from './contracts/Mixtape.json'
+import SubtapeFactoryCreatorArtifact from './contracts/SubtapeFactoryCreator.json'
 import contractAddress from './contracts/contract-address.json'
 import { ContractContext } from './contexts/contractContext'
 
@@ -22,7 +23,7 @@ import './index.css'
 const App = () => {
   const [injectedProvider, setInjectedProvider] = useState(undefined)
   const [address, setAddress] = useState('')
-  const [contract, setContract] = useState('')
+  const [contracts, setContracts] = useState()
 
   const web3Modal = new Web3Modal({
     cacheProvider: true,
@@ -56,14 +57,20 @@ const App = () => {
           injectedProvider.getSigner(0)
         )
 
-        setContract(mixtape)
+        const subtapeFactoryCreator = new ethers.Contract(
+          contractAddress.SubtapeFactoryCreator,
+          SubtapeFactoryCreatorArtifact.abi,
+          injectedProvider.getSigner(0)
+        )
+
+        setContracts({ mixtape, subtapeFactoryCreator })
       }
     }
     getSigner()
   }, [injectedProvider])
 
   return (
-    <ContractContext.Provider value={{ contract, address }}>
+    <ContractContext.Provider value={{ contracts, address }}>
       <FatalErrorBoundary page={FatalErrorPage}>
         <RedwoodApolloProvider>
           <div className="bg-gray-100 root">

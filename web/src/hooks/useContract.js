@@ -1,37 +1,45 @@
-import Web3Modal from 'web3modal'
+import { useState, useCallback, useEffect } from 'react'
 import { ethers } from 'ethers'
-import WalletConnectProvider from '@walletconnect/web3-provider'
-import MixtapeArtifact from '../contracts/Mixtape.json'
-import contractAddress from '../contracts/contract-address.json'
+import Web3Modal from 'web3modal'
 
-const providerOptions = {
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      infuraId: '60ecdce72df343308dc295b76d6deeb6',
-    },
-  },
-}
+const useContract = (contractAddress, abi) => {
+  const [contract, setContract] = useState()
+  const [injectedProvider, setInjectedProvider] = useState()
 
-// Seems like maybe we are not using this?
-// could possibly deprecate once it is safe to do so
-const useContract = () => {
-  const loadWeb3Modal = async () => {
-    const web3Modal = new Web3Modal({ providerOptions })
+  const web3Modal = new Web3Modal({
+    cacheProvider: true,
+    providerOptions: {},
+  })
+
+  const loadWeb3Modal = useCallback(async () => {
     const provider = await web3Modal.connect()
-    const injectedProvider = new ethers.providers.Web3Provider(provider)
-    const signer = injectedProvider.getSigner()
-    const addr = await signer.getAddress()
-    const mixtape = new ethers.Contract(
-      contractAddress.Mixtape,
-      MixtapeArtifact.abi,
-      injectedProvider.getSigner(0)
-    )
+    setInjectedProvider(new ethers.providers.Web3Provider(provider))
+  }, [setInjectedProvider])
 
-    return mixtape
-  }
+  useEffect(() => {
+    if (web3Modal.cachedProvider) {
+      loadWeb3Modal()
+    } else {
+      loadWeb3Modal()
+    }
+  }, [loadWeb3Modal])
 
-  return loadWeb3Modal()
+  useEffect(() => {
+    const getSigner = async () => {
+      if (injectedProvider) {
+        const signer = injectedProvider.getSigner()
+        const contract = new ethers.Contract(
+          contractAddress,
+          abi,
+          injectedProvider.getSigner(0)
+        )
+        setContract(contract)
+      }
+    }
+    getSigner()
+  }, [injectedProvider])
+
+  return contract
 }
 
 export default useContract

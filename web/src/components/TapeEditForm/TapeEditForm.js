@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext, useRef } from 'react'
 import { routes } from '@redwoodjs/router'
+import { ethers } from 'ethers'
 import { useQuery, useMutation } from '@redwoodjs/web'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import useSpotify from '../../hooks/useSpotify'
@@ -110,8 +111,12 @@ const TapeEditForm = ({ id, isClaim }) => {
       if (debouncedQuery) {
         setIsSearching(true)
         searchSpotify(debouncedQuery).then((results) => {
+          if(results.tracks) {
           setIsSearching(false)
           setTracks(results.tracks.items)
+          } else {
+            console.log("something is wrong... probably unauthorized to spotify")
+          }
         })
       } else {
         setTracks([])
@@ -217,7 +222,8 @@ const TapeEditForm = ({ id, isClaim }) => {
         tape.quality,
         tape.style,
         tape.proof,
-        ipfs.data.IpfsHash
+        ipfs.data.IpfsHash,
+        { value: ethers.utils.parseEther("0.1") }
       )
       setTxHash(tx.hash)
 

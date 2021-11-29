@@ -9,6 +9,8 @@ import { ContractContext } from '../../contexts/contractContext'
 import SubtapeFactoryArtifact from '../../contracts/SubtapeFactory.json'
 import { getIPFSData } from '../../utils/pinata'
 
+import SpotifyCard from '../../components/SpotifyCard/SpotifyCard'
+
 const Underlay = ({ data }) => {
   return (
     <div className="absolute h-full w-full inline-flex flex-col p-10 items-start justify-start top-0 left-0 overflow-hidden">
@@ -61,7 +63,7 @@ const Special = ({ factoryAddress }) => {
   )
 }
 
-const TapeStats = ({ id, songs }) => {
+const TapeStats = ({ id, songs, showFn, isShowing }) => {
   const { contracts, address } = useContext(ContractContext)
   const [spotifyLoggedIn, token] = useSpotify()
   const [claimed, setClaimed] = useState<boolean>()
@@ -128,11 +130,14 @@ const TapeStats = ({ id, songs }) => {
           </Link>
         )}
         {spotifyLoggedIn && owner !== address && (
-          <Link to={routes.claims({ id: parseInt(id) })}>
-            <button className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors">
-              Listen to Tape
-            </button>
-          </Link>
+          // <Link to={routes.claims({ id: parseInt(id) })}>
+          <button
+            onClick={() => showFn(!isShowing)}
+            className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors"
+          >
+            {isShowing ? 'Pause Tape' : 'Listen to Tape'}
+          </button>
+          // </Link>
         )}
       </div>
       <div className="py-8 border-b border-black">
@@ -211,6 +216,7 @@ const AltPage = ({ id }) => {
   const [activeIdx, setActiveIdx] = useState<number>(-1)
   const [isHovered, setIsHovered] = useState<boolean>(false)
   const [songs, setSongs] = useState([])
+  const [isShowing, setIsShowing] = useState<boolean>(false)
 
   const getIPFS = async () => {
     if (data) {
@@ -239,6 +245,7 @@ const AltPage = ({ id }) => {
       <Underlay data={data} />
       <div className="grid grid-cols-3 gap-4 h-full">
         <div className="col-span-2">
+          <SpotifyCard isShowing={isShowing} />
           {/* <div className="fixed flex flex-row bottom-0 mx-auto">
             {Array.from(Array(50)).map((a, i) => (
               // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
@@ -287,7 +294,12 @@ const AltPage = ({ id }) => {
           <BareScene style={loading ? {} : styleDecoder(data.tape.style)} />
         </div>
         <div className="col-span-1 p-4 z-50">
-          <TapeStats id={id} songs={songs} />
+          <TapeStats
+            id={id}
+            songs={songs}
+            showFn={setIsShowing}
+            isShowing={isShowing}
+          />
         </div>
       </div>
     </div>

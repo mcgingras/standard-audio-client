@@ -349,15 +349,20 @@ a {
 
 .blurred {
   position: absolute;
-  top: -250px;
+  /* top: -250px;
   right: -250px;
   width: 800px;
   height: 800px;
   background: red;
-  /* background: url('https://bennettfeely.com/gradients/img/gradient.jpg');
-  background-repeat: no-repeat; */
+  filter: blur(500px); */
+  background: url('https://bennettfeely.com/gradients/img/gradient.jpg');
+  background-repeat: no-repeat;
   background-size: contain;
-  filter: blur(500px);
+  top: 0px;
+  right: -100px;
+  width: 800px;
+  height: 400px;
+  filter: blur(100px);
 }
 
 .bg-blurred {

@@ -2,9 +2,16 @@ import { useState, useCallback, useEffect } from 'react'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
-const useContract = (contractAddress, abi) => {
-  const [contract, setContract] = useState()
-  const [injectedProvider, setInjectedProvider] = useState()
+const useContract = (contractAddress: string, abi): ethers.Contract => {
+  if (!contractAddress) {
+    return
+  }
+
+  let a = ethers.providers.Web3Provider
+
+  const [contract, setContract] = useState<ethers.Contract>()
+  const [injectedProvider, setInjectedProvider] =
+    useState<ethers.providers.Web3Provider>()
 
   const web3Modal = new Web3Modal({
     cacheProvider: true,

@@ -9,6 +9,7 @@ const db = new PrismaClient()
 
 async function main() {
   const parsed = parseJson(complexJSON)
+  console.log(parsed.merkleRoot)
 
   const data = Object.keys(parsed.claims).map((id) => {
     return {
@@ -17,12 +18,12 @@ async function main() {
     }
   })
 
-  const result = await db.tape.createMany({
-    data: data,
-    skipDuplicates: true,
-  })
+  // const result = await db.tape.createMany({
+  //   data: data,
+  //   skipDuplicates: true,
+  // })
 
-  console.log(`Created ${result.count} tapes!`)
+  // console.log(`Created ${result.count} tapes!`)
 }
 
 main()

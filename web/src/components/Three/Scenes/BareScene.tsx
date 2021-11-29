@@ -34,7 +34,7 @@ const BareScene = ({ style }) => {
         dispatchEvent={() => {}}
         // end annoying TS required props
         // autoRotate={true}
-        target={[0,0,0]}
+        target={[0, 0, 0]}
         autoRotateSpeed={1.0}
         enableZoom={false}
         enablePan={false}

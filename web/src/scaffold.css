@@ -314,15 +314,13 @@
   }
 }
 
-
 .flex-p7 {
-  flex: .7
+  flex: 0.7;
 }
 
 * {
   box-sizing: border-box;
 }
-
 
 html,
 body,
@@ -333,14 +331,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background: linear-gradient(180deg, #e6eaf5 0%, #f6f6f6 80%);
-}
-
-body {
-  position: fixed;
-  overflow: hidden;
-  overscroll-behavior-y: none;
 }
 
 p {
@@ -358,10 +349,27 @@ a {
 
 .blurred {
   position: absolute;
-  top: -250px;
+  /* top: -250px;
   right: -250px;
   width: 800px;
   height: 800px;
   background: red;
-  filter: blur(500px);
+  filter: blur(500px); */
+  background: url('https://bennettfeely.com/gradients/img/gradient.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 0px;
+  right: -100px;
+  width: 800px;
+  height: 400px;
+  filter: blur(100px);
+}
+
+.bg-blurred {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.fit-4 {
+  max-height: calc(100vh - 2rem);
 }

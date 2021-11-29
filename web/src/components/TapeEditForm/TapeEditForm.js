@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext, useRef } from 'react'
 import { routes } from '@redwoodjs/router'
+import { ethers } from 'ethers'
 import { useQuery, useMutation } from '@redwoodjs/web'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import useSpotify from '../../hooks/useSpotify'
@@ -18,7 +19,7 @@ const reorder = (list, startIndex, endIndex) => {
 }
 
 const TapeEditForm = ({ id, isClaim }) => {
-  const { contract, address } = useContext(ContractContext)
+  const { contracts, address } = useContext(ContractContext)
   const [isLoggedIn, token] = useSpotify()
   const spotifySearchRef = useRef()
 
@@ -110,8 +111,14 @@ const TapeEditForm = ({ id, isClaim }) => {
       if (debouncedQuery) {
         setIsSearching(true)
         searchSpotify(debouncedQuery).then((results) => {
-          setIsSearching(false)
-          setTracks(results.tracks.items)
+          if (results.tracks) {
+            setIsSearching(false)
+            setTracks(results.tracks.items)
+          } else {
+            console.log(
+              'something is wrong... probably unauthorized to spotify'
+            )
+          }
         })
       } else {
         setTracks([])
@@ -161,7 +168,10 @@ const TapeEditForm = ({ id, isClaim }) => {
     })
 
     try {
-      const tx = await contract.editMixtape(tape.id, ipfs.data.IpfsHash)
+      const tx = await contracts.mixtape.editMixtape(
+        tape.id,
+        ipfs.data.IpfsHash
+      )
       setTxHash(tx.hash)
 
       const receipt = await tx.wait()
@@ -211,13 +221,14 @@ const TapeEditForm = ({ id, isClaim }) => {
     })
 
     try {
-      const tx = await contract.claim(
+      const tx = await contracts.mixtape.claim(
         tape.id,
         tape.capacity,
         tape.quality,
         tape.style,
         tape.proof,
-        ipfs.data.IpfsHash
+        ipfs.data.IpfsHash,
+        { value: ethers.utils.parseEther('0.1') }
       )
       setTxHash(tx.hash)
 
@@ -280,7 +291,7 @@ const TapeEditForm = ({ id, isClaim }) => {
                         }/${isClaim ? 'claim' : 'edit'}`
                   }
                 >
-                Log into Spotify
+                  Log into Spotify
                 </a>
               </button>
             </div>

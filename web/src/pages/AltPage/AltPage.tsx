@@ -135,7 +135,7 @@ const TapeStats = ({ id, songs, showFn, isShowing }) => {
             onClick={() => showFn(!isShowing)}
             className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors"
           >
-            {isShowing ? 'Pause Tape' : 'Listen to Tape'}
+            {isShowing ? 'Close tape player' : 'Open tape player'}
           </button>
           // </Link>
         )}
@@ -245,7 +245,10 @@ const AltPage = ({ id }) => {
       <Underlay data={data} />
       <div className="grid grid-cols-3 gap-4 h-full">
         <div className="col-span-2">
-          <SpotifyCard isShowing={isShowing} />
+          <SpotifyCard
+            isShowing={isShowing}
+            uris={songs.map((song) => song.uri)}
+          />
           {/* <div className="fixed flex flex-row bottom-0 mx-auto">
             {Array.from(Array(50)).map((a, i) => (
               // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events

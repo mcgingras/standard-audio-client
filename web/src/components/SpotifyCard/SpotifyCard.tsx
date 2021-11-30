@@ -202,7 +202,7 @@ const SpotifyCard = ({ isShowing, uris }) => {
             )}
             <div className="flex flex-col ml-4 text-center p-2 w-36">
               <p className="text-black opacity-90 text-xs overflow-ellipsis whitespace-nowrap overflow-x-hidden">
-                {activeTrack ? activeTrack.name : 'loading'}
+                {activeTrack ? activeTrack.name : 'Nothing playing.'}
               </p>
               <p className="text-black opacity-50 text-xs overflow-ellipsis whitespace-nowrap overflow-x-hidden">
                 {activeTrack

@@ -10,6 +10,7 @@ import SubtapeFactoryArtifact from '../../contracts/SubtapeFactory.json'
 import { getIPFSData } from '../../utils/pinata'
 
 import SpotifyCard from '../../components/SpotifyCard/SpotifyCard'
+import PageTransition from '../../components/PageTransition/PageTransition'
 
 const Underlay = ({ data }) => {
   return (
@@ -240,6 +241,7 @@ const AltPage = ({ id }) => {
 
   return (
     <div id="root">
+      <PageTransition />
       <Underlay data={data} />
       <div className="grid grid-cols-3 gap-4 h-full">
         <div className="col-span-2">
@@ -247,54 +249,9 @@ const AltPage = ({ id }) => {
             isShowing={isShowing}
             uris={songs.map((song) => song.uri)}
           />
-          {/* <div className="fixed flex flex-row bottom-0 mx-auto">
-            {Array.from(Array(50)).map((a, i) => (
-              // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
-              <Link
-                to={routes.tape({ id: i })}
-                href={`${i}`}
-                key={i}
-                onMouseOver={() => {
-                  setIsHovered(true)
-                  setActiveIdx(i)
-                }}
-                onMouseLeave={() => {
-                  setIsHovered(false)
-                  setActiveIdx(parseInt(data?.tape.id || '-1'))
-                }}
-                // style={{ transform: `scaleX(${clamp(i, activeIdx)})` }}
-                className="group py-1 self-start bg-clip-content relative ml-2"
-              >
-                <span
-                  style={{
-                    height: `${isHovered ? clamp(i, activeIdx) : 20}px`,
-                    transition: 'height .2s',
-                    transitionProperty: 'height',
-                    transitionTimingFunction: 'ease-in-out',
-                    transitionDuration: '0ms',
-                  }}
-                  className={`${
-                    activeIdx === i ? 'bg-gray-300' : 'bg-gray-500'
-                  } w-1 h-0.5 group-hover:bg-gray-300 block`}
-                ></span>
-                <span
-                  style={{
-                    top: '-5px',
-                    right: '-40px',
-                    transitionDuration: '0ms',
-                  }}
-                  className={`${
-                    activeIdx === i && isHovered ? 'opacity-100' : 'opacity-0'
-                  } absolute font-bold text-sm text-white transition-all`}
-                >
-                  {activeIdx}
-                </span>
-              </Link>
-            ))}
-          </div> */}
           <BareScene style={loading ? {} : styleDecoder(data.tape.style)} />
         </div>
-        <div className="col-span-1 p-4 z-50">
+        <div className="col-span-1 p-4 z-40">
           <TapeStats
             id={id}
             songs={songs}

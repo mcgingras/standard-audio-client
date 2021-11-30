@@ -1,10 +1,6 @@
-import { useState } from 'react'
-import TapesCell from 'src/components/TapesCell'
 import Logo from '../../assets/saclogobig.svg'
 
 const HomePage = () => {
-  const [isClaimed, setIsClaimed] = useState(false)
-
   return (
     <>
       <div className="bg-white">
@@ -24,33 +20,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto -mt-4">
-        <div className="bg-gray-100 inline-flex rounded shadow-lg">
-          <button
-            className={`px-3 py-2 hover:bg-purple-400 ${
-              !isClaimed && 'bg-purple-300'
-            }`}
-            onClick={() => {
-              setIsClaimed(false)
-            }}
-          >
-            Available Tapes
-          </button>
-          <button
-            className={`px-3 py-2 hover:bg-purple-400 ${
-              isClaimed && 'bg-purple-300'
-            }`}
-            onClick={() => {
-              setIsClaimed(true)
-            }}
-          >
-            Claimed Tapes
-          </button>
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto mt-12">
-        <TapesCell isClaimed={isClaimed} />
       </div>
     </>
   )

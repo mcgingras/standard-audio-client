@@ -62,7 +62,7 @@ const PageTransition = () => {
               leave="transition transform ease-in duration-300"
               leaveFrom="translate-y-0"
               leaveTo="translate-y-full"
-              className="w-full h-full text-gray-600 fill-current"
+              className="w-full h-full text-gray-500 fill-current"
               afterLeave={() => {
                 setInterval(() => {
                   setStage(1)

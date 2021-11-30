@@ -201,10 +201,10 @@ const SpotifyCard = ({ isShowing, uris }) => {
               <div className="h-20 w-20 bg-gray-400 rounded-lg"></div>
             )}
             <div className="flex flex-col ml-4 text-center p-2 w-36">
-              <p className="text-black opacity-90 text-xs">
+              <p className="text-black opacity-90 text-xs overflow-ellipsis whitespace-nowrap overflow-x-hidden">
                 {activeTrack ? activeTrack.name : 'loading'}
               </p>
-              <p className="text-black opacity-50 text-xs">
+              <p className="text-black opacity-50 text-xs overflow-ellipsis whitespace-nowrap overflow-x-hidden">
                 {activeTrack
                   ? activeTrack.artists.map((artist) => artist.name).join(', ')
                   : ''}

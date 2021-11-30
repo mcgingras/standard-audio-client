@@ -98,12 +98,38 @@ const TapeStats = ({ id, songs, showFn, isShowing }) => {
         <p className="text-sm">This is tape {id}/100.</p>
       </div>
       <div className="py-8 border-b border-black">
-        <h3 className="font-bold mb-2">02. Tracklist</h3>
-        <p className="text-sm pb-4">
+        <h3 className="font-bold mb-2">02. Ownership</h3>
+        {!claimed ? (
+          <>
+            <p className="text-sm mb-4">
+              This tape is unclaimed. Mint it and it can be yours.
+            </p>
+            <Link to={routes.claims({ id: parseInt(id) })}>
+              <button className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors">
+                Claim Tape
+              </button>
+            </Link>
+          </>
+        ) : (
+          <p className="text-sm">
+            This tape is owned by: <span className="font-bold">{owner}</span>.
+          </p>
+        )}
+        {spotifyLoggedIn && owner === address && (
+          <Link to={routes.claims({ id: parseInt(id) })}>
+            <button className="mt-4 bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors">
+              Edit Tape
+            </button>
+          </Link>
+        )}
+      </div>
+      <div className="py-8 border-b border-black">
+        <h3 className="font-bold mb-2">03. Tracklist</h3>
+        {/* <p className="text-sm pb-4">
           You can use this tape to host a spotify playlist inside the listening
           room. You need a spotify premium account to do this. The listening
           will support soundcloud and mp3 uploads soon (not now).
-        </p>
+        </p> */}
         <ol className="list-decimal list-inside pb-4">
           {songs.map((song) => {
             return <li className="text-sm">{song.name}</li>
@@ -123,25 +149,16 @@ const TapeStats = ({ id, songs, showFn, isShowing }) => {
           </a>
         )}
         {spotifyLoggedIn && owner === address && (
-          <Link to={routes.claims({ id: parseInt(id) })}>
-            <button className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors">
-              Edit Tape
-            </button>
-          </Link>
-        )}
-        {spotifyLoggedIn && owner !== address && (
-          // <Link to={routes.claims({ id: parseInt(id) })}>
           <button
             onClick={() => showFn(!isShowing)}
             className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors"
           >
-            {isShowing ? 'Close tape player' : 'Open tape player'}
+            {isShowing ? 'Close Player' : 'Open Player'}
           </button>
-          // </Link>
         )}
       </div>
       <div className="py-8 border-b border-black">
-        <h3 className="font-bold mb-2">03. Tape Stats</h3>
+        <h3 className="font-bold mb-2">04. Tape Stats</h3>
         <div className="grid grid-cols-4 gap-4">
           <p className="text-sm mr-2">Duration</p>
           <span className="bg-black text-white px-1 py-1 text-sm flex-1">
@@ -168,25 +185,6 @@ const TapeStats = ({ id, songs, showFn, isShowing }) => {
             4
           </span>
         </div>
-      </div>
-      <div className="py-8 border-b border-black">
-        <h3 className="font-bold mb-2">04. Ownership</h3>
-        {!claimed ? (
-          <>
-            <p className="text-sm mb-4">
-              This tape is unclaimed. Mint it and it can be yours.
-            </p>
-            <Link to={routes.claims({ id: parseInt(id) })}>
-              <button className="bg-black rounded-full text-white w-full px-4 py-4 hover:bg-gray-900 transition-colors">
-                Claim Tape
-              </button>
-            </Link>
-          </>
-        ) : (
-          <p className="text-sm">
-            This tape is owned by: <span className="font-bold">{owner}</span>.
-          </p>
-        )}
       </div>
       <div className="pt-8">
         <h3 className="font-bold mb-2">05. Burning</h3>
@@ -219,7 +217,7 @@ const AltPage = ({ id }) => {
   const [isShowing, setIsShowing] = useState<boolean>(false)
 
   const getIPFS = async () => {
-    if (data) {
+    if (data?.tape.ipfsHash) {
       let d = await getIPFSData(data.tape.ipfsHash)
       setSongs(d.data.songs)
     }
